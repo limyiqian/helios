@@ -18,15 +18,6 @@ import {
   Picker,
 } from "react-native";
 
-const db = SQLite.openDatabase(
-  {
-      name: 'MainDB',
-      location: 'default',
-  },
-  () => { },
-  error => { console.log(error) }
-);
-
 
 export default function Main({ navigation }) {
 const [usernameModalVisible, setUsernameModalVisible] = useState(false);
