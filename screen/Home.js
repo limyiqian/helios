@@ -17,10 +17,17 @@ import { useState } from "react";
 export default function Home({ navigation }) {
 
   const [textInputUsername, setTextInputUsername] = useState('');
+  const [textInputPassword, setTextInputPassword] = useState('');
   const checkTextInput = () => {
     //Check for the Name TextInput
-    if (!textInputUsername.trim()) {
-      alert("Please Enter username");
+    if (!textInputUsername.trim() && !textInputPassword.trim()) {
+      alert("Please enter username and password");
+      return;
+    } else if (!textInputUsername.trim()) {
+      alert("Please enter username");
+      return;
+    } else if (!textInputPassword.trim()) {
+      alert("Please enter your password");
       return;
     }
     //Checked Successfully
@@ -43,12 +50,17 @@ export default function Home({ navigation }) {
       <Text style={styles.appName}>Chemiz</Text>
       <TextInput
         placeholder="Username"
-        onChangeText={(value) => setTextInputUsername(value)}
+        onChangeText={(usernameValue) => setTextInputUsername(usernameValue)}
+        style={styles.textInput}
+      />
+      <TextInput
+        placeholder="Password"
+        onChangeText={(pwdValue) => setTextInputPassword(pwdValue)}
         style={styles.textInput}
       />
 
       <TouchableOpacity style={styles.button} onPress={checkTextInput}>
-        <Text style={styles.btnText}>Start</Text>
+        <Text style={styles.btnText}>Enter</Text>
       </TouchableOpacity>
       
     </View>

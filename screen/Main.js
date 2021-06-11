@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -18,13 +18,12 @@ import {
   Picker,
 } from "react-native";
 
-
 export default function Main({ navigation }) {
-const [usernameModalVisible, setUsernameModalVisible] = useState(false);
-const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
-const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
-const [dropdownChosen, setDropdownChosen] = useState("");
-const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
+  const [usernameModalVisible, setUsernameModalVisible] = useState(false);
+  const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
+  const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
+  const [dropdownChosen, setDropdownChosen] = useState("");
+  const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -48,7 +47,10 @@ const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
             <Text style={styles.iconViewText}>User Guide</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => setGamemodeModalVisible(true)}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setGamemodeModalVisible(true)}
+        >
           <View style={styles.iconView}>
             <MaterialCommunityIcons
               name="gamepad-circle-down"
@@ -78,79 +80,128 @@ const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
           </View>
         </TouchableOpacity>
         <Text style={styles.title}>Revision</Text>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Bases")}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Bases")}
+        >
           <Text style={styles.revisionTextView}>Nucleophiles/Bases</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Solvents")}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Solvents")}
+        >
           <Text style={styles.revisionTextView}>Solvents</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("DecisionApproach")}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("DecisionApproach")}
+        >
           <Text style={styles.revisionTextView}>Decision-tree approach</Text>
         </TouchableOpacity>
 
-        <Modal animationType="slide" transparent={true} visible={usernameModalVisible}>
-        <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={usernameModalVisible}
+        >
+          <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Ionicons name="close-outline" size={28} style={styles.closeIcon} color="black" onPress={() => {setUsernameModalVisible(false)}}/>
-            <View style={styles.spacing}>
-            <Text style={styles.changeUsernameText}>Change username</Text>
-            <TextInput
+              <Ionicons
+                name="close-outline"
+                size={28}
+                style={styles.closeIcon}
+                color="black"
+                onPress={() => {
+                  setUsernameModalVisible(false);
+                }}
+              />
+              <View style={styles.spacing}>
+                <Text style={styles.changeUsernameText}>Change username</Text>
+                <TextInput
                   placeholder="Username"
                   style={styles.textInputUsername}
-                  keyboardType="default">
-                  </TextInput>
+                  keyboardType="default"
+                ></TextInput>
+              </View>
+              <TouchableOpacity style={styles.changeButton}>
+                <Text style={styles.changeButtonText}>Change</Text>
+              </TouchableOpacity>
             </View>
-                <TouchableOpacity style={styles.changeButton}>
-                  <Text style={styles.changeButtonText}>Change</Text>
-                </TouchableOpacity>
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
-      <Modal animationType="slide" transparent={true} visible={gamemodeModalVisible}>
-        <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={gamemodeModalVisible}
+        >
+          <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Ionicons name="close-outline" size={28} style={styles.closeIcon} color="black" onPress={() => {setGamemodeModalVisible(false)}}/>
-            <View style={styles.spacing}>
-            <Text style={styles.changeUsernameText}>Change gamemode</Text>
-            <Picker 
-            selectedValue={dropdownChosen} 
-            style={{height: 50, width: 170}} 
-            onValueChange={(itemValue) => setDropdownChosen(itemValue)}>
-              <Picker.Item label="Normal" value="Normal"/>
-              <Picker.Item label="Random" value="Random"/>
-              <Picker.Item label="Team" value="Team"/>
-              <Picker.Item label="Speed" value="Speed"/>
-            </Picker>
+              <Ionicons
+                name="close-outline"
+                size={28}
+                style={styles.closeIcon}
+                color="black"
+                onPress={() => {
+                  setGamemodeModalVisible(false);
+                }}
+              />
+              <View style={styles.spacing}>
+                <Text style={styles.changeUsernameText}>Change gamemode</Text>
+                <Picker
+                  selectedValue={dropdownChosen}
+                  style={{ height: 50, width: 170 }}
+                  onValueChange={(itemValue) => setDropdownChosen(itemValue)}
+                >
+                  <Picker.Item label="Normal" value="Normal" />
+                  <Picker.Item label="Random" value="Random" />
+                  <Picker.Item label="Team" value="Team" />
+                  <Picker.Item label="Speed" value="Speed" />
+                </Picker>
                 <TouchableOpacity style={styles.selectButton}>
                   <Text style={styles.changeButtonText}>Select</Text>
                 </TouchableOpacity>
-                </View>
+              </View>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
-      <Modal animationType="slide" transparent={true} visible={difficultyModalVisible}>
-        <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={difficultyModalVisible}
+        >
+          <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Ionicons name="close-outline" size={28} style={styles.closeIcon} color="black" onPress={() => {setDifficultyModalVisible(false)}}/>
-            <View style={styles.spacing}>
-            <Text style={styles.changeUsernameText}>Change difficulty</Text>
-            <Picker 
-            selectedValue={dropdownDifficultyChosen} 
-            style={{height: 50, width: 170}} 
-            onValueChange={(itemValue) => setDifficultyDropdownChosen(itemValue)}>
-              <Picker.Item label="Easy" value="Easy"/>
-              <Picker.Item label="Intermediate" value="Intermediate"/>
-              <Picker.Item label="Advanced" value="Advanced"/>
-            </Picker>
+              <Ionicons
+                name="close-outline"
+                size={28}
+                style={styles.closeIcon}
+                color="black"
+                onPress={() => {
+                  setDifficultyModalVisible(false);
+                }}
+              />
+              <View style={styles.spacing}>
+                <Text style={styles.changeUsernameText}>Change difficulty</Text>
+                <Picker
+                  selectedValue={dropdownDifficultyChosen}
+                  style={{ height: 50, width: 170 }}
+                  onValueChange={(itemValue) =>
+                    setDifficultyDropdownChosen(itemValue)
+                  }
+                >
+                  <Picker.Item label="Easy" value="Easy" />
+                  <Picker.Item label="Intermediate" value="Intermediate" />
+                  <Picker.Item label="Advanced" value="Advanced" />
+                </Picker>
                 <TouchableOpacity style={styles.selectButton}>
                   <Text style={styles.changeButtonText}>Select</Text>
                 </TouchableOpacity>
-                </View>
+              </View>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
       </View>
     </ScrollView>
   );
@@ -159,6 +210,9 @@ const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F8DE7E",
+    // flex: 1,
+        // justifyContent: "space-between",
+    // flexDirection: "row"
   },
   image: {
     width: 100,
@@ -171,6 +225,12 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     height: 470,
+    // marginBottom: 'auto',
+    // flex: 1,
+    // justifyContent: "flex-end"
+    // alignItems: "flex-end",
+    // alignContent: "space-between"
+    // marginBottom: 36,
   },
   title: {
     marginTop: 30,
@@ -217,10 +277,9 @@ const styles = StyleSheet.create({
   },
   textInputUsername: {
     marginBottom: 5,
-    backgroundColor:"#FFFFFF",
+    backgroundColor: "#FFFFFF",
     width: 190,
     borderRadius: 7,
-    
   },
   closeIcon: {
     position: "absolute",
