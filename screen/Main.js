@@ -35,7 +35,7 @@ export default function Main({ navigation }) {
         <TouchableOpacity style={styles.button}>
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />
-            <Text style={styles.iconViewText}> Start</Text>
+            <Text style={styles.iconViewText}> Play</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -43,24 +43,11 @@ export default function Main({ navigation }) {
           onPress={() => navigation.navigate("UserGuide")}
         >
           <View style={styles.iconView}>
-            <AntDesign name="user" size={20} color="#F8DE7E" />
+            <FontAwesome5 name="book-open" size={20} color="#F8DE7E" />
             <Text style={styles.iconViewText}>User Guide</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => setGamemodeModalVisible(true)}
-        >
-          <View style={styles.iconView}>
-            <MaterialCommunityIcons
-              name="gamepad-circle-down"
-              size={20}
-              color="#F8DE7E"
-            />
-            <Text style={styles.iconViewText}>Game Mode</Text>
-            <View style={styles.iconView}></View>
-          </View>
-        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.button}
           onPress={() => setDifficultyModalVisible(true)}
@@ -70,7 +57,31 @@ export default function Main({ navigation }) {
             <Text style={styles.iconViewText}>Difficulty</Text>
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("UserGuide")}
+        >
+          <View style={styles.iconView}>
+            <Ionicons name="person" size={20} color="#F8DE7E" />
+            <Text style={styles.iconViewText}>Profile</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setGamemodeModalVisible(true)}
+        >
+          <View style={styles.iconView}>
+            <FontAwesome5 name="forward"
+              size={20}
+              color="#F8DE7E"
+            />
+            <Text style={styles.iconViewText}>Game Mode</Text>
+            <View style={styles.iconView}></View>
+          </View>
+        </TouchableOpacity>
+      
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => setUsernameModalVisible(true)}
         >
@@ -78,7 +89,7 @@ export default function Main({ navigation }) {
             <FontAwesome name="check-circle" size={18} color="#F8DE7E" />
             <Text style={styles.iconViewText}> Change Username</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Text style={styles.title}>Revision</Text>
         <TouchableOpacity
           style={styles.button}
@@ -99,7 +110,7 @@ export default function Main({ navigation }) {
           <Text style={styles.revisionTextView}>Decision-tree approach</Text>
         </TouchableOpacity>
 
-        <Modal
+        {/* <Modal
           animationType="slide"
           transparent={true}
           visible={usernameModalVisible}
@@ -128,7 +139,7 @@ export default function Main({ navigation }) {
               </TouchableOpacity>
             </View>
           </View>
-        </Modal>
+        </Modal> */}
 
         <Modal
           animationType="slide"
@@ -210,7 +221,7 @@ export default function Main({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F8DE7E",
-    // flex: 1,
+    flex: 1,
         // justifyContent: "space-between",
     // flexDirection: "row"
   },
@@ -224,12 +235,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    height: 470,
+    height: '100%',
     // marginBottom: 'auto',
     // flex: 1,
-    // justifyContent: "flex-end"
+    // justifyContent: "flex-end",
     // alignItems: "flex-end",
-    // alignContent: "space-between"
+    alignContent: "space-between",
     // marginBottom: 36,
   },
   title: {
