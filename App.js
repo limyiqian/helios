@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useState } from "react";
+// // Importing Stack Navigator library to add multiple activities.
+// import { StackNavigator } from "@react-navigation";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./screen/Home.js";
@@ -21,6 +23,14 @@ import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 
 const Stack = createStackNavigator();
+
+// export default MainProject = StackNavigator(
+//   {
+//      First: { screen: Home },
+     
+//      Second: { screen: Main }
+   
+//   });
 
 export default function App() {
   return (
