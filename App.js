@@ -13,6 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./screen/Home.js";
 import Main from "./screen/Main.js";
+import Register from "./screen/Register.js";
 import UserGuide from "./screen/UserGuide.js";
 import UserGuide2 from "./screen/UserGuide2.js";
 import UserGuide3 from "./screen/UserGuide3.js";
@@ -25,17 +26,53 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen name="Home" component={Home} options={{headerShown: true}} />
-        <Stack.Screen name="Main" component={Main} options={{headerShown: true}} />
-        <Stack.Screen name="UserGuide" component={UserGuide} options={{headerShown: true}} />
-        <Stack.Screen name="UserGuide2" component={UserGuide2} options={{headerShown: true}} />
-        <Stack.Screen name="UserGuide3" component={UserGuide3} options={{headerShown: true}} />
-        <Stack.Screen name="Bases" component={Bases} options={{headerShown: true}} />
-        <Stack.Screen name="Solvents" component={Solvents} options={{headerShown: true}} />
-        <Stack.Screen name="DecisionApproach" component={DecisionApproach} options={{headerShown: true}} />
+      <Stack.Navigator initialRouteName="Register">
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Main"
+          component={Main}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="UserGuide"
+          component={UserGuide}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="UserGuide2"
+          component={UserGuide2}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="UserGuide3"
+          component={UserGuide3}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bases"
+          component={Bases}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Solvents"
+          component={Solvents}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="DecisionApproach"
+          component={DecisionApproach}
+          options={{ headerShown: true }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
