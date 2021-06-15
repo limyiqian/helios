@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { Component } from "react";
 // import './userLogin.php';
 import {
+  AppRegistry,
   StyleSheet,
   Image,
   Text,
@@ -9,6 +10,7 @@ import {
   View,
   TouchableOpacity,
   Alert,
+  Keyboard,
 } from "react-native";
 import { useState } from "react";
 // import { StackNavigator } from "react-navigation";
@@ -16,11 +18,42 @@ import { useState } from "react";
 // import Main from "./Main.js";
 // import { NavigationContainer } from "@react-navigation/native";
 
-export default function Home({ navigation }) {
-  const [textInputUsername, setTextInputUsername] = useState("");
-  const [textInputPassword, setTextInputPassword] = useState("");
+export default class Login extends Component {
 
+  // const [textInputUsername, setTextInputUsername] = useState("");
+  // const [textInputPassword, setTextInputPassword] = useState("");
+
+  static navigationOptions= ({navigation}) =>({
+    title: 'Login',	
+    headerRight:	
+    <TouchableOpacity
+    onPress={() => navigation.navigate('Main')}
+    style={{margin:10,backgroundColor:'orange',padding:10}}>
+    <Text style={{color:'#ffffff'}}>Main</Text>
+    </TouchableOpacity>
+  
+});  
+constructor(props){
+  super(props)
+  this.state={
+    username:'',
+    userPassword:''
+  }
+}
   UserLoginFunction = () => {
+    const {username,userPassword} = this.state;
+
+		if(username==""){
+			alert("Please enter username");
+		  this.setState({username:'Please enter username'})
+			
+		}
+
+		else if(userPassword==""){
+		this.setState({password:'Please enter password'})
+		}
+		else{
+
     fetch("http://192.168.1.69/fyp/findUser.php", {
       method: "POST",
       headers: {
@@ -28,15 +61,17 @@ export default function Home({ navigation }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: textInputUsername,
+        username: username,
 
-        password: textInputPassword,
+        password: userPassword,
       }),
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        if (responseJson === textInputUsername) {
-        navigation.navigate("Main", {paramKey: textInputUsername});
+        console.log(responseJson);
+        if (responseJson == "ok") {
+          alert("Successfully Login");
+        this.props.navigation.navigate("Main", {paramKey: username});
         } else {
           Alert.alert("You have input wrong password or username", "Please try again", [
             { text: "Ok", style: "cancel" },
@@ -46,7 +81,11 @@ export default function Home({ navigation }) {
       .catch((error) => {
         console.error(error);
       });
-  };
+    }
+
+    Keyboard.dismiss();
+  }
+  render(){
   return (
     <View style={styles.container}>
       <Image
@@ -56,19 +95,20 @@ export default function Home({ navigation }) {
       <Text style={styles.appName}>Chemiz</Text>
       <TextInput
         placeholder="Username"
-        onChangeText={(Username) => setTextInputUsername(Username)}
+        onChangeText={username => this.setState({username})}
         style={styles.textInput}
       />
       <TextInput
         placeholder="Password"
-        onChangeText={(UserPassword) => setTextInputPassword(UserPassword)}
+        onChangeText={userPassword => this.setState({userPassword})}
         style={styles.textInput}
       />
-      <TouchableOpacity style={styles.button} onPress={UserLoginFunction}>
-        <Text style={styles.btnText}>Enter</Text>
+      <TouchableOpacity style={styles.button} onPress={this.UserLoginFunction}>
+        <Text style={styles.btnText}>Login</Text>
       </TouchableOpacity>
     </View>
   );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -132,3 +172,5 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
 });
+
+AppRegistry.registerComponent("Login", () => Login);

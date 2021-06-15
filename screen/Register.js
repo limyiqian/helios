@@ -103,7 +103,7 @@ export default function Register({ navigation }) {
           <TouchableOpacity>
             <Text
               style={styles.hereButton}
-              onPress={() => navigation.navigate("Home")}
+              onPress={() => navigation.navigate("Login")}
             >
               here
             </Text>
