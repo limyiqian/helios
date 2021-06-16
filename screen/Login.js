@@ -104,8 +104,20 @@ constructor(props){
         style={styles.textInput}
       />
       <TouchableOpacity style={styles.button} onPress={this.UserLoginFunction}>
-        <Text style={styles.btnText}>Login</Text>
+        <Text style={styles.btnText}>Enter</Text>
       </TouchableOpacity>
+      <View style={styles.textView}>
+          <Text style={styles.clickText}>New User? Click </Text>
+          <TouchableOpacity>
+            <Text
+              style={styles.hereButton}
+              onPress={() => this.props.navigation.navigate("Register")}
+            >
+              here
+            </Text>
+          </TouchableOpacity>
+          <Text style={styles.clickText}> to Sign Up.</Text>
+        </View>
     </View>
   );
   }
@@ -152,25 +164,36 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: "center",
   },
-  // Tutorial css
-  TextInputStyleClass: {
-    textAlign: "center",
-    marginBottom: 7,
-    height: 40,
-    borderWidth: 1,
-    // Set border Hex Color Code Here.
-    borderColor: "#2196F3",
-
-    // Set border Radius.
-    borderRadius: 5,
+  clickText: {
+    color: "#0000FF",
   },
-
-  TextComponentStyle: {
-    fontSize: 20,
-    color: "#000",
-    textAlign: "center",
-    marginBottom: 15,
+  hereButton: {
+    color: "#FF0000",
   },
+  textView: {
+    flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  // // Tutorial css
+  // TextInputStyleClass: {
+  //   textAlign: "center",
+  //   marginBottom: 7,
+  //   height: 40,
+  //   borderWidth: 1,
+  //   // Set border Hex Color Code Here.
+  //   borderColor: "#2196F3",
+
+  //   // Set border Radius.
+  //   borderRadius: 5,
+  // },
+
+  // TextComponentStyle: {
+  //   fontSize: 20,
+  //   color: "#000",
+  //   textAlign: "center",
+  //   marginBottom: 15,
+  // },
 });
 
 AppRegistry.registerComponent("Login", () => Login);

@@ -23,6 +23,7 @@ import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
+import Intermediate from "./screen/Intermediate.js";
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,10 @@ export default function App() {
           component={Main}
           options={{ headerShown: true }}
         />
+        <Stack.Screen
+        name="Intermediate"
+        component={Intermediate}
+        options={{headerShown: true}}/>
         <Stack.Screen
           name="Register"
           component={Register}
