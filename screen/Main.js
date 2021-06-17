@@ -32,7 +32,7 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        {/* <Text style={styles.title}>{route.params.paramKey}</Text> */}
+        <Text style={styles.title}>{route.params.paramKey}</Text>
         <TouchableOpacity style={styles.button}>
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />
@@ -61,7 +61,7 @@ export default function Main({ navigation, route }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("UserGuide")}
+          onPress={() => navigation.navigate("Profile")}
         >
           <View style={styles.iconView}>
             <Ionicons name="person" size={20} color="#F8DE7E" />

@@ -13,7 +13,6 @@ import { useState } from "react";
 // import { StackNavigator } from "@react-navigation";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "./screen/Login.js";
 import Main from "./screen/Main.js";
 import Register from "./screen/Register.js";
 import UserGuide from "./screen/UserGuide.js";
@@ -24,6 +23,7 @@ import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
 import Intermediate from "./screen/Intermediate.js";
+import Profile from "./screen/Profile.js";
 
 const Stack = createStackNavigator();
 
@@ -87,6 +87,11 @@ export default function App() {
         <Stack.Screen
           name="DecisionApproach"
           component={DecisionApproach}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

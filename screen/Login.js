@@ -49,7 +49,7 @@ export default class Login extends Component {
     } else if (userPassword == "") {
       this.setState({ password: "Please enter password" });
     } else {
-      fetch("http://192.168.18.7/Chemiz/findUser.php", {
+      fetch("http://192.168.1.69/Chemiz/findUser.php", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -64,7 +64,7 @@ export default class Login extends Component {
         .then((response) => response.json())
         .then((response) => {
           console.log(JSON.stringify(response));
-          if (response != false) {
+          if (response.success != false) {
             this.props.navigation.navigate("Main", { paramKey: username });
           } else {
             Alert.alert(
