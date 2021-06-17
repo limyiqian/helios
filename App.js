@@ -28,15 +28,15 @@ const Stack = createStackNavigator();
 // export default MainProject = StackNavigator(
 //   {
 //      First: { screen: Home },
-     
+
 //      Second: { screen: Main }
-   
+
 //   });
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Register">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
           name="Home"
           component={Home}
