@@ -32,7 +32,7 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>{route.params.paramKey}</Text>
+        {/* <Text style={styles.title}>{route.params.paramKey}</Text> */}
         <TouchableOpacity style={styles.button}>
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />
@@ -73,15 +73,12 @@ export default function Main({ navigation, route }) {
           onPress={() => setGamemodeModalVisible(true)}
         >
           <View style={styles.iconView}>
-            <FontAwesome5 name="forward"
-              size={20}
-              color="#F8DE7E"
-            />
+            <FontAwesome5 name="forward" size={20} color="#F8DE7E" />
             <Text style={styles.iconViewText}>Game Mode</Text>
             <View style={styles.iconView}></View>
           </View>
         </TouchableOpacity>
-      
+
         {/* <TouchableOpacity
           style={styles.button}
           onPress={() => setUsernameModalVisible(true)}
@@ -223,7 +220,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F8DE7E",
     flex: 1,
-        // justifyContent: "space-between",
+    // justifyContent: "space-between",
     // flexDirection: "row"
   },
   image: {
@@ -236,7 +233,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fafafa",
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    height: '100%',
+    height: "100%",
     // marginBottom: 'auto',
     // flex: 1,
     // justifyContent: "flex-end",

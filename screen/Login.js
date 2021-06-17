@@ -19,94 +19,93 @@ import { useState } from "react";
 // import { NavigationContainer } from "@react-navigation/native";
 
 export default class Login extends Component {
-
   // const [textInputUsername, setTextInputUsername] = useState("");
   // const [textInputPassword, setTextInputPassword] = useState("");
 
-  static navigationOptions= ({navigation}) =>({
-    title: 'Login',	
-    headerRight:	
-    <TouchableOpacity
-    onPress={() => navigation.navigate('Main')}
-    style={{margin:10,backgroundColor:'orange',padding:10}}>
-    <Text style={{color:'#ffffff'}}>Main</Text>
-    </TouchableOpacity>
-  
-});  
-constructor(props){
-  super(props)
-  this.state={
-    username:'',
-    userPassword:''
+  static navigationOptions = ({ navigation }) => ({
+    title: "Login",
+    headerRight: (
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Main")}
+        style={{ margin: 10, backgroundColor: "orange", padding: 10 }}
+      >
+        <Text style={{ color: "#ffffff" }}>Main</Text>
+      </TouchableOpacity>
+    ),
+  });
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      userPassword: "",
+    };
   }
-}
   UserLoginFunction = () => {
-    const {username,userPassword} = this.state;
+    const { username, userPassword } = this.state;
 
-		if(username==""){
-			alert("Please enter username");
-		  this.setState({username:'Please enter username'})
-			
-		}
+    if (username == "") {
+      alert("Please enter username");
+      this.setState({ username: "Please enter username" });
+    } else if (userPassword == "") {
+      this.setState({ password: "Please enter password" });
+    } else {
+      fetch("http://192.168.18.7/Chemiz/findUser.php", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
 
-		else if(userPassword==""){
-		this.setState({password:'Please enter password'})
-		}
-		else{
-
-    fetch("http://192.168.1.69/fyp/findUser.php", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-
-        password: userPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        if (responseJson == "ok") {
-          alert("Successfully Login");
-        this.props.navigation.navigate("Main", {paramKey: username});
-        } else {
-          Alert.alert("You have input wrong password or username", "Please try again", [
-            { text: "Ok", style: "cancel" },
-          ]);
-        }
+          password: userPassword,
+        }),
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(JSON.stringify(response));
+          if (response != false) {
+            this.props.navigation.navigate("Main", { paramKey: username });
+          } else {
+            Alert.alert(
+              "You have input wrong password or username",
+              "Please try again",
+              [{ text: "Ok", style: "cancel" }]
+            );
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
 
     Keyboard.dismiss();
-  }
-  render(){
-  return (
-    <View style={styles.container}>
-      <Image
-        source={require("../assets/chemiz.png")}
-        style={styles.image}
-      ></Image>
-      <Text style={styles.appName}>Chemiz</Text>
-      <TextInput
-        placeholder="Username"
-        onChangeText={username => this.setState({username})}
-        style={styles.textInput}
-      />
-      <TextInput
-        placeholder="Password"
-        onChangeText={userPassword => this.setState({userPassword})}
-        style={styles.textInput}
-      />
-      <TouchableOpacity style={styles.button} onPress={this.UserLoginFunction}>
-        <Text style={styles.btnText}>Enter</Text>
-      </TouchableOpacity>
-      <View style={styles.textView}>
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={require("../assets/chemiz.png")}
+          style={styles.image}
+        ></Image>
+        <Text style={styles.appName}>Chemiz</Text>
+        <TextInput
+          placeholder="Username"
+          onChangeText={(username) => this.setState({ username })}
+          style={styles.textInput}
+        />
+        <TextInput
+          placeholder="Password"
+          onChangeText={(userPassword) => this.setState({ userPassword })}
+          style={styles.textInput}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.UserLoginFunction}
+        >
+          <Text style={styles.btnText}>Enter</Text>
+        </TouchableOpacity>
+        <View style={styles.textView}>
           <Text style={styles.clickText}>New User? Click </Text>
           <TouchableOpacity>
             <Text
@@ -118,8 +117,8 @@ constructor(props){
           </TouchableOpacity>
           <Text style={styles.clickText}> to Sign Up.</Text>
         </View>
-    </View>
-  );
+      </View>
+    );
   }
 }
 

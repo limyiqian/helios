@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Image, Text, ScrollView, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from "react-native";
 
 export default function UserGuide3({ navigation }) {
   return (
@@ -10,7 +17,7 @@ export default function UserGuide3({ navigation }) {
         After finishing the quiz, you can review all the questions you have
         attempted and see your total score.
       </Text>
-      <Image style={styles.image} source={require("../assets/points.jpg")} />
+      {/* <Image style={styles.image} source={require("../assets/points.jpg")} /> */}
       <Text style={styles.title}>That's it from us.</Text>
       <Image
         style={styles.congrats}
@@ -55,12 +62,12 @@ const styles = StyleSheet.create({
     height: 30,
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginRight: 20,
   },
   btnText: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 5,
     color: "#000000",
-  }
+  },
 });
