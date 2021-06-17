@@ -17,8 +17,9 @@ import {
   TextInput,
   Picker,
 } from "react-native";
+import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
 
-export default function Main({ navigation }) {
+export default function Main({ navigation, route }) {
   const [usernameModalVisible, setUsernameModalVisible] = useState(false);
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
@@ -31,7 +32,7 @@ export default function Main({ navigation }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>Name</Text>
+        <Text style={styles.title}>{route.params.paramKey}</Text>
         <TouchableOpacity style={styles.button}>
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />

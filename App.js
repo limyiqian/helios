@@ -13,7 +13,7 @@ import { useState } from "react";
 // import { StackNavigator } from "@react-navigation";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "./screen/Home.js";
+import Home from "./screen/Login.js";
 import Main from "./screen/Main.js";
 import Register from "./screen/Register.js";
 import UserGuide from "./screen/UserGuide.js";
@@ -22,6 +22,8 @@ import UserGuide3 from "./screen/UserGuide3.js";
 import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
+import Login from "./screen/Login.js";
+import Intermediate from "./screen/Intermediate.js";
 
 const Stack = createStackNavigator();
 
@@ -38,8 +40,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="Login"
+          component={Login}
           options={{ headerShown: true }}
         />
         <Stack.Screen
@@ -47,6 +49,10 @@ export default function App() {
           component={Main}
           options={{ headerShown: true }}
         />
+        <Stack.Screen
+        name="Intermediate"
+        component={Intermediate}
+        options={{headerShown: true}}/>
         <Stack.Screen
           name="Register"
           component={Register}
