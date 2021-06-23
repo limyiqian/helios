@@ -21,7 +21,7 @@ export default function Register({ navigation }) {
   const [role, setRole] = useState("student");
 
   insertUser = () => {
-    var api = "http://192.168.18.7/Chemiz/insertUser.php";
+    var api = "http://192.168.1.197/Chemiz/insertUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function Register({ navigation }) {
         console.log(response.success);
         if (response.success == true) {
           Alert.alert("Successfully registered", "", [
-            { text: "Ok", onPress: () => navigation.navigate("Home") },
+            { text: "Ok", onPress: () => navigation.navigate("Login") },
           ]);
         } else {
           Alert.alert("Fail to register", "Please try again", [
