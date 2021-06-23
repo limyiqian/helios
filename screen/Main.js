@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -14,17 +13,16 @@ import {
   ScrollView,
   Alert,
   Modal,
-  TextInput,
-  Picker,
 } from "react-native";
-import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
+import { Picker } from "@react-native-picker/picker";
 
 export default function Main({ navigation, route }) {
-  const [usernameModalVisible, setUsernameModalVisible] = useState(false);
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
-  const [dropdownChosen, setDropdownChosen] = useState("");
-  const [dropdownDifficultyChosen, setDifficultyDropdownChosen] = useState("");
+  const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
+    useState("Normal");
+  const [dropdownDifficultyChosen, setDifficultyDropdownChosen] =
+    useState("Easy");
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -32,8 +30,17 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>{route.params.paramKey}</Text>
-        <TouchableOpacity style={styles.button}>
+        {/* <Text style={styles.title}>{route.params.username}</Text> */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate("Play", {
+              // username: route.params.username,
+              difficulty: dropdownDifficultyChosen,
+              gamemode: dropdownGamemodeChosen,
+            })
+          }
+        >
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />
             <Text style={styles.iconViewText}> Play</Text>
@@ -78,16 +85,6 @@ export default function Main({ navigation, route }) {
             <View style={styles.iconView}></View>
           </View>
         </TouchableOpacity>
-
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => setUsernameModalVisible(true)}
-        >
-          <View style={styles.iconView}>
-            <FontAwesome name="check-circle" size={18} color="#F8DE7E" />
-            <Text style={styles.iconViewText}> Change Username</Text>
-          </View>
-        </TouchableOpacity> */}
         <Text style={styles.title}>Revision</Text>
         <TouchableOpacity
           style={styles.button}
@@ -108,37 +105,6 @@ export default function Main({ navigation, route }) {
           <Text style={styles.revisionTextView}>Decision-tree approach</Text>
         </TouchableOpacity>
 
-        {/* <Modal
-          animationType="slide"
-          transparent={true}
-          visible={usernameModalVisible}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Ionicons
-                name="close-outline"
-                size={28}
-                style={styles.closeIcon}
-                color="black"
-                onPress={() => {
-                  setUsernameModalVisible(false);
-                }}
-              />
-              <View style={styles.spacing}>
-                <Text style={styles.changeUsernameText}>Change username</Text>
-                <TextInput
-                  placeholder="Username"
-                  style={styles.textInputUsername}
-                  keyboardType="default"
-                ></TextInput>
-              </View>
-              <TouchableOpacity style={styles.changeButton}>
-                <Text style={styles.changeButtonText}>Change</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal> */}
-
         <Modal
           animationType="slide"
           transparent={true}
@@ -156,18 +122,27 @@ export default function Main({ navigation, route }) {
                 }}
               />
               <View style={styles.spacing}>
-                <Text style={styles.changeUsernameText}>Change gamemode</Text>
+                <Text style={styles.modalTitle}>Change Game Mode</Text>
                 <Picker
-                  selectedValue={dropdownChosen}
-                  style={{ height: 50, width: 170 }}
-                  onValueChange={(itemValue) => setDropdownChosen(itemValue)}
+                  selectedValue={dropdownGamemodeChosen}
+                  style={styles.picker}
+                  itemStyle={styles.pickerItem}
+                  onValueChange={(itemValue) =>
+                    setDropdownGamemodeChosen(itemValue)
+                  }
                 >
                   <Picker.Item label="Normal" value="Normal" />
                   <Picker.Item label="Random" value="Random" />
                   <Picker.Item label="Team" value="Team" />
                   <Picker.Item label="Speed" value="Speed" />
                 </Picker>
-                <TouchableOpacity style={styles.selectButton}>
+                <TouchableOpacity
+                  style={styles.selectButton}
+                  onPress={() => {
+                    setGamemodeModalVisible(false);
+                    console.log(dropdownGamemodeChosen);
+                  }}
+                >
                   <Text style={styles.changeButtonText}>Select</Text>
                 </TouchableOpacity>
               </View>
@@ -192,10 +167,11 @@ export default function Main({ navigation, route }) {
                 }}
               />
               <View style={styles.spacing}>
-                <Text style={styles.changeUsernameText}>Change difficulty</Text>
+                <Text style={styles.modalTitle}>Change difficulty</Text>
                 <Picker
                   selectedValue={dropdownDifficultyChosen}
-                  style={{ height: 50, width: 170 }}
+                  style={styles.picker}
+                  itemStyle={styles.pickerItem}
                   onValueChange={(itemValue) =>
                     setDifficultyDropdownChosen(itemValue)
                   }
@@ -204,7 +180,13 @@ export default function Main({ navigation, route }) {
                   <Picker.Item label="Intermediate" value="Intermediate" />
                   <Picker.Item label="Advanced" value="Advanced" />
                 </Picker>
-                <TouchableOpacity style={styles.selectButton}>
+                <TouchableOpacity
+                  style={styles.selectButton}
+                  onPress={() => {
+                    setDifficultyModalVisible(false);
+                    console.log(dropdownDifficultyChosen);
+                  }}
+                >
                   <Text style={styles.changeButtonText}>Select</Text>
                 </TouchableOpacity>
               </View>
@@ -284,12 +266,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  textInputUsername: {
-    marginBottom: 5,
-    backgroundColor: "#FFFFFF",
-    width: 190,
-    borderRadius: 7,
-  },
   closeIcon: {
     position: "absolute",
     top: 16,
@@ -312,7 +288,7 @@ const styles = StyleSheet.create({
   spacing: {
     paddingBottom: 30,
   },
-  changeUsernameText: {
+  modalTitle: {
     fontWeight: "bold",
   },
   selectButton: {
@@ -323,6 +299,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 2,
     right: 10,
+  },
+  picker: {
+    width: 200,
+    height: 44,
+  },
+  pickerItem: {
+    height: 44,
   },
   // user: {
   //   borderColor: '#000000',

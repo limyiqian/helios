@@ -15,6 +15,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Main from "./screen/Main.js";
 import Register from "./screen/Register.js";
+import Play from "./screen/Play.js";
 import UserGuide from "./screen/UserGuide.js";
 import UserGuide2 from "./screen/UserGuide2.js";
 import UserGuide3 from "./screen/UserGuide3.js";
@@ -27,18 +28,10 @@ import Profile from "./screen/Profile.js";
 
 const Stack = createStackNavigator();
 
-// export default MainProject = StackNavigator(
-//   {
-//      First: { screen: Home },
-
-//      Second: { screen: Main }
-
-//   });
-
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -57,6 +50,11 @@ export default function App() {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Play"
+          component={Play}
           options={{ headerShown: true }}
         />
         <Stack.Screen

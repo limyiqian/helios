@@ -10,6 +10,7 @@ import {
   TextInput,
   Picker,
 } from "react-native";
+import React from "react";
 
 export default function Intermediate({ navigation }) {
   return (
@@ -40,7 +41,7 @@ export default function Intermediate({ navigation }) {
         style={styles.image}
       ></Image>
 
-<TouchableOpacity
+      <TouchableOpacity
         style={styles.button}
         onPress={() => setProductModalVisible(true)}
       >
@@ -150,7 +151,7 @@ export default function Intermediate({ navigation }) {
           </View>
         </View>
       </Modal>
-      
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -186,7 +187,6 @@ export default function Intermediate({ navigation }) {
           </View>
         </View>
       </Modal>
-
     </View>
   );
 }
