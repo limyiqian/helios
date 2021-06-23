@@ -33,7 +33,10 @@ export default function Main({ navigation, route }) {
       ></Image>
       <View style={styles.card}>
         <Text style={styles.title}>{route.params.paramKey}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Easy")}
+        >
           <View style={styles.iconView}>
             <FontAwesome5 name="play" size={15} color="#F8DE7E" />
             <Text style={styles.iconViewText}> Play</Text>

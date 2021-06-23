@@ -24,6 +24,8 @@ import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
 import Intermediate from "./screen/Intermediate.js";
 import Profile from "./screen/Profile.js";
+import Easy from "./screen/Easy.js";
+import Easy2 from "./screen/Easy2.js";
 
 const Stack = createStackNavigator();
 
@@ -92,6 +94,16 @@ export default function App() {
         <Stack.Screen
           name="Profile"
           component={Profile}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Easy"
+          component={Easy}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Easy2"
+          component={Easy2}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
