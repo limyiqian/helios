@@ -17,7 +17,7 @@ export default function Intermediate({ navigation }) {
     <View style={styles.container}>
       <Text>Q1</Text>
       <Image
-        source={require("../assets/intermediateQ1/starting.png")}
+        source={require("../assets/intermediateQ1/start.png")}
         style={styles.image}
       ></Image>
       <Image
@@ -28,16 +28,16 @@ export default function Intermediate({ navigation }) {
         style={styles.button}
         onPress={() => setSolventsModalVisible(true)}
       >
-        <View>
+        {/* <View>
           <Image
             source={require("../assets/intermediateQ1/solventOption.png")}
             style={styles.image}
           ></Image>
-        </View>
+        </View> */}
       </TouchableOpacity>
 
       <Image
-        source={require("../assets/intermediateQ1/arrow.png")}
+        source={require("../assets/arrow.png")}
         style={styles.image}
       ></Image>
 
@@ -45,24 +45,24 @@ export default function Intermediate({ navigation }) {
         style={styles.button}
         onPress={() => setProductModalVisible(true)}
       >
-        <View>
+        {/* <View>
           <Image
             source={require("../assets/intermediateQ1/productOption.png")}
             style={styles.image}
           ></Image>
-        </View>
+        </View> */}
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => setReactionTypeModalVisible(true)}
       >
-        <View>
+        {/* <View>
           <Image
             source={require("../assets/intermediateQ1/reactionTypeOption.png")}
             style={styles.image}
           ></Image>
-        </View>
+        </View> */}
       </TouchableOpacity>
 
       {/* Submit button codes */}

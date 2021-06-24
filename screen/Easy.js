@@ -83,15 +83,15 @@ export default function Easy({ navigation }) {
 
       <View style={styles.question}>
         <Image
-          source={require("../assets/EasyQn1/start.png")}
+          source={require("../assets/basicQ1/start.png")}
           style={styles.image}
         ></Image>
         <Image
-          source={require("../assets/EasyQn1/strong.png")}
+          source={require("../assets/basicQ1/strong.png")}
           style={styles.image}
         ></Image>
         <Image
-          source={require("../assets/EasyQn1/solventt.png")}
+          source={require("../assets/basicQ1/solvent.png")}
           style={styles.image}
         ></Image>
       </View>
@@ -103,13 +103,13 @@ export default function Easy({ navigation }) {
 
       <View style={styles.question}>
         <Image
-          source={require("../assets/EasyQn1/product.png")}
+          source={require("../assets/basicQ1/product.png")}
           style={styles.image}
         ></Image>
 
         <TouchableOpacity onPress={() => setReactionModalVisible(true)}>
           <Image
-            source={require("../assets/EasyQn1/reaction.png")}
+            source={require("../assets/basicQ1/reaction.png")}
             style={styles.image}
           ></Image>
         </TouchableOpacity>
@@ -132,13 +132,13 @@ export default function Easy({ navigation }) {
               <View style={styles.spacing}>
                 <TouchableOpacity onPress={createWrongButton}>
                   <Image
-                    source={require("../assets/EasyQn1/reactionOne.png")}
+                    source={require("../assets/basicQ1/reactionOne.png")}
                     style={styles.image}
                   ></Image>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={createCorrectButton}>
                   <Image
-                    source={require("../assets/EasyQn1/reactionTwo.png")}
+                    source={require("../assets/basicQ1/reactionTwo.png")}
                     style={styles.image}
                   ></Image>
                 </TouchableOpacity>
