@@ -90,33 +90,33 @@
 
 //       <View style={styles.question}>
 //         <Image
-//           source={require("../assets/EasyQn2/start.png")}
+//           source={require("../assets/basicQ2/start.png")}
 //           style={styles.image}
 //         ></Image>
 //         <Image
-//           source={require("../assets/EasyQn2/strong.png")}
+//           source={require("../assets/basicQ2/strong.png")}
 //           style={styles.image}
 //         ></Image>
 //         <Image
-//           source={require("../assets/EasyQn2/solvent.png")}
+//           source={require("../assets/basicQ2/solvent.png")}
 //           style={styles.image}
 //         ></Image>
 //       </View>
 
-//       <Image
-//         source={require("../assets/arrow.png")}
-//         style={styles.arrow}
-//       ></Image>
+// //       <Image
+// //         source={require("../assets/arrow.png")}
+// //         style={styles.arrow}
+// //       ></Image>
 
 //       <View style={styles.question}>
 //         <Image
-//           source={require("../assets/EasyQn2/start.png")}
+//           source={require("../assets/basicQ2/product.png")}
 //           style={styles.image}
 //         ></Image>
 
 //         <TouchableOpacity onPress={() => setReactionModalVisible(true)}>
 //           <Image
-//             source={require("../assets/EasyQn2/reaction.png")}
+//             source={require("../assets/basicQ2/reaction.png")}
 //             style={styles.image}
 //           ></Image>
 //         </TouchableOpacity>
@@ -139,13 +139,13 @@
 //               <View style={styles.spacing}>
 //                 <TouchableOpacity onPress={createWrongButton}>
 //                   <Image
-//                     source={require("../assets/EasyQn1/reactionOne.png")}
+//                     source={require("../assets/basicQ2/reactionOne.png")}
 //                     style={styles.image}
 //                   ></Image>
 //                 </TouchableOpacity>
 //                 <TouchableOpacity onPress={createCorrectButton}>
 //                   <Image
-//                     source={require("../assets/EasyQn1/reactionTwo.png")}
+//                     source={require("../assets/basicQ2/reactionTwo.png")}
 //                     style={styles.image}
 //                   ></Image>
 //                 </TouchableOpacity>

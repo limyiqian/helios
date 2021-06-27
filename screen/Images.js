@@ -180,7 +180,7 @@ export const advancedRT1 = require("../assets/advancedQ1/reactionType.png");
 //Question 2
 export const advancedSM2 = require("../assets/advancedQ2/start.png");
 export const advancedN2 = require("../assets/advancedQ2/strong.png");
-// export const advancedS2 = require("../assets/advancedQ2/starting.png"); //dun have
+export const advancedS2 = require("../assets/advancedQ2/solvent.png");
 
 //Question 3
 export const advancedSM3 = require("../assets/advancedQ3/start.png");

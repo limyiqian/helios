@@ -70,42 +70,85 @@
 //                 <Text> Solvents</Text>
 //               </TouchableOpacity>
 
-//               <TouchableOpacity
-//                 onPress={() => navigation.navigate("DecisionApproach")}
-//                 style={styles.revision}
-//               >
-//                 <Text> Decision-tree Approach</Text>
-//               </TouchableOpacity>
-//             </View>
-//           </View>
-//         </View>
-//       </Modal>
-
 //       <View style={styles.question}>
 //         <Image
-//           source={require("../assets/EasyQn1/start.png")}
+//           source={require("../assets/basicQ1/start.png")}
 //           style={styles.image}
 //         ></Image>
 //         <Image
-//           source={require("../assets/EasyQn1/strong.png")}
+//           source={require("../assets/basicQ1/strong.png")}
 //           style={styles.image}
 //         ></Image>
 //         <Image
-//           source={require("../assets/EasyQn1/solventt.png")}
+//           source={require("../assets/basicQ1/solvent.png")}
 //           style={styles.image}
 //         ></Image>
 //       </View>
 
-//       <Image
-//         source={require("../assets/arrow.png")}
-//         style={styles.arrow}
-//       ></Image>
+// //       <View style={styles.question}>
+// //         <Image
+// //           source={require("../assets/EasyQn1/start.png")}
+// //           style={styles.image}
+// //         ></Image>
+// //         <Image
+// //           source={require("../assets/EasyQn1/strong.png")}
+// //           style={styles.image}
+// //         ></Image>
+// //         <Image
+// //           source={require("../assets/EasyQn1/solventt.png")}
+// //           style={styles.image}
+// //         ></Image>
+// //       </View>
 
 //       <View style={styles.question}>
 //         <Image
-//           source={require("../assets/EasyQn1/product.png")}
+//           source={require("../assets/basicQ1/product.png")}
 //           style={styles.image}
 //         ></Image>
+
+//         <TouchableOpacity onPress={() => setReactionModalVisible(true)}>
+//           <Image
+//             source={require("../assets/basicQ1/reaction.png")}
+//             style={styles.image}
+//           ></Image>
+//         </TouchableOpacity>
+//         <Modal
+//           animationType="slide"
+//           transparent={true}
+//           visible={reactionModeVisible}
+//         >
+//           <View style={styles.centeredView}>
+//             <View style={styles.modalView}>
+//               <Ionicons
+//                 name="close-outline"
+//                 size={28}
+//                 style={styles.closeIcon}
+//                 color="black"
+//                 onPress={() => {
+//                   setReactionModalVisible(false);
+//                 }}
+//               />
+//               <View style={styles.spacing}>
+//                 <TouchableOpacity onPress={createWrongButton}>
+//                   <Image
+//                     source={require("../assets/basicQ1/reactionOne.png")}
+//                     style={styles.image}
+//                   ></Image>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity onPress={createCorrectButton}>
+//                   <Image
+//                     source={require("../assets/basicQ1/reactionTwo.png")}
+//                     style={styles.image}
+//                   ></Image>
+//                 </TouchableOpacity>
+//               </View>
+//             </View>
+//           </View>
+//         </Modal>
+//       </View>
+//     </ScrollView>
+//   );
+// }
 
 //         <TouchableOpacity onPress={() => setReactionModalVisible(true)}>
 //           <Image

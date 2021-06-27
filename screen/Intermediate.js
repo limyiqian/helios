@@ -28,42 +28,44 @@
 //         style={styles.button}
 //         onPress={() => setSolventsModalVisible(true)}
 //       >
-//         <View>
-//           <Image
-//             source={require("../assets/intermediateQ1/solventOption.png")}
-//             style={styles.image}
-//           ></Image>
-//         </View>
-//       </TouchableOpacity>
+{
+  /* <View>
+          <Image
+            source={require("../assets/intermediateQ1/solventOption.png")}
+            style={styles.image}
+          ></Image>
+        </View> */
+}
+// </TouchableOpacity>
 
-//       <Image
-//         source={require("../assets/intermediateQ1/arrow.png")}
-//         style={styles.image}
-//       ></Image>
+// <Image
+//   source={require("../assets/arrow.png")}
+//   style={styles.image}
+// ></Image>
 
-//       <TouchableOpacity
-//         style={styles.button}
-//         onPress={() => setProductModalVisible(true)}
-//       >
-//         <View>
-//           <Image
-//             source={require("../assets/intermediateQ1/productOption.png")}
-//             style={styles.image}
-//           ></Image>
-//         </View>
-//       </TouchableOpacity>
+// <TouchableOpacity
+//   style={styles.button}
+//   onPress={() => setProductModalVisible(true)}
+// >
+//   {/* <View>
+//     <Image
+//       source={require("../assets/intermediateQ1/productOption.png")}
+//       style={styles.image}
+//     ></Image>
+//   </View> */}
+// </TouchableOpacity>
 
-//       <TouchableOpacity
-//         style={styles.button}
-//         onPress={() => setReactionTypeModalVisible(true)}
-//       >
-//         <View>
-//           <Image
-//             source={require("../assets/intermediateQ1/reactionTypeOption.png")}
-//             style={styles.image}
-//           ></Image>
-//         </View>
-//       </TouchableOpacity>
+// <TouchableOpacity
+//   style={styles.button}
+//   onPress={() => setReactionTypeModalVisible(true)}
+// >
+//   {/* <View>
+//     <Image
+//       source={require("../assets/intermediateQ1/reactionTypeOption.png")}
+//       style={styles.image}
+//     ></Image>
+//   </View> */}
+// </TouchableOpacity>
 
 //       {/* Submit button codes */}
 //       <TouchableOpacity
