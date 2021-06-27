@@ -4,18 +4,27 @@ export const basicSM1 = require("../assets/basicQ1/start.png");
 export const basicN1 = require("../assets/basicQ1/strong.png");
 export const basicS1 = require("../assets/basicQ1/solvent.png");
 export const basicP1 = require("../assets/basicQ1/product.png");
+//Question 1 choices
+export const basicQ1RT1 = require("../assets/basicQ1/reaction1.png");
+export const basicQ1RT2 = require("../assets/basicQ1/reaction2.png");
 
 //Question 2
 export const basicSM2 = require("../assets/basicQ2/start.png");
 export const basicN2 = require("../assets/basicQ2/strong.png");
 export const basicS2 = require("../assets/basicQ2/solvent.png");
 export const basicP2 = require("../assets/basicQ2/product.png");
+//Question 2 choices
+export const basicQ2RT1 = require("../assets/basicQ2/reaction1.png");
+export const basicQ2RT2 = require("../assets/basicQ2/reaction2.png");
 
 //Question 3
 export const basicSM3 = require("../assets/basicQ3/start.png");
 export const basicN3 = require("../assets/basicQ3/strong.png");
 export const basicS3 = require("../assets/basicQ3/solvent.png");
 export const basicP3 = require("../assets/basicQ3/product.png");
+//Question 3 choices
+export const basicQ3RT1 = require("../assets/basicQ3/reaction1.png");
+export const basicQ3RT2 = require("../assets/basicQ3/reaction2.png");
 
 //Question 4
 export const basicSM4 = require("../assets/basicQ4/start.png");
@@ -23,6 +32,9 @@ export const basicN4 = require("../assets/basicQ4/strong.png");
 export const basicS4 = require("../assets/basicQ4/solvent.png");
 export const basicC4 = require("../assets/basicQ4/carbocation.png");
 export const basicP4 = require("../assets/basicQ4/product.png");
+//Question 4 choices
+export const basicQ4RT1 = require("../assets/basicQ4/reaction1.png");
+export const basicQ4RT2 = require("../assets/basicQ4/reaction2.png");
 
 //Question 5
 export const basicSM5 = require("../assets/basicQ5/start.png");
@@ -30,6 +42,9 @@ export const basicN5 = require("../assets/basicQ5/weak.png");
 export const basicS5 = require("../assets/basicQ5/solvent.png");
 export const basicP5 = require("../assets/basicQ5/product1.png");
 export const basicPP5 = require("../assets/basicQ5/product2.png");
+//Question 5 choices
+export const basicQ5RT1 = require("../assets/basicQ5/reaction1.png");
+export const basicQ5RT2 = require("../assets/basicQ5/reaction2.png");
 
 //Question 6
 export const basicSM6 = require("../assets/basicQ6/start.png");
@@ -37,6 +52,9 @@ export const basicN6 = require("../assets/basicQ6/strong.png");
 export const basicS6 = require("../assets/basicQ6/solvent.png");
 export const basicP6 = require("../assets/basicQ6/product1.png");
 export const basicPP6 = require("../assets/basicQ6/product2.png");
+//Question 6 choices
+export const basicQ6RT1 = require("../assets/basicQ6/reaction1.png");
+export const basicQ6RT2 = require("../assets/basicQ6/reaction2.png");
 
 //Question 7
 export const basicSM7 = require("../assets/basicQ7/start.png");
@@ -44,6 +62,9 @@ export const basicN7 = require("../assets/basicQ7/nucleophile.png");
 export const basicS7 = require("../assets/basicQ7/solvent.png");
 export const basicP7 = require("../assets/basicQ7/product1.png");
 export const basicPP7 = require("../assets/basicQ7/product2.png");
+//Question 7 choices
+export const basicQ7RT1 = require("../assets/basicQ7/reaction1.png");
+export const basicQ7RT2 = require("../assets/basicQ7/reaction2.png");
 
 //Question 8
 export const basicSM8 = require("../assets/basicQ8/start.png");
@@ -51,6 +72,9 @@ export const basicN8 = require("../assets/basicQ8/weak.png");
 export const basicS8 = require("../assets/basicQ8/solvent.png");
 export const basicP8 = require("../assets/basicQ8/product1.png");
 export const basicPP8 = require("../assets/basicQ8/product2.png");
+//Question 8 choices
+export const basicQ8RT1 = require("../assets/basicQ8/reaction1.png");
+export const basicQ8RT2 = require("../assets/basicQ8/reaction2.png");
 
 //Question 9
 export const basicSM9 = require("../assets/basicQ9/start.png");
@@ -58,6 +82,9 @@ export const basicN9 = require("../assets/basicQ9/weak.png");
 export const basicS9 = require("../assets/basicQ9/solvent.png");
 export const basicP9 = require("../assets/basicQ9/product1.png");
 export const basicPP9 = require("../assets/basicQ9/product2.png");
+//Question 9 choices
+export const basicQ9RT1 = require("../assets/basicQ9/reaction1.png");
+export const basicQ9RT2 = require("../assets/basicQ9/reaction2.png");
 
 //Intermediate questions
 //Question 1
@@ -153,7 +180,7 @@ export const advancedRT1 = require("../assets/advancedQ1/reactionType.png");
 //Question 2
 export const advancedSM2 = require("../assets/advancedQ2/start.png");
 export const advancedN2 = require("../assets/advancedQ2/strong.png");
-export const advancedS2 = require("../assets/advancedQ2/starting.png"); //dun have
+// export const advancedS2 = require("../assets/advancedQ2/starting.png"); //dun have
 
 //Question 3
 export const advancedSM3 = require("../assets/advancedQ3/start.png");
@@ -168,14 +195,14 @@ export const advancedN4 = require("../assets/advancedQ4/nucleophile.png");
 export const advancedS4 = require("../assets/advancedQ4/solvent.png");
 export const advancedP4 = require("../assets/advancedQ4/product1.png");
 export const advancedPP4 = require("../assets/advancedQ4/product2.png");
-export const advancedE4 = require("../assets/advancedQ4/rosePerfume.png");
+export const advancedE4 = require("../assets/advancedQ4/rosePerfume.jpg");
 
 //Question 5
 export const advancedN5 = require("../assets/advancedQ5/nucleophile.png");
 export const advancedS5 = require("../assets/advancedQ5/solvent.png");
 export const advancedP5 = require("../assets/advancedQ5/product.png");
 export const advancedRT5 = require("../assets/advancedQ5/reactionType.png");
-export const advancedE5 = require("../assets/advancedQ5/anatrozole.png");
+export const advancedE5 = require("../assets/advancedQ5/anatrozole.jpg");
 
 //Question 6
 export const advancedSM6 = require("../assets/advancedQ6/start.png");
@@ -206,3 +233,11 @@ export const advancedSM10 = require("../assets/advancedQ10/start.png");
 export const advancedN10 = require("../assets/advancedQ10/nucleophile.png");
 export const advancedP10 = require("../assets/advancedQ10/product1.png");
 export const advancedPP10 = require("../assets/advancedQ10/product2.png");
+
+//?
+export const reactionTypeOption = require("../assets/reactionTypeOption.png");
+export const leavingGroupOption = require("../assets/leavingGroupOption.png");
+export const carbocationOption = require("../assets/carbocationOption.png");
+export const productOption = require("../assets/productOption.png");
+export const startingMaterialOption = require("../assets/startingMaterialOption.png");
+export const solventOption = require("../assets/solventOption.png");

@@ -44,11 +44,11 @@ export default function App() {
           component={Main}
           options={{ headerShown: true }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Intermediate"
           component={Intermediate}
           options={{ headerShown: true }}
-        />
+        /> */}
         <Stack.Screen
           name="Register"
           component={Register}
@@ -94,7 +94,7 @@ export default function App() {
           component={Profile}
           options={{ headerShown: true }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Easy"
           component={Easy}
           options={{ headerShown: true }}
@@ -103,7 +103,7 @@ export default function App() {
           name="Easy2"
           component={Easy2}
           options={{ headerShown: true }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
