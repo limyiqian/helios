@@ -20,6 +20,8 @@ export default function Score({ route }) {
   const { difficulty, gamemode } = route.params;
   // const [wrong, setWrong] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
+  totalScore = (correctTotal * 100) + totalScore;
+  totalScore = (wrongTotal * 100) - totalScore;
   return (
     <View style={styles.container}>
       <View style={styles.outter}>
