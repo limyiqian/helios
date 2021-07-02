@@ -1,3 +1,0 @@
-class Choice {
-    constructor(choice, choiceType, is_correct_choice)
-}

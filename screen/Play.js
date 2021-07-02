@@ -1,5 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
+import Selection from "./Selection.js";
 import {
   StyleSheet,
   Image,
@@ -14,37 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 
-question =
-  (
-    type,
-    startingMaterial,
-    nucleophile,
-    solvent,
-    product,
-    reactionType,
-    questionId,
-    setOptionModalVisible
-  ) =>
-  () => {
-    var typeOption = type + "Option";
-    if (startingMaterial == typeOption) {
-      getQuestionChoices(questionId);
-    } else if (nucleophile == typeOption) {
-      getQuestionChoices(questionId);
-    } else if (solvent == typeOption) {
-      getQuestionChoices(questionId);
-    } else if (product == typeOption) {
-      getQuestionChoices(questionId);
-    } else if (reactionType == typeOption) {
-      getQuestionChoices(questionId);
-      setOptionModalVisible(true);
-    } else {
-      //Planning to zoom in here
-      console.log("test");
-    }
-  };
-
-let getQuestionChoices = (questionId) => {
+function getQuestionChoices(questionId) {
   var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
@@ -53,19 +23,26 @@ let getQuestionChoices = (questionId) => {
   var data = {
     questionNo: questionId,
   };
-  fetch(api, {
+
+  return fetch(api, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(data),
   })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
+      // console.log(response);
+      var imageArray = [];
+      for (var i = 0; i < response.length; i++) {
+        imageArray[i] = response[i].choice;
+      }
+      console.log(imageArray);
+      return imageArray;
     })
     .catch((error) => {
       console.error(error);
     });
-};
+}
 
 export default function Play({ navigation, route }) {
   const { difficulty, gamemode } = route.params;
@@ -84,12 +61,15 @@ export default function Play({ navigation, route }) {
   const [currentHint, setCurrentHint] = useState("");
   const [currentHintIcon, setCurrentHintIcon] = useState("help-circle-outline");
   const [currentExtra, setCurrentExtra] = useState("");
+  const [currentOptionType, setCurrentOptionType] = useState("");
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
 
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const [optionModalVisible, setOptionModalVisible] = useState(false);
+
+  const [selection, setSelection] = useState("");
 
   //Timer default is 60 seconds
   const [totalDuration, setTotalDuration] = useState(60);
@@ -127,6 +107,7 @@ export default function Play({ navigation, route }) {
         setCurrentReactionType(response.reaction_type);
         setCurrentHint(response.hint);
         setCurrentExtra(response.extra);
+        setCurrentOptionType(response.optionType);
       })
       .catch((error) => {
         console.error(error);
@@ -171,15 +152,10 @@ export default function Play({ navigation, route }) {
       <View style={styles.cardsView}>
         <View style={styles.topRow}>
           <TouchableOpacity
-            onPress={question(
-              "startingMaterial",
-              currentStartingMaterial,
-              currentNucleophile,
-              currentSolvent,
-              currentProduct,
-              currentReactionType,
-              questionId
-            )}
+            onPress={async () => {
+              await setSelection("startingMaterial");
+              setOptionModalVisible(true);
+            }}
           >
             <Image
               style={styles.card}
@@ -187,48 +163,37 @@ export default function Play({ navigation, route }) {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={question(
-              "nucleophile",
-              currentStartingMaterial,
-              currentNucleophile,
-              currentSolvent,
-              currentProduct,
-              currentReactionType,
-              questionId
-            )}
+            onPress={async () => {
+              await setSelection("nucleophile");
+              setOptionModalVisible(true);
+            }}
           >
             <Image style={styles.card} source={All[`${currentNucleophile}`]} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={question(
-              "solvent",
-              currentStartingMaterial,
-              currentNucleophile,
-              currentSolvent,
-              currentProduct,
-              currentReactionType,
-              questionId
-            )}
+            onPress={async () => {
+              await setSelection("solvent");
+              setOptionModalVisible(true);
+            }}
           >
             <Image style={styles.card} source={All[`${currentSolvent}`]} />
           </TouchableOpacity>
         </View>
         <View style={styles.bottomRow}>
           <Image source={require("../assets/arrow.png")} style={styles.arrow} />
-          <TouchableOpacity onPress={question("product")}>
+          <TouchableOpacity
+            onPress={async () => {
+              await setSelection("product");
+              setOptionModalVisible(true);
+            }}
+          >
             <Image style={styles.card} source={All[`${currentProduct}`]} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={question(
-              "reactionType",
-              currentStartingMaterial,
-              currentNucleophile,
-              currentSolvent,
-              currentProduct,
-              currentReactionType,
-              questionId,
-              setOptionModalVisible
-            )}
+            onPress={async () => {
+              await setSelection("reactionType");
+              setOptionModalVisible(true);
+            }}
           >
             <Image style={styles.card} source={All[`${currentReactionType}`]} />
           </TouchableOpacity>
@@ -314,7 +279,11 @@ export default function Play({ navigation, route }) {
                 setOptionModalVisible(false);
               }}
             />
-            <View></View>
+            <Selection
+              selected={selection}
+              option={currentOptionType}
+              questionId={currentQuestionId}
+            />
           </View>
         </View>
       </Modal>
