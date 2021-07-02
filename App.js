@@ -28,6 +28,7 @@ import Intermediate from "./screen/Intermediate.js";
 import Profile from "./screen/Profile.js";
 import Easy from "./screen/Easy.js";
 import Easy2 from "./screen/Easy2.js";
+import ReviewAns from "./screen/ReviewAns.js";
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,11 @@ export default function App() {
         <Stack.Screen
           name="Score"
           component={Score}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="ReviewAns"
+          component={ReviewAns}
           options={{ headerShown: true }}
         />
         <Stack.Screen

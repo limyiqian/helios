@@ -11,17 +11,18 @@ import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import Main from "./Main";
+// import Main from "./Main.js";
 // // Importing Stack Navigator library to add multiple activities.
 // import { StackNavigator } from "@react-navigation";
 
-export default function Score({ route }) {
+export default function Score({ navigation, route }) {
   const { correctTotal, wrongTotal } = route.params;
   const { difficulty, gamemode } = route.params;
   // const [wrong, setWrong] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  totalScore = (correctTotal * 100) + totalScore;
-  totalScore = (wrongTotal * 100) - totalScore;
+  var [totalScore, setTotalScore] = useState(0);
+
+  setTotalScore = correctTotal * 100 + totalScore;
+  setTotalScore = wrongTotal * 100 - totalScore;
   return (
     <View style={styles.container}>
       <View style={styles.outter}>
@@ -105,9 +106,7 @@ export default function Score({ route }) {
               size={25}
               color="#000000"
               style={{ left: 15, top: 13 }}
-              onPress={() => {
-                setHintModalVisible(true);
-              }}
+              onPress={() => navigation.navigate("ReviewAns")}
             />
           </View>
           <Text style={styles.btnReviewTxt}>Review Answer</Text>
