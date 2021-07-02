@@ -23,6 +23,7 @@ import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
+import Score from "./screen/score.js";
 import Intermediate from "./screen/Intermediate.js";
 import Profile from "./screen/Profile.js";
 import Easy from "./screen/Easy.js";
@@ -57,6 +58,11 @@ export default function App() {
         <Stack.Screen
           name="Play"
           component={Play}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Score"
+          component={Score}
           options={{ headerShown: true }}
         />
         <Stack.Screen

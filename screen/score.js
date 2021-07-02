@@ -11,9 +11,10 @@ import { useState } from "react";
 // // Importing Stack Navigator library to add multiple activities.
 // import { StackNavigator } from "@react-navigation";
 
-export default function Score() {
-  const [correct, setCorrect] = useState(0);
-  const [wrong, setWrong] = useState(0);
+export default function Score({ route }) {
+  const {correctTotal, wrongTotal} = route.params;
+  const { difficulty, gamemode } = route.params;
+  // const [wrong, setWrong] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   return (
     <View style={styles.container}>
@@ -24,17 +25,17 @@ export default function Score() {
       <View style={styles.cardsView}>
         <View style={styles.topCardView}>
           <View style={styles.correctCardView}>
-            <Text style={styles.correctTxt}>{correct}</Text>
+            <Text style={styles.correctTxt}>{correctTotal}</Text>
             <Text>Correct</Text>
           </View>
           <View style={styles.wrongCardView}>
-            <Text style={styles.wrongTxt}>{wrong}</Text>
+            <Text style={styles.wrongTxt}>{wrongTotal}</Text>
             <Text>Wrong</Text>
           </View>
         </View>
         <View style={styles.bottomCardView}>
           <Text style={styles.gameModeTxt}>Gamemode</Text>
-          <Text>mode</Text>
+          <Text>{gamemode}</Text>
           <Text style={styles.qnsTxt}>Total Question</Text>
           <Text>Num of question</Text>
         </View>
