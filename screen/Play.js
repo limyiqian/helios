@@ -199,7 +199,9 @@ export default function Play({ navigation, route }) {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity 
+      // onPress={() => navigation.navigate("Score", {correctTotal, wrongTotal})}
+      style={styles.submitButton}>
         <Text style={styles.submitText}>Submit</Text>
       </TouchableOpacity>
       <Modal
