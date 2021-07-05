@@ -101,15 +101,13 @@ function Option(props) {
     }
   }
 
-  function nextQuestion(name) {
-    props.setIsNextQuestion(true);
-    if (name == "correct") {
+  function nextQuestion(isCorrect) {
+    if (isCorrect == "correct") {
       props.setCorrectTotal(props.correctTotal + 1);
-    } else if (name == "wrong") {
+    } else if (isCorrect == "wrong") {
       props.setWrongTotal(props.wrongTotal + 1);
-    } else {
-      console.log("Error with scoring in Option.js");
     }
+    props.setIsNextQuestion(true);
   }
 
   return (

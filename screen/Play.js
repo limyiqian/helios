@@ -15,15 +15,12 @@ import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 
 export default function Play({ navigation, route }) {
-  const { difficulty, gamemode } = route.params;
-
-  //In question database (can be changed accordingly)
-  let basicId = 1;
-  let intermediateId = 10;
-  let advancedId = 24;
+  const { questionId, gamemode } = route.params;
+  // const { user_id } = route.params;
+  let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(basicId);
+  const [currentQuestionId, setCurrentQuestionId] = useState(questionId);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -42,11 +39,10 @@ export default function Play({ navigation, route }) {
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
 
-  var [score, setScore] = useState(0);
-  setScore = correctTotal * 100 + score;
-  setScore = wrongTotal * 100 - score;
-  const [totalNumQns, setTotalNumQns] = useState(0);
-  const { user_id } = route.params;
+  // var [score, setScore] = useState(0);
+  // setScore = correctTotal * 100 + score;
+  // setScore = wrongTotal * 100 - score;
+  // const [totalNumQns, setTotalNumQns] = useState(0);
 
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const [optionModalVisible, setOptionModalVisible] = useState(false);
@@ -58,15 +54,19 @@ export default function Play({ navigation, route }) {
 
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
-  //Maximum number of questions
-  const [maxQues, setMaxQues] = useState(20);
+  //Maximum number of questions (20 max)
+  const [maxQues, setMaxQues] = useState(3);
   //Number of question correct to go next stage
   const [answeredCorrect, setAnsweredCorrect] = useState(5);
 
   useEffect(() => {
     if (isNextQuestion) {
-      console.log("Play is next ques");
       var nextQues = parseInt(currentQuestionId) + 1;
+      if (nextQues > 3) {
+        console.log("insert attempt");
+        insertAttempt();
+      }
+      console.log("next question");
       setHintModalVisible(false);
       setOptionModalVisible(false);
       setCurrentQuestionNo(nextQues);
@@ -75,46 +75,43 @@ export default function Play({ navigation, route }) {
     }
   });
 
-  // insertScore = () => {
-  //   var api = "http://192.168.1.69/Chemiz/insertScore.php";
-  //   var headers = {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   };
-  //   var data = {
-  //     correctTotal: correctTotal,
-  //     wrongTotal: wrongTotal,
-  //     score: score,
-  //     totalNumQns: totalNumQns,
-  //     user_id: user_id,
-  //   };
-  //   console.log(JSON.stringify(data));
-  //   fetch(api, {
-  //     method: "POST",
-  //     headers: headers,
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.log(response.success);
-  //       if (response.success == true) {
-  //         Alert.alert("Successfully inserted", "", [
-  //           { text: "Ok", onPress: () => navigation.navigate("Score") },
-  //         ]);
-  //       } else {
-  //         Alert.alert("Fail to insert", "Please try again", [
-  //           { text: "Ok", style: "cancel" },
-  //         ]);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
+  function insertAttempt() {
+    var totalScore = correctTotal * 100 - wrongTotal * 100;
+    var api = "http://192.168.18.7/Chemiz/insertAttempt.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      correct: correctTotal,
+      wrong: wrongTotal,
+      score: totalScore,
+      user_id: user_id,
+    };
+    console.log(JSON.stringify(data));
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.success == true) {
+          navigation.navigate("Score");
+          setOptionModalVisible(false);
+        } else {
+          console.log("Error in inserting attempt");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   useEffect(() => {
     //Go terminal type in ipconfig to find own ipv4 address
-    var api = "http://192.168.1.69/Chemiz/getQuestion.php";
+    var api = "http://192.168.18.7/Chemiz/getQuestion.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -150,6 +147,7 @@ export default function Play({ navigation, route }) {
       });
   }, [currentQuestionNo]);
 
+  //Do something if time is over
   function timerOnFinish() {
     // console.log("Timer on finish");
     alert("Times up!");
@@ -241,14 +239,6 @@ export default function Play({ navigation, route }) {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("Score", { correctTotal, wrongTotal })
-        }
-        style={styles.submitButton}
-      >
-        <Text style={styles.submitText}>Submit</Text>
-      </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={true}

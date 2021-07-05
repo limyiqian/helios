@@ -15,15 +15,32 @@ import {
   Modal,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { useEffect } from "react/cjs/react.development";
 
 export default function Main({ navigation, route }) {
-  const { user_id } = route.params;
+  // const { user_id } = route.params;
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
   const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
     useState("Normal");
   const [dropdownDifficultyChosen, setDifficultyDropdownChosen] =
     useState("Easy");
+  const [startQuestionId, setStartQuestionId] = useState(1);
+
+  //In question database (can be changed accordingly)
+  let basicId = 1;
+  let intermediateId = 10;
+  let advancedId = 24;
+
+  useEffect(() => {
+    if (dropdownDifficultyChosen == "Basic") {
+      setStartQuestionId(basicId);
+    } else if (dropdownDifficultyChosen == "Intermediate") {
+      setStartQuestionId(intermediateId);
+    } else if (dropdownDifficultyChosen == "Advanced") {
+      setStartQuestionId(advancedId);
+    }
+  });
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -31,13 +48,15 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>User ID: {route.params.user_id} is {route.params.username}</Text>
+        <Text style={styles.title}>
+          {/* User ID: {route.params.user_id} is {route.params.username} */}
+        </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate("Play", {
-              username: route.params.username,
-              difficulty: dropdownDifficultyChosen,
+              // username: route.params.username,
+              questionId: startQuestionId,
               gamemode: dropdownGamemodeChosen,
             })
           }
