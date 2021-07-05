@@ -17,6 +17,7 @@ import {
 import { Picker } from "@react-native-picker/picker";
 
 export default function Main({ navigation, route }) {
+  const { user_id } = route.params;
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
   const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
@@ -30,12 +31,12 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        {/* <Text style={styles.title}>{route.params.username}</Text> */}
+        <Text style={styles.title}>User ID: {route.params.user_id} is {route.params.username}</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate("Play", {
-              // username: route.params.username,
+              username: route.params.username,
               difficulty: dropdownDifficultyChosen,
               gamemode: dropdownGamemodeChosen,
             })

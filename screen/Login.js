@@ -38,10 +38,11 @@ export default class Login extends Component {
     this.state = {
       username: "",
       userPassword: "",
+      user_id: 0,
     };
   }
   UserLoginFunction = () => {
-    const { username, userPassword } = this.state;
+    const { username, userPassword, user_id } = this.state;
 
     if (username == "") {
       alert("Please enter username");
@@ -49,7 +50,7 @@ export default class Login extends Component {
     } else if (userPassword == "") {
       this.setState({ password: "Please enter password" });
     } else {
-      fetch("http://192.168.1.168/Chemiz/findUser.php", {
+      fetch("http://192.168.1.69/Chemiz/findUser.php", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -64,8 +65,9 @@ export default class Login extends Component {
         .then((response) => response.json())
         .then((response) => {
           console.log(JSON.stringify(response));
+          console.log(JSON.stringify(response.user_id));
           if (response.success != false) {
-            this.props.navigation.navigate("Main", { username: username });
+            this.props.navigation.navigate("Main", { username: username, user_id: response.user_id });
           } else {
             Alert.alert(
               "You have input wrong password or username",
