@@ -5,10 +5,19 @@ import Option from "./Option";
 function Selection(props) {
   let selected = props.selected;
   let option = props.option;
-  console.log(props);
+  // console.log(props);
 
   if (selected == option) {
-    return <Option questionId={props.questionId} />;
+    return (
+      <Option
+        questionId={props.questionId}
+        setIsNextQuestion={props.setIsNextQuestion}
+        correctTotal={props.correctTotal}
+        setCorrectTotal={props.setCorrectTotal}
+        wrongTotal={props.wrongTotal}
+        setWrongTotal={props.setWrongTotal}
+      />
+    );
   } else {
     return <Zoom />;
   }

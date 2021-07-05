@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Image,
@@ -7,53 +7,119 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
-  Modal,
 } from "react-native";
 import * as All from "./Images.js";
 
 function Option(props) {
-  let images = ["basicSM1", "basicSM1"];
+  // console.log(props);
+  let images = [];
+  const [outImages, setOutImages] = useState([]);
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedOption, setSelectionOption] = useState("");
+  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+  var headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+  var data = {
+    questionNo: props.questionId,
+  };
 
-  // useEffect(() => {
-  //   var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
-  //   var headers = {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   };
-  //   var data = {
-  //     questionNo: props.questionId,
-  //   };
+  useEffect(() => {
+    getData();
+  }, []);
 
-  //   fetch(api, {
-  //     method: "POST",
-  //     headers: headers,
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       // console.log(response);
-  //       for (var i = 0; i < response.length; i++) {
-  //         images[i] = response[i].choice;
-  //       }
-  //       console.log(images);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  const getData = async () => {
+    return await fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        let dataImage = [];
+        for (var i = 0; i < response.length; i++) {
+          dataImage.push(response[i]);
+        }
+        for (let i = 0; i < dataImage.length; i++) {
+          images.push(
+            <View key={i}>
+              <TouchableOpacity onPress={() => userSelectOption(dataImage[i])}>
+                <Image
+                  style={styles.card}
+                  source={All[`${dataImage[i].choice}`]}
+                />
+              </TouchableOpacity>
+            </View>
+          );
+        }
+        setOutImages(images);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  for (let i = 0; i < images.length; i++) {
-    images.push(
-      <View key={i}>
-        <TouchableOpacity>
-          <Image style={styles.card} source={All[`${"images[i]"}`]} />
-        </TouchableOpacity>
-      </View>
-    );
+  function userSelectOption(optionObj) {
+    setSelectionOption(optionObj);
+    setSelectedName(optionObj.name);
   }
+
+  function checkAnswer() {
+    if (selectedOption.is_correct_choice == "True") {
+      Alert.alert(
+        "Correct",
+        "+100 points",
+        [
+          {
+            text: "Next",
+            onPress: () => {
+              {
+                nextQuestion("correct");
+              }
+            },
+            style: "cancel",
+          },
+        ],
+        { cancelable: false }
+      );
+    } else if (selectedOption.is_correct_choice == "False") {
+      Alert.alert(
+        "Wrong",
+        "-100 points",
+        [
+          {
+            text: "Next",
+            onPress: () => {
+              nextQuestion("wrong");
+            },
+            style: "cancel",
+          },
+        ],
+        { cancelable: false }
+      );
+    }
+  }
+
+  function nextQuestion(name) {
+    props.setIsNextQuestion(true);
+    if (name == "correct") {
+      props.setCorrectTotal(props.correctTotal + 1);
+    } else if (name == "wrong") {
+      props.setWrongTotal(props.wrongTotal + 1);
+    } else {
+      console.log("Error with scoring in Option.js");
+    }
+  }
+
   return (
     <View>
-      <Text>option</Text>
+      {outImages}
+      <Text>Selected option:</Text>
+      <Text>{selectedName}</Text>
+      <TouchableOpacity style={styles.submitButton} onPress={checkAnswer}>
+        <Text style={styles.submitText}>Submit</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -65,5 +131,16 @@ const styles = StyleSheet.create({
     height: 130,
     width: 100,
     margin: 5,
+  },
+  submitButton: {
+    backgroundColor: "#FFFFFF",
+    height: 20,
+    width: 90,
+    borderRadius: 10,
+  },
+  submitText: {
+    fontWeight: "bold",
+    color: "#9E7BB5",
+    textAlign: "center",
   },
 });

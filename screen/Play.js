@@ -14,40 +14,16 @@ import { Ionicons } from "@expo/vector-icons";
 import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 
-function getQuestionChoices(questionId) {
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
-  var headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
-  var data = {
-    questionNo: questionId,
-  };
-
-  return fetch(api, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((response) => {
-      // console.log(response);
-      var imageArray = [];
-      for (var i = 0; i < response.length; i++) {
-        imageArray[i] = response[i].choice;
-      }
-      console.log(imageArray);
-      return imageArray;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
-
 export default function Play({ navigation, route }) {
   const { difficulty, gamemode } = route.params;
+
+  //In question database (can be changed accordingly)
+  let basicId = 1;
+  let intermediateId = 10;
+  let advancedId = 24;
+
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState("");
+  const [currentQuestionId, setCurrentQuestionId] = useState(basicId);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -65,16 +41,35 @@ export default function Play({ navigation, route }) {
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isWrong, setIsWrong] = useState(false);
 
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const [optionModalVisible, setOptionModalVisible] = useState(false);
 
   const [selection, setSelection] = useState("");
 
-  //Timer default is 60 seconds
+  //Default timer is 60 seconds
   const [totalDuration, setTotalDuration] = useState(60);
 
-  var questionId = 1;
+  const [isNextQuestion, setIsNextQuestion] = useState(false);
+
+  //Maximum number of questions
+  const [maxQues, setMaxQues] = useState(20);
+  //Number of question correct to go next stage
+  const [answeredCorrect, setAnsweredCorrect] = useState(5);
+
+  useEffect(() => {
+    if (isNextQuestion) {
+      console.log("Play is next ques");
+      var nextQues = parseInt(currentQuestionId) + 1;
+      setHintModalVisible(false);
+      setOptionModalVisible(false);
+      setCurrentQuestionNo(nextQues);
+      setCurrentQuestionId(nextQues);
+      setIsNextQuestion(false);
+    }
+  });
 
   useEffect(() => {
     //Go terminal type in ipconfig to find own ipv4 address
@@ -84,7 +79,7 @@ export default function Play({ navigation, route }) {
       "Content-Type": "application/json",
     };
     var data = {
-      questionNo: questionId,
+      questionNo: currentQuestionId,
     };
     fetch(api, {
       method: "POST",
@@ -93,7 +88,7 @@ export default function Play({ navigation, route }) {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setCurrentQuestionId(response.question_id);
         setCurrentDifficulty(response.difficulty);
         setCurrentPrompt(response.prompt);
@@ -112,7 +107,13 @@ export default function Play({ navigation, route }) {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [currentQuestionNo]);
+
+  function timerOnFinish() {
+    // console.log("Timer on finish");
+    alert("Times up!");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.questionView}>
@@ -128,7 +129,7 @@ export default function Play({ navigation, route }) {
           digitStyle={styles.countdown}
           timeLabelStyle={styles.countdownTimeLabel}
           timeLabels={{ s: "S" }}
-          onFinish={() => alert("times up!")}
+          onFinish={timerOnFinish}
           size={18}
         />
         <View style={styles.iconView}>
@@ -199,9 +200,6 @@ export default function Play({ navigation, route }) {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.submitButton}>
-        <Text style={styles.submitText}>Submit</Text>
-      </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={true}
@@ -283,6 +281,11 @@ export default function Play({ navigation, route }) {
               selected={selection}
               option={currentOptionType}
               questionId={currentQuestionId}
+              setIsNextQuestion={setIsNextQuestion}
+              correctTotal={correctTotal}
+              setCorrectTotal={setCorrectTotal}
+              wrongTotal={wrongTotal}
+              setWrongTotal={setWrongTotal}
             />
           </View>
         </View>
