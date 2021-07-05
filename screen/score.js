@@ -7,7 +7,7 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -16,19 +16,49 @@ import { FontAwesome } from "@expo/vector-icons";
 // import { StackNavigator } from "@react-navigation";
 
 export default function Score({ navigation, route }) {
-  const { correctTotal, wrongTotal } = route.params;
-  const { difficulty, gamemode } = route.params;
-  // const [wrong, setWrong] = useState(0);
-  var [totalScore, setTotalScore] = useState(0);
+  // const { correctTotal, wrongTotal } = route.params;
+  const { gamemode, user_id } = route.params;
+  // const [user_id, setUser_id] = useState(0);
+  const [wrongTotal, setWrongTotal] = useState(0);
+  const [correctTotal, setCorrectTotal] = useState(0);
+  const [score, setScore] = useState(0);
+  const [totalNumQns, setTotalNumQns] = useState(0);
+  
 
-  setTotalScore = correctTotal * 100 + totalScore;
-  setTotalScore = wrongTotal * 100 - totalScore;
+  useEffect(() => {
+    //Go terminal type in ipconfig to find own ipv4 address
+    var api = "http://192.168.1.69/Chemiz/getScore.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      user_id: user_id,
+    };
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setCorrectTotal(response.correctTotal);
+        setWrongTotal(response.wrongTotal);
+        setScore(response.score);
+        setTotalNumQns(response.totalNumQns);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.outter}>
         <View style={styles.inner}>
           <Text style={styles.scoreTxt}>Score</Text>
-          <Text style={styles.scoreTxt}>{totalScore} pts</Text>
+          <Text style={styles.scoreTxt}>{score} pts</Text>
         </View>
       </View>
       <View style={styles.cardsView}>

@@ -15,7 +15,7 @@ import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 
 function getQuestionChoices(questionId) {
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+  var api = "http://192.168.1.69/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -65,6 +65,11 @@ export default function Play({ navigation, route }) {
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
+  var [score, setScore] = useState(0);
+  setScore = correctTotal * 100 + score;
+  setScore = wrongTotal * 100 - score;
+  const [totalNumQns, setTotalNumQns] = useState(0);
+  const {user_id} = route.params;
 
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const [optionModalVisible, setOptionModalVisible] = useState(false);
@@ -76,9 +81,46 @@ export default function Play({ navigation, route }) {
 
   var questionId = 1;
 
+  // insertScore = () => {
+  //   var api = "http://192.168.1.69/Chemiz/insertScore.php";
+  //   var headers = {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //   };
+  //   var data = {
+  //     correctTotal: correctTotal,
+  //     wrongTotal: wrongTotal,
+  //     score: score,
+  //     totalNumQns: totalNumQns,
+  //     user_id: user_id,
+  //   };
+  //   console.log(JSON.stringify(data));
+  //   fetch(api, {
+  //     method: "POST",
+  //     headers: headers,
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.log(response.success);
+  //       if (response.success == true) {
+  //         Alert.alert("Successfully inserted", "", [
+  //           { text: "Ok", onPress: () => navigation.navigate("Score") },
+  //         ]);
+  //       } else {
+  //         Alert.alert("Fail to insert", "Please try again", [
+  //           { text: "Ok", style: "cancel" },
+  //         ]);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+
   useEffect(() => {
     //Go terminal type in ipconfig to find own ipv4 address
-    var api = "http://192.168.18.7/Chemiz/getQuestion.php";
+    var api = "http://192.168.1.69/Chemiz/getQuestion.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -200,7 +242,7 @@ export default function Play({ navigation, route }) {
         </View>
       </View>
       <TouchableOpacity 
-      // onPress={() => navigation.navigate("Score", {correctTotal, wrongTotal})}
+      onPress={() => navigation.navigate("Score", {correctTotal, wrongTotal})}
       style={styles.submitButton}>
         <Text style={styles.submitText}>Submit</Text>
       </TouchableOpacity>
