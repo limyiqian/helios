@@ -15,144 +15,148 @@ import { FontAwesome } from "@expo/vector-icons";
 export default function Score({ navigation, route }) {
   // const { correctTotal, wrongTotal } = route.params;
   // const { gamemode, user_id } = route.params;
+  const {user_id} = route.params;
   // const [user_id, setUser_id] = useState(0);
-  // const [wrongTotal, setWrongTotal] = useState(0);
-  // const [correctTotal, setCorrectTotal] = useState(0);
-  // const [score, setScore] = useState(0);
+  const [wrongTotal, setWrongTotal] = useState(0);
+  const [correctTotal, setCorrectTotal] = useState(0);
+  const [score, setScore] = useState(0);
   // const [totalNumQns, setTotalNumQns] = useState(0);
 
-  // useEffect(() => {
-  //   var api = "http://192.168.1.69/Chemiz/getScore.php";
-  //   var headers = {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //   };
-  //   var data = {
-  //     user_id: user_id,
-  //   };
-  //   fetch(api, {
-  //     method: "POST",
-  //     headers: headers,
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.log(response);
-  //       setCorrectTotal(response.correctTotal);
-  //       setWrongTotal(response.wrongTotal);
-  //       setScore(response.score);
-  //       setTotalNumQns(response.totalNumQns);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  // var attempt_id = 3;
+  // attempt_id = attempt_id + attempt_id;
+
+  useEffect(() => {
+    var api = "http://192.168.1.69/Chemiz/getScore.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      user_id: user_id,
+    };
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setCorrectTotal(response.correct);
+        setWrongTotal(response.wrong);
+        setScore(response.score);
+        // setTotalNumQns(response.totalNumQns);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
-    // <View style={styles.container}>
-    //   <View style={styles.outter}>
-    //     <View style={styles.inner}>
-    //       <Text style={styles.scoreTxt}>Score</Text>
-    //       <Text style={styles.scoreTxt}>{score} pts</Text>
-    //     </View>
-    //   </View>
-    //   <View style={styles.cardsView}>
-    //     <View style={styles.topCardView}>
-    //       <View style={styles.correctCardView}>
-    //         <Text style={styles.correctNumTxt}>
-    //           <FontAwesome
-    //             name="circle"
-    //             size={10}
-    //             // color: "#00FF00",
-    //             color="#00FF00"
-    //           />{" "}
-    //           {correctTotal}
-    //         </Text>
-    //         <Text style={styles.correctTxt}>Correct</Text>
-    //       </View>
-    //       <View style={styles.wrongCardView}>
-    //         <Text style={styles.wrongNumTxt}>
-    //           <FontAwesome
-    //             name="circle"
-    //             size={10}
-    //             // color: "#00FF00",
-    //             color="#FFA500"
-    //           />{" "}
-    //           {wrongTotal}
-    //         </Text>
-    //         <Text style={styles.wrongTxt}>Wrong</Text>
-    //       </View>
-    //     </View>
-    //     <View style={styles.bottomCardView}>
-    //       <View style={styles.gamemodeView}>
-    //         <Text style={styles.gameModeTxt}>
-    //           <FontAwesome
-    //             name="circle"
-    //             size={10}
-    //             // color: "#00FF00",
-    //             color="#87CEEB"
-    //           />{" "}
-    //           Gamemode
-    //         </Text>
-    //         <Text style={styles.gameMode}>gamemode{gamemode}</Text>
-    //       </View>
-    //       <View style={styles.qnsView}>
-    //         <Text style={styles.qnsTxt}>
-    //           <FontAwesome
-    //             name="circle"
-    //             size={10}
-    //             // color: "#00FF00",
-    //             color="#F4C2C2"
-    //           />{" "}
-    //           Total Question
-    //         </Text>
-    //         <Text style={styles.qnsNum}>Num of question</Text>
-    //       </View>
-    //     </View>
-    //   </View>
-    //   <View style={styles.btnView}>
-    //     {/* button View */}
-    //     <TouchableOpacity>
-    //       <View style={styles.btnPlayAgainCircle}>
-    //         <FontAwesome5
-    //           name="redo"
-    //           size={25}
-    //           color="#000000"
-    //           style={{ left: 12, top: 13 }}
-    //           onPress={() => navigation.navigate("Play")}
-    //         />
-    //       </View>
-    //       <Text style={styles.btnPlayTxt}>Play again</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity>
-    //       <View style={styles.btnReviewCircle}>
-    //         <Ionicons
-    //           name="document"
-    //           size={25}
-    //           color="#000000"
-    //           style={{ left: 15, top: 13 }}
-    //           onPress={() => navigation.navigate("ReviewAns")}
-    //         />
-    //       </View>
-    //       <Text style={styles.btnReviewTxt}>Review Answer</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity>
-    //       <View style={styles.btnHomeCircle}>
-    //         <Ionicons
-    //           name="home-outline"
-    //           size={25}
-    //           color="#000000"
-    //           style={{ left: 13, top: 12 }}
-    //           onPress={() => navigation.navigate("Main")}
-    //         />
-    //       </View>
-    //       <Text style={styles.btnTxt}>Home</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // </View>
-    <View>
-      <Text>score</Text>
+    <View style={styles.container}>
+      <View style={styles.outter}>
+        <View style={styles.inner}>
+          <Text style={styles.scoreTxt}>Score</Text>
+          <Text style={styles.scoreTxt}>{score} pts</Text>
+        </View>
+      </View>
+      <View style={styles.cardsView}>
+        <View style={styles.topCardView}>
+          <View style={styles.correctCardView}>
+            <Text style={styles.correctNumTxt}>
+              <FontAwesome
+                name="circle"
+                size={10}
+                // color: "#00FF00",
+                color="#00FF00"
+              />{" "}
+              {correctTotal}
+            </Text>
+            <Text style={styles.correctTxt}>Correct</Text>
+          </View>
+          <View style={styles.wrongCardView}>
+            <Text style={styles.wrongNumTxt}>
+              <FontAwesome
+                name="circle"
+                size={10}
+                // color: "#00FF00",
+                color="#FFA500"
+              />{" "}
+              {wrongTotal}
+            </Text>
+            <Text style={styles.wrongTxt}>Wrong</Text>
+          </View>
+        </View>
+        <View style={styles.bottomCardView}>
+          <View style={styles.gamemodeView}>
+            <Text style={styles.gameModeTxt}>
+              <FontAwesome
+                name="circle"
+                size={10}
+                // color: "#00FF00",
+                color="#87CEEB"
+              />{" "}
+              Gamemode
+            </Text>
+            <Text style={styles.gameMode}>gamemode</Text>
+          </View>
+          <View style={styles.qnsView}>
+            <Text style={styles.qnsTxt}>
+              <FontAwesome
+                name="circle"
+                size={10}
+                // color: "#00FF00",
+                color="#F4C2C2"
+              />{" "}
+              Total Question
+            </Text>
+            <Text style={styles.qnsNum}>20</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.btnView}>
+        {/* button View */}
+        <TouchableOpacity>
+          <View style={styles.btnPlayAgainCircle}>
+            <FontAwesome5
+              name="redo"
+              size={25}
+              color="#000000"
+              style={{ left: 12, top: 13 }}
+              onPress={() => navigation.navigate("Play")}
+            />
+          </View>
+          <Text style={styles.btnPlayTxt}>Play again</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.btnReviewCircle}>
+            <Ionicons
+              name="document"
+              size={25}
+              color="#000000"
+              style={{ left: 15, top: 13 }}
+              onPress={() => navigation.navigate("ReviewAns")}
+            />
+          </View>
+          <Text style={styles.btnReviewTxt}>Review Answer</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.btnHomeCircle}>
+            <Ionicons
+              name="home-outline"
+              size={25}
+              color="#000000"
+              style={{ left: 13, top: 12 }}
+              onPress={() => navigation.navigate("Main")}
+            />
+          </View>
+          <Text style={styles.btnTxt}>Home</Text>
+        </TouchableOpacity>
+      </View>
     </View>
+    // <View>
+    // //   <Text>score</Text>
+    // // </View>
   );
 }
 
