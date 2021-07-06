@@ -14,8 +14,8 @@ import { FontAwesome } from "@expo/vector-icons";
 
 export default function Score({ navigation, route }) {
   // const { correctTotal, wrongTotal } = route.params;
-  // const { gamemode, user_id } = route.params;
-  const {user_id} = route.params;
+  const { gamemode, user_id } = route.params;
+  // const {user_id} = route.params;
   // const [user_id, setUser_id] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
   const [correctTotal, setCorrectTotal] = useState(0);
@@ -98,7 +98,7 @@ export default function Score({ navigation, route }) {
               />{" "}
               Gamemode
             </Text>
-            <Text style={styles.gameMode}>gamemode</Text>
+            <Text style={styles.gameMode}>{gamemode}</Text>
           </View>
           <View style={styles.qnsView}>
             <Text style={styles.qnsTxt}>
