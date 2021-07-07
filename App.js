@@ -11,7 +11,7 @@ import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
-import Score from "./screen/Score.js";
+import Score from "./screen/score.js";
 import Intermediate from "./screen/Intermediate.js";
 import Profile from "./screen/Profile.js";
 import Easy from "./screen/Easy.js";
