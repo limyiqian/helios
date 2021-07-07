@@ -96,7 +96,10 @@ export default function Play({ navigation, route }) {
       .then((response) => {
         console.log(response);
         if (response.success == true) {
-          navigation.navigate("Score");
+          navigation.navigate("Score", {
+            user_id: user_id,
+            gamemode: gamemode,
+          });
           setOptionModalVisible(false);
         } else {
           console.log("Error in inserting attempt");
