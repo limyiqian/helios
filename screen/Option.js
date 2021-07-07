@@ -16,7 +16,7 @@ function Option(props) {
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
   const [selectedOption, setSelectionOption] = useState("");
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+  var api = "http://10.174.115.137/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -63,6 +63,7 @@ function Option(props) {
   function userSelectOption(optionObj) {
     setSelectionOption(optionObj);
     setSelectedName(optionObj.name);
+    console.log(optionObj);
   }
 
   function checkAnswer() {

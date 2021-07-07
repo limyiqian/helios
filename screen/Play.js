@@ -63,10 +63,8 @@ export default function Play({ navigation, route }) {
     if (isNextQuestion) {
       var nextQues = parseInt(currentQuestionId) + 1;
       if (nextQues > 3) {
-        console.log("insert attempt");
         insertAttempt();
       }
-      console.log("next question");
       setHintModalVisible(false);
       setOptionModalVisible(false);
       setCurrentQuestionNo(nextQues);
@@ -77,7 +75,7 @@ export default function Play({ navigation, route }) {
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
-    var api = "http://192.168.18.7/Chemiz/insertAttempt.php";
+    var api = "http://10.174.115.137/Chemiz/insertAttempt.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -110,8 +108,8 @@ export default function Play({ navigation, route }) {
   }
 
   useEffect(() => {
-    //Go terminal type in ipconfig to find own ipv4 address
-    var api = "http://192.168.18.7/Chemiz/getQuestion.php";
+    //Go terminal type in ipconfig to find own ipv4 address (yq-192.168.18.7)
+    var api = "http://10.174.115.137/Chemiz/getQuestion.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
