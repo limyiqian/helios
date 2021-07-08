@@ -63,10 +63,8 @@ export default function Play({ navigation, route }) {
     if (isNextQuestion) {
       var nextQues = parseInt(currentQuestionId) + 1;
       if (nextQues > 3) {
-        console.log("insert attempt");
         insertAttempt();
       }
-      console.log("next question");
       setHintModalVisible(false);
       setOptionModalVisible(false);
       setCurrentQuestionNo(nextQues);
@@ -77,7 +75,11 @@ export default function Play({ navigation, route }) {
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
+<<<<<<< HEAD
     var api = "http://10.174.122.249/Chemiz/insertAttempt.php";
+=======
+    var api = "http://10.174.115.137/Chemiz/insertAttempt.php";
+>>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -98,7 +100,10 @@ export default function Play({ navigation, route }) {
       .then((response) => {
         console.log(response);
         if (response.success == true) {
-          navigation.navigate("Score", { user_id: user_id, gamemode: gamemode });
+          navigation.navigate("Score", {
+            user_id: user_id,
+            gamemode: gamemode,
+          });
           setOptionModalVisible(false);
         } else {
           console.log("Error in inserting attempt");
@@ -110,8 +115,13 @@ export default function Play({ navigation, route }) {
   }
 
   useEffect(() => {
+<<<<<<< HEAD
     //Go terminal type in ipconfig to find own ipv4 address
     var api = "http://10.174.122.249/Chemiz/getQuestion.php";
+=======
+    //Go terminal type in ipconfig to find own ipv4 address (yq-192.168.18.7)
+    var api = "http://10.174.115.137/Chemiz/getQuestion.php";
+>>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
