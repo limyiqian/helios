@@ -11,7 +11,7 @@ import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
-import Score from "./screen/score.js";
+import Score from "./screen/Score.js";
 import Intermediate from "./screen/Intermediate.js";
 import Profile from "./screen/Profile.js";
 import Easy from "./screen/Easy.js";
@@ -23,7 +23,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}

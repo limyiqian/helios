@@ -18,7 +18,7 @@ import { Picker } from "@react-native-picker/picker";
 import { useEffect } from "react/cjs/react.development";
 
 export default function Main({ navigation, route }) {
-  // const { user_id } = route.params;
+  const { user_id, username, userPassword, email } = route.params;
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
   const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
@@ -49,13 +49,13 @@ export default function Main({ navigation, route }) {
       ></Image>
       <View style={styles.card}>
         <Text style={styles.title}>
-          {/* User ID: {route.params.user_id} is {route.params.username} */}
+          {route.params.username}
         </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate("Play", {
-              // username: route.params.username,
+              username: route.params.username,
               questionId: startQuestionId,
               gamemode: dropdownGamemodeChosen,
             })
@@ -88,7 +88,7 @@ export default function Main({ navigation, route }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Profile")}
+          onPress={() => navigation.navigate("Profile", {user_id: user_id, username: route.params.username, userPassword: userPassword})}
         >
           <View style={styles.iconView}>
             <Ionicons name="person" size={20} color="#F8DE7E" />
