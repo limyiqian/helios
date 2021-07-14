@@ -38,10 +38,10 @@ export const basicN4 = require("../assets/basic/basicQ4/strong.png");
 export const basicS4 = require("../assets/basic/basicQ4/solvent.png");
 export const basicP4 = require("../assets/basic/basicQ4/product.png");
 //Question 4 choices
-export const basicQ4RT1 = require("../assets/basicQ4/reactionOption/reaction1.png");
-export const basicQ4RT2 = require("../assets/basicQ4/reactionOption/reaction2.png");
-export const basicQ4RT3 = require("../assets/basicQ4/reactionOption/reaction3.png");
-export const basicQ4RT4 = require("../assets/basicQ4/reactionOption/reaction4.png");
+export const basicQ4RT1 = require("../assets/basic/basicQ4/reactionOption/reaction1.png");
+export const basicQ4RT2 = require("../assets/basic/basicQ4/reactionOption/reaction2.png");
+export const basicQ4RT3 = require("../assets/basic/basicQ4/reactionOption/reaction3.png");
+export const basicQ4RT4 = require("../assets/basic/basicQ4/reactionOption/reaction4.png");
 
 //Question 5
 export const basicSM5 = require("../assets/basic/basicQ5/start.png");
