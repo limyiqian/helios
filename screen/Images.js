@@ -248,7 +248,7 @@ export const intermediatePP6 = require("../assets/intermediate/intermediateQ6/pr
 
 
 //Question 7
-export const intermediateN7 = require("../assets/intermediate/intermediateQ7/start.png");
+export const intermediateSM7 = require("../assets/intermediate/intermediateQ7/start.png");
 export const intermediateS7 = require("../assets/intermediate/intermediateQ7/solvent.png");
 export const intermediateRT7 = require("../assets/intermediate/intermediateQ7/reactionType.png");
 export const intermediateN7 = require("../assets/intermediate/intermediateQ6/nucleophile.png");
@@ -301,20 +301,20 @@ export const intermediateS15 = require("../assets/intermediate/intermediateQ14/s
 export const intermediateN15 = require("../assets/intermediate/intermediateQ14/nucleophile.png");
 export const intermediateP15 = require("../assets/intermediate/intermediateQ16/product1.png");
 export const intermediatePP15 = require("../assets/intermediate/intermediateQ16/product2.png");
-export const intermediateRT15 = require("../assets/intermediate/intermediateQ14/reactionType.png");
+export const intermediateRT15 = require("../assets/intermediate/intermediateQ16/reactionType.png");
 
 //Question 16
 export const intermediateSM16 = require("../assets/intermediate/intermediateQ16/start.png");
 export const intermediateN16 = require("../assets/intermediate/intermediateQ16/nucleophile.png");
 export const intermediateP16 = require("../assets/intermediate/intermediateQ16/product1.png");
 export const intermediatePP16 = require("../assets/intermediate/intermediateQ16/product2.png");
-export const intermediateRT16 = require("../assets/intermediate/intermediateQ14/reactionType.png");
+export const intermediateRT16 = require("../assets/intermediate/intermediateQ16/reactionType.png");
 
 //Question 17
 export const intermediateS17 = require("../assets/intermediate/intermediateQ17/solvent.png");
 export const intermediateN17 = require("../assets/intermediate/intermediateQ17/nucleophile.png");
-export const intermediateP17 = require("../assets/intermediate/intermediateQ17/product.png");
-export const intermediatePP17 = require("../assets/intermediate/intermediateQ17/product.png");
+export const intermediateP17 = require("../assets/intermediate/intermediateQ17/product1.png");
+export const intermediatePP17 = require("../assets/intermediate/intermediateQ17/product2.png");
 
 //Question 18
 export const intermediateS18 = require("../assets/intermediate/intermediateQ18/solvent.png");
@@ -322,18 +322,18 @@ export const intermediateN18 = require("../assets/intermediate/intermediateQ18/n
 export const intermediateSM18 = require("../assets/intermediate/intermediateQ18/start.png");
 
 //Question 19
-export const intermediateS19 = require("../assets/intermediate/intermediateQ14/solvent.png");
-export const intermediateN19 = require("../assets/intermediate/intermediateQ14/nucleophile.png");
-export const intermediateP19 = require("../assets/intermediate/intermediateQ14/product1.png");
-export const intermediatePP19 = require("../assets/intermediate/intermediateQ14/product2.png");
-export const intermediateSM19 = require("../assets/intermediate/intermediateQ14/start.png");
+export const intermediateS19 = require("../assets/intermediate/intermediateQ19/solvent.png");
+export const intermediateN19 = require("../assets/intermediate/intermediateQ19/nucleophile.png");
+export const intermediateP19 = require("../assets/intermediate/intermediateQ19/product1.png");
+export const intermediatePP19 = require("../assets/intermediate/intermediateQ19/product2.png");
+export const intermediateSM19 = require("../assets/intermediate/intermediateQ19/start.png");
 
 //Question 20
-export const intermediateSM20 = require("../assets/intermediate/intermediateQ14/start.png");
-export const intermediateN20 = require("../assets/intermediate/intermediateQ14/nucleophile.png");
-export const intermediateP20 = require("../assets/intermediate/intermediateQ14/product1.png");
-export const intermediatePP20 = require("../assets/intermediate/intermediateQ14/product2.png");
-export const intermediatePPP20 = require("../assets/intermediate/intermediateQ14/product3.png");
+export const intermediateSM20 = require("../assets/intermediate/intermediateQ20/start.png");
+export const intermediateN20 = require("../assets/intermediate/intermediateQ20/nucleophile.png");
+export const intermediateP20 = require("../assets/intermediate/intermediateQ20/product1.png");
+export const intermediatePP20 = require("../assets/intermediate/intermediateQ20/product2.png");
+export const intermediatePPP20 = require("../assets/intermediate/intermediateQ20/product3.png");
 
 
 //Question 21
@@ -341,7 +341,7 @@ export const intermediateS21 = require("../assets/intermediate/intermediateQ21/s
 export const intermediateN21 = require("../assets/intermediate/intermediateQ21/nucleophile.png");
 export const intermediateP21 = require("../assets/intermediate/intermediateQ21/product1.png");
 export const intermediatePP21 = require("../assets/intermediate/intermediateQ21/product2.png");
-export const intermediateRT21 = require("../assets/intermediate/intermediateQ14/reactionType.png");
+export const intermediateRT21 = require("../assets/intermediate/intermediateQ21/reactionType.png");
 
 //Question 22
 export const intermediateSM22 = require("../assets/intermediate/intermediateQ22/start.png");
@@ -363,7 +363,7 @@ export const advancedN1 = require("../assets/advanced/advancedQ1/nucleophile.png
 export const advancedSM2 = require("../assets/advanced/advancedQ2/start.png");
 export const advancedI2 = require("../assets/advanced/advancedQ2/inactive1.png");
 export const advancedII2 = require("../assets/advanced/advancedQ2/inactive2.png");
-export const advancedE2 = require("../assets/advanced/advancedQ2/atracurium.jpg");
+export const advancedE2 = require("../assets/advanced/advancedQ2/atracurium.png");
 
 //Question 3
 export const advancedS3 = require("../assets/advanced/advancedQ3/solvent.png");
@@ -386,8 +386,8 @@ export const advancedSM5 = require("../assets/advanced/advancedQ5/start.png");
 export const advancedSM6 = require("../assets/advanced/advancedQ6/start.png");
 export const advancedN6 = require("../assets/advanced/advancedQ6/nucleophile.png");
 export const advancedS6 = require("../assets/advanced/advancedQ6/solvent.png");
-export const advancedP6 = require("../assets/advanced/advancedQ4/product1.png");
-export const advancedPP6 = require("../assets/advanced/advancedQ4/product2.png");
+export const advancedP6 = require("../assets/advanced/advancedQ6/product1.png");
+export const advancedPP6 = require("../assets/advanced/advancedQ6/product2.png");
 
 
 //Question 7
@@ -407,16 +407,23 @@ export const advancedE8 = require("../assets/advanced/advancedQ8/streptomycin.pn
 //Question 9
 export const advancedSM9 = require("../assets/advanced/advancedQ9/start.png");
 export const advancedN9 = require("../assets/advanced/advancedQ9/nucleophile.png");
-export const advancedP9 = require("../assets/advanced/advancedQ9/product.png");
+export const advancedP9 = require("../assets/advanced/advancedQ9/product1.png");
 export const advancedPP9 = require("../assets/advanced/advancedQ9/product2.png");
-export const advancedE9 = require("../assets/advanced/advancedQ9/rose.png");
+export const advancedE9 = require("../assets/advanced/advancedQ9/rose.jpg");
+
+//Question 10
+export const advancedS10 = require("../assets/advanced/advancedQ10/solvent.png");
+export const advancedN10 = require("../assets/advanced/advancedQ10/nucleophile.png");
+export const advancedP10 = require("../assets/advanced/advancedQ10/product.png");
+export const advancedRT10 = require("../assets/advanced/advancedQ10/reactionType.png");
+export const advancedE10 = require("../assets/advanced/advancedQ10/anastrozole.jpg");
 
 //Question 11
-export const advancedS11 = require("../assets/advanced/advancedQ10/solvent.png");
-export const advancedN11 = require("../assets/advanced/advancedQ10/nucleophile.png");
-export const advancedP11 = require("../assets/advanced/advancedQ10/product1.png");
-export const advancedPP11 = require("../assets/advanced/advancedQ10/product2.png");
-export const advancedRT11 = require("../assets/advanced/advancedQ10/reactionType.png");
+export const advancedS11 = require("../assets/advanced/advancedQ11/solvent.png");
+export const advancedN11 = require("../assets/advanced/advancedQ11/nucleophile.png");
+export const advancedP11 = require("../assets/advanced/advancedQ11/product1.png");
+export const advancedPP11 = require("../assets/advanced/advancedQ11/product2.png");
+export const advancedRT11 = require("../assets/advanced/advancedQ11/reactionType.png");
 
 //Question 12
 export const advancedS12 = require("../assets/advanced/advancedQ12/solvent.png");
@@ -450,13 +457,6 @@ export const advancedP16 = require("../assets/advanced/advancedQ16/product1.png"
 export const advancedPPP16 = require("../assets/advanced/advancedQ16/product3.png");
 export const advancedSM16 = require("../assets/advanced/advancedQ16/start.png");
 
-//Question 16
-export const advancedS10 = require("../assets/advanced/advancedQ10/solvent.png");
-export const advancedN10 = require("../assets/advanced/advancedQ10/nucleophile.png");
-export const advancedP10 = require("../assets/advanced/advancedQ10/product.png");
-export const advancedRT10 = require("../assets/advanced/advancedQ10/reactionType.png");
-export const advancedE10 = require("../assets/advanced/advancedQ8/anastrozole.jpg");
-
 //Question 17
 export const advancedS17 = require("../assets/advanced/advancedQ17/solvent.png");
 export const advancedN17 = require("../assets/advanced/advancedQ17/nucleophile.png");
@@ -465,18 +465,18 @@ export const advancedPP17 = require("../assets/advanced/advancedQ17/product2.png
 export const advancedSM17 = require("../assets/advanced/advancedQ17/start.png");
 
 //Question 18
-export const advancedSM18 = require("../assets/advanced/advancedQ10/start.png");
-export const advancedN18 = require("../assets/advanced/advancedQ10/nucleophile.png");
-export const advancedPP18 = require("../assets/advanced/advancedQ10/product2.png");
-export const advancedPPP18 = require("../assets/advanced/advancedQ10/product3.png");
-export const advancedRT18 = require("../assets/advanced/advancedQ10/reactionType.png");
+export const advancedSM18 = require("../assets/advanced/advancedQ18/start.png");
+export const advancedN18 = require("../assets/advanced/advancedQ18/nucleophile.png");
+export const advancedPP18 = require("../assets/advanced/advancedQ18/product2.png");
+export const advancedPPP18 = require("../assets/advanced/advancedQ18/product3.png");
+export const advancedRT18 = require("../assets/advanced/advancedQ18/reactionType.png");
 
 //Question 19
-export const advancedS19 = require("../assets/advanced/advancedQ10/solvent.png");
-export const advancedN19 = require("../assets/advanced/advancedQ10/nucleophile.png");
-export const advancedP19 = require("../assets/advanced/advancedQ10/product1.png");
-export const advancedPPP19 = require("../assets/advanced/advancedQ10/product3.png");
-export const advancedSM19 = require("../assets/advanced/advancedQ8/start.png");
+export const advancedS19 = require("../assets/advanced/advancedQ19/solvent.png");
+export const advancedN19 = require("../assets/advanced/advancedQ19/nucleophile.png");
+export const advancedP19 = require("../assets/advanced/advancedQ19/product1.png");
+export const advancedPPP19 = require("../assets/advanced/advancedQ19/product3.png");
+export const advancedSM19 = require("../assets/advanced/advancedQ19/start.png");
 
 
 //?
