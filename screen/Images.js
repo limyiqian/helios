@@ -177,7 +177,7 @@ export const basicQ15RT4 = require("../assets/basic/basicQ15/reactionOption/reac
 
 //Question 16
 export const basicSM16 = require("../assets/basic/basicQ16/start.png");
-export const basicN16 = require("../assets/basic/basicQ16/strong.png");
+export const basicN16 = require("../assets/basic/basicQ16/weak.png");
 export const basicS16 = require("../assets/basic/basicQ16/solvent.png");
 export const basicP16 = require("../assets/basic/basicQ16/product1.png");
 export const basicPP16 = require("../assets/basic/basicQ16/product2.png");
@@ -189,7 +189,7 @@ export const basicQ16RT4 = require("../assets/basic/basicQ16/reactionOption/reac
 
 //Question 17
 export const basicSM17 = require("../assets/basic/basicQ17/start.png");
-export const basicN17 = require("../assets/basic/basicQ17/strong.png");
+export const basicN17 = require("../assets/basic/basicQ17/weak.png");
 export const basicS17 = require("../assets/basic/basicQ17/solvent.png");
 export const basicP17 = require("../assets/basic/basicQ17/product1.png");
 export const basicPP17 = require("../assets/basic/basicQ17/product2.png");
@@ -201,7 +201,7 @@ export const basicQ17RT4 = require("../assets/basic/basicQ17/reactionOption/reac
 
 //Question 18
 export const basicSM18 = require("../assets/basic/basicQ18/start.png");
-export const basicN18 = require("../assets/basic/basicQ18/strong.png");
+export const basicN18 = require("../assets/basic/basicQ18/weak.png");
 export const basicS18 = require("../assets/basic/basicQ18/solvent.png");
 export const basicP18 = require("../assets/basic/basicQ18/product1.png");
 export const basicPP18 = require("../assets/basic/basicQ18/product2.png");
