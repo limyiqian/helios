@@ -16,6 +16,9 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useEffect } from "react/cjs/react.development";
+import * as SQLite from "expo-sqlite";
+
+var db = SQLite.openDatabase("question.db");
 
 export default function Main({ navigation, route }) {
   // const { user_id } = route.params;
@@ -24,7 +27,7 @@ export default function Main({ navigation, route }) {
   const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
     useState("Normal");
   const [dropdownDifficultyChosen, setDifficultyDropdownChosen] =
-    useState("Easy");
+    useState("Basic");
   const [startQuestionId, setStartQuestionId] = useState(1);
 
   //In question database (can be changed accordingly)
@@ -41,6 +44,8 @@ export default function Main({ navigation, route }) {
       setStartQuestionId(advancedId);
     }
   });
+
+  useEffect(() => {});
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -196,7 +201,7 @@ export default function Main({ navigation, route }) {
                     setDifficultyDropdownChosen(itemValue)
                   }
                 >
-                  <Picker.Item label="Easy" value="Easy" />
+                  <Picker.Item label="Basic" value="Basic" />
                   <Picker.Item label="Intermediate" value="Intermediate" />
                   <Picker.Item label="Advanced" value="Advanced" />
                 </Picker>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Main from "./screen/Main.js";
 import Register from "./screen/Register.js";
+import StudentScore from "./screen/StudentScore.js";
+import ViewAllQuestions from "./screen/ViewAllQuestions.js";
 import Play from "./screen/Play.js";
 import UserGuide from "./screen/UserGuide.js";
 import UserGuide2 from "./screen/UserGuide2.js";
@@ -11,19 +13,36 @@ import Bases from "./screen/Bases.js";
 import Solvents from "./screen/Solvents.js";
 import DecisionApproach from "./screen/DecisionApproach.js";
 import Login from "./screen/Login.js";
-import Score from "./screen/score.js";
-import Intermediate from "./screen/Intermediate.js";
+import Score from "./screen/Score.js";
 import Profile from "./screen/Profile.js";
-import Easy from "./screen/Easy.js";
-import Easy2 from "./screen/Easy2.js";
 import ReviewAns from "./screen/ReviewAns.js";
 
 const Stack = createStackNavigator();
 
+import * as SQLite from "expo-sqlite";
+var db = SQLite.openDatabase("myDatabase.db");
+
 export default function App() {
+  useEffect(() => {
+    db.transaction(function (txn) {
+      txn.executeSql(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='table_questions'",
+        [],
+        function (tx, res) {
+          if (res.rows.length == 0) {
+            txn.executeSql("DROP TABLE IF EXISTS table_questions", []);
+            txn.executeSql(
+              "CREATE TABLE IF NOT EXISTS table_questions(question_id INTEGER PRIMARY KEY AUTOINCREMENT, prompt VARCHAR(255), difficulty VARCHAR(255), starting_material VARCHAR(255), nucleophile VARCHAR(255), solvent VARCHAR(255), carbocation VARCHAR(255), leaving_group VARCHAR(255), product VARCHAR(255), product2 VARCHAR(255), reaction_type VARCHAR(255), hint VARCHAR(255), extra VARCHAR(255), optionType VARCHAR(255))",
+              []
+            );
+          }
+        }
+      );
+    });
+  }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -37,6 +56,16 @@ export default function App() {
         <Stack.Screen
           name="Register"
           component={Register}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="StudentScore"
+          component={StudentScore}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="ViewAllQuestions"
+          component={ViewAllQuestions}
           options={{ headerShown: true }}
         />
         <Stack.Screen

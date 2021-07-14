@@ -39,11 +39,6 @@ export default function Play({ navigation, route }) {
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
 
-  // var [score, setScore] = useState(0);
-  // setScore = correctTotal * 100 + score;
-  // setScore = wrongTotal * 100 - score;
-  // const [totalNumQns, setTotalNumQns] = useState(0);
-
   const [hintModalVisible, setHintModalVisible] = useState(false);
   const [optionModalVisible, setOptionModalVisible] = useState(false);
 
@@ -55,20 +50,26 @@ export default function Play({ navigation, route }) {
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
   //Maximum number of questions (20 max)
-  const [maxQues, setMaxQues] = useState(3);
-  //Number of question correct to go next stage
-  const [answeredCorrect, setAnsweredCorrect] = useState(5);
+  const [maxQues, setMaxQues] = useState(6);
+  //Number of question correct to go next stage (how many correct + 1)
+  const [answeredCorrect, setAnsweredCorrect] = useState(6);
 
   useEffect(() => {
     if (isNextQuestion) {
       var nextQues = parseInt(currentQuestionId) + 1;
-      if (nextQues > 3) {
+      setCurrentQuestionId(nextQues);
+      var isNextLevel = nextQues / answeredCorrect;
+      console.log(isNextLevel);
+      if (nextQues > maxQues) {
         insertAttempt();
+      } else if (isNextLevel == 1) {
+        setCurrentQuestionId(10);
+      } else if (isNextLevel == 2) {
+        setCurrentQuestionId(24);
       }
       setHintModalVisible(false);
       setOptionModalVisible(false);
       setCurrentQuestionNo(nextQues);
-      setCurrentQuestionId(nextQues);
       setIsNextQuestion(false);
     }
   });
@@ -168,7 +169,7 @@ export default function Play({ navigation, route }) {
           digitTxtStyle={styles.countdownTime}
           digitStyle={styles.countdown}
           timeLabelStyle={styles.countdownTimeLabel}
-          timeLabels={{ s: "S" }}
+          timeLabels={{ s: "Second" }}
           onFinish={timerOnFinish}
           size={18}
         />

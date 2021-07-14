@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-// import './userLogin.php';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,16 +11,12 @@ import {
   Alert,
   Keyboard,
 } from "react-native";
-import { useState } from "react";
 // import { StackNavigator } from "react-navigation";
 // import { createStackNavigator } from "@react-navigation/stack";
 // import Main from "./Main.js";
 // import { NavigationContainer } from "@react-navigation/native";
 
 export default class Login extends Component {
-  // const [textInputUsername, setTextInputUsername] = useState("");
-  // const [textInputPassword, setTextInputPassword] = useState("");
-
   static navigationOptions = ({ navigation }) => ({
     title: "Login",
     headerRight: (
@@ -39,6 +34,7 @@ export default class Login extends Component {
       username: "",
       userPassword: "",
       user_id: 0,
+      isTeacher: false,
     };
   }
   UserLoginFunction = () => {
@@ -50,7 +46,7 @@ export default class Login extends Component {
     } else if (userPassword == "") {
       this.setState({ password: "Please enter password" });
     } else {
-      fetch("http://192.168.1.69/Chemiz/findUser.php", {
+      fetch("http://10.174.115.137/Chemiz/findUser.php", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -58,16 +54,27 @@ export default class Login extends Component {
         },
         body: JSON.stringify({
           username: username,
-
           password: userPassword,
         }),
       })
         .then((response) => response.json())
         .then((response) => {
           console.log(JSON.stringify(response));
-          console.log(JSON.stringify(response.user_id));
           if (response.success != false) {
-            this.props.navigation.navigate("Main", { username: username, user_id: response.user_id });
+            console.log(response.role);
+            if (response.role == "teacher") {
+              this.props.navigation.navigate("StudentScore", {
+                username: username,
+                user_id: response.user_id,
+                role: response.role,
+                class: response.class,
+              });
+            } else if (response.role == "student") {
+              this.props.navigation.navigate("Main", {
+                username: username,
+                user_id: response.user_id,
+              });
+            }
           } else {
             Alert.alert(
               "You have input wrong password or username",
@@ -130,9 +137,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F8DE7E",
     alignItems: "center",
     justifyContent: "center",
-    // justifyContent: "center",
-    // flex: 1,
-    // margin: 10,
   },
   image: {
     width: 100,
@@ -176,25 +180,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
-  // // Tutorial css
-  // TextInputStyleClass: {
-  //   textAlign: "center",
-  //   marginBottom: 7,
-  //   height: 40,
-  //   borderWidth: 1,
-  //   // Set border Hex Color Code Here.
-  //   borderColor: "#2196F3",
-
-  //   // Set border Radius.
-  //   borderRadius: 5,
-  // },
-
-  // TextComponentStyle: {
-  //   fontSize: 20,
-  //   color: "#000",
-  //   textAlign: "center",
-  //   marginBottom: 15,
-  // },
 });
 
 AppRegistry.registerComponent("Login", () => Login);
