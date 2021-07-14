@@ -151,7 +151,7 @@ export const basicQ13RT4 = require("../assets/basic/basicQ13/reactionOption/reac
 
 //Question 14
 export const basicSM14 = require("../assets/basic/basicQ14/start.png");
-export const basicN14 = require("../assets/basic/basicQ14/strong.png");
+export const basicN14 = require("../assets/basic/basicQ14/weak.png");
 export const basicS14 = require("../assets/basic/basicQ14/solvent.png");
 export const basicP14 = require("../assets/basic/basicQ14/product1.png");
 export const basicPP14 = require("../assets/basic/basicQ14/product2.png");
