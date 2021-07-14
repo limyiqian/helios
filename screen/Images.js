@@ -67,7 +67,7 @@ export const basicQ6RT4 = require("../assets/basic/basicQ6/reactionOption/reacti
 
 //Question 7
 export const basicSM7 = require("../assets/basic/basicQ7/start.png");
-export const basicN7 = require("../assets/basic/basic/basicQ7/weak.png");
+export const basicN7 = require("../assets/basic/basicQ7/weak.png");
 export const basicS7 = require("../assets/basic/basicQ7/solvent.png");
 export const basicP7 = require("../assets/basic/basicQ7/product.png");
 //Question 7 choices
