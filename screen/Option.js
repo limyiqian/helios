@@ -16,7 +16,11 @@ function Option(props) {
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
   const [selectedOption, setSelectionOption] = useState("");
+<<<<<<< HEAD
+  var api = "http://10.174.122.249/Chemiz/getQuestionChoices.php";
+=======
   var api = "http://10.174.115.137/Chemiz/getQuestionChoices.php";
+>>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",

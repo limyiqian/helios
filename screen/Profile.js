@@ -9,12 +9,81 @@ import {
   TouchableOpacity,
   Modal,
   ScrollView,
+  Alert,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Profile({ navigation }) {
+export default function Profile({ navigation, route }) {
   const [editProfileVisible, setEditProfileVisible] = useState(false);
-  // const [username, password, email] = this.state;
+
+  const {user_id, username, userPassword} = route.params;
+
+  const [name, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [userName, setUserName] = useState(false);
+
+  // const [wrongTotal, setWrongTotal] = useState(0);
+  // const [correctTotal, setCorrectTotal] = useState(0);
+  // const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    var api = "http://10.174.122.249/Chemiz/getUser.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      username: username,
+      password: userPassword,
+    };
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      setUsername(response.username);
+      setPassword(response.password);
+      setEmail(response.email);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }, []);
+
+  function updateUserDetail() {
+    var api = "http://10.174.122.249/Chemiz/updateUserDetails.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      user_id: user_id,
+      username: name,
+      password: password,
+      email: email,
+    };
+    console.log(JSON.stringify(data));
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      if (response.success == true) {
+        Alert.alert("Updated successful");
+      }
+      else {
+        Alert.alert("Update failed")
+      }
+    })
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -22,7 +91,7 @@ export default function Profile({ navigation }) {
         source={require("../assets/chemiz.png")}
         style={styles.image}
       ></Image>
-      <Text style={styles.username}>Soyia Tan</Text>
+      <Text style={styles.username}>{name}</Text>
       <TouchableOpacity onPress={() => setEditProfileVisible(true)} style={styles.editButton}>
         <Text style={styles.editText}>Edit Profile</Text>
       </TouchableOpacity>
@@ -57,15 +126,14 @@ export default function Profile({ navigation }) {
             <View style={styles.spacing}>
               <Text>Edit Profile</Text>
               <TextInput style={styles.textInput}
-                onChangeText={(username) => this.setState({ username })}
-              ></TextInput>
+              onChangeText={(userName) => setUserName(userName)}
+              ><Text>{username}</Text></TextInput>
               <TextInput style={styles.textInput}
-                onChangeText={(password) => this.setState({ password })}
-              ></TextInput>
+              ><Text>{userPassword}</Text></TextInput>
               <TextInput style={styles.textInput}
-                onChangeText={(email) => this.setState({ email })}
-              ></TextInput>
-              <TouchableOpacity style={styles.updateButton}>
+              ><Text>{email}</Text></TextInput>
+              <TouchableOpacity style={styles.updateButton} 
+              onPress={updateUserDetail}>
                 <Text style={styles.updateText}>Update</Text>
               </TouchableOpacity>
             </View>

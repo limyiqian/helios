@@ -76,7 +76,11 @@ export default function Play({ navigation, route }) {
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
+<<<<<<< HEAD
+    var api = "http://10.174.122.249/Chemiz/insertAttempt.php";
+=======
     var api = "http://10.174.115.137/Chemiz/insertAttempt.php";
+>>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -112,8 +116,13 @@ export default function Play({ navigation, route }) {
   }
 
   useEffect(() => {
+<<<<<<< HEAD
+    //Go terminal type in ipconfig to find own ipv4 address
+    var api = "http://10.174.122.249/Chemiz/getQuestion.php";
+=======
     //Go terminal type in ipconfig to find own ipv4 address (yq-192.168.18.7)
     var api = "http://10.174.115.137/Chemiz/getQuestion.php";
+>>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
