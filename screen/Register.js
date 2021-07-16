@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
   StyleSheet,
@@ -19,9 +18,10 @@ export default function Register({ navigation }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [userClass, setUserClass] = useState("");
 
   insertUser = () => {
-    var api = "http://192.168.1.197/Chemiz/insertUser.php";
+    var api = "http://192.168.18.7/Chemiz/insertUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -31,6 +31,7 @@ export default function Register({ navigation }) {
       email: email,
       password: confirmPassword,
       role: role,
+      class: userClass,
     };
     console.log(JSON.stringify(data));
     fetch(api, {
@@ -95,6 +96,11 @@ export default function Register({ navigation }) {
           <Picker.Item label="Student" value="student" />
           <Picker.Item label="Teacher" value="teacher" />
         </Picker>
+        <TextInput
+          placeholder="Class"
+          onChangeText={(userClass) => setUserClass(userClass)}
+          style={styles.textInput}
+        />
         <TouchableOpacity style={styles.registerBtn} onPress={insertUser}>
           <Text style={styles.registerText}>Register</Text>
         </TouchableOpacity>
