@@ -16,13 +16,12 @@ import { useState, useEffect } from "react";
 export default function Profile({ navigation, route }) {
   const [editProfileVisible, setEditProfileVisible] = useState(false);
 
-  const {user_id, username, userPassword} = route.params;
+  const { user_id, username, userPassword } = route.params;
 
+  const [newUser_id, setUserId] = useState("");
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
-  const [userName, setUserName] = useState(false);
 
   // const [wrongTotal, setWrongTotal] = useState(0);
   // const [correctTotal, setCorrectTotal] = useState(0);
@@ -30,6 +29,7 @@ export default function Profile({ navigation, route }) {
 
   useEffect(() => {
     var api = "http://10.174.122.249/Chemiz/getUser.php";
+    var api = "http://192.168.1.71/Chemiz/getUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -43,20 +43,21 @@ export default function Profile({ navigation, route }) {
       headers: headers,
       body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-      setUsername(response.username);
-      setPassword(response.password);
-      setEmail(response.email);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setUsername(response.username);
+        setPassword(response.password);
+        setEmail(response.email);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   function updateUserDetail() {
     var api = "http://10.174.122.249/Chemiz/updateUserDetails.php";
+    var api = "http://192.168.1.71/Chemiz/updateUserDetails.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -73,16 +74,15 @@ export default function Profile({ navigation, route }) {
       headers: headers,
       body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-      if (response.success == true) {
-        Alert.alert("Updated successful");
-      }
-      else {
-        Alert.alert("Update failed")
-      }
-    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.success == true) {
+          Alert.alert("Updated successful");
+        } else {
+          Alert.alert("Update failed");
+        }
+      });
   }
 
   return (
@@ -92,20 +92,19 @@ export default function Profile({ navigation, route }) {
         style={styles.image}
       ></Image>
       <Text style={styles.username}>{name}</Text>
-      <TouchableOpacity onPress={() => setEditProfileVisible(true)} style={styles.editButton}>
+      <TouchableOpacity
+        onPress={() => setEditProfileVisible(true)}
+        style={styles.editButton}
+      >
         <Text style={styles.editText}>Edit Profile</Text>
       </TouchableOpacity>
-      <Text style={styles.avgScore}>Average Score: </Text>
+      <Text style={styles.avgScore}>Average Score:</Text>
 
       <Text style={styles.text}>Latest Attempt</Text>
-      <View style={styles.card}>
-        
-      </View>
+      <View style={styles.card}></View>
 
       <Text style={styles.text}>All Attempts</Text>
-      <View style={styles.card}>
-
-      </View>
+      <View style={styles.card}></View>
 
       <Modal
         animationType="slide"
@@ -125,15 +124,25 @@ export default function Profile({ navigation, route }) {
             />
             <View style={styles.spacing}>
               <Text>Edit Profile</Text>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={(name) => setUsername(name)}
+              >
+                <Text>{username}</Text>
+              </TextInput>
               <TextInput style={styles.textInput}
-              onChangeText={(userName) => setUserName(userName)}
-              ><Text>{username}</Text></TextInput>
+              onChangeText={(password) => setPassword(password)}>
+                <Text>{userPassword}</Text>
+
+              </TextInput>
               <TextInput style={styles.textInput}
-              ><Text>{userPassword}</Text></TextInput>
-              <TextInput style={styles.textInput}
-              ><Text>{email}</Text></TextInput>
-              <TouchableOpacity style={styles.updateButton} 
-              onPress={updateUserDetail}>
+              onChangeText={(email) => setEmail(email)}>
+                <Text>{email}</Text>
+              </TextInput>
+              <TouchableOpacity
+                style={styles.updateButton}
+                onPress={updateUserDetail}
+              >
                 <Text style={styles.updateText}>Update</Text>
               </TouchableOpacity>
             </View>
@@ -182,7 +191,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   textInput: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     width: 150,
     height: 25,
     marginTop: 5,
@@ -190,14 +199,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   updateButton: {
-    backgroundColor: '#fafafa',
+    backgroundColor: "#fafafa",
     width: 50,
     height: 20,
     borderRadius: 5,
     marginLeft: 100,
   },
   updateText: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   closeIcon: {
     position: "absolute",
@@ -213,13 +222,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   editText: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   avgScore: {
     marginLeft: 20,
   },
   text: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginLeft: 20,
     marginTop: 30,
   },
