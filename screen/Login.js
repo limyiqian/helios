@@ -11,10 +11,6 @@ import {
   Alert,
   Keyboard,
 } from "react-native";
-// import { StackNavigator } from "react-navigation";
-// import { createStackNavigator } from "@react-navigation/stack";
-// import Main from "./Main.js";
-// import { NavigationContainer } from "@react-navigation/native";
 
 export default class Login extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -46,7 +42,7 @@ export default class Login extends Component {
     } else if (userPassword == "") {
       this.setState({ password: "Please enter password" });
     } else {
-      fetch("http://10.174.115.137/Chemiz/findUser.php", {
+      fetch("http://192.168.18.7/Chemiz/findUser.php", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -59,9 +55,8 @@ export default class Login extends Component {
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log(JSON.stringify(response));
+          // console.log(JSON.stringify(response));
           if (response.success != false) {
-            console.log(response.role);
             if (response.role == "teacher") {
               this.props.navigation.navigate("StudentScore", {
                 username: username,

@@ -21,7 +21,7 @@ import * as SQLite from "expo-sqlite";
 var db = SQLite.openDatabase("question.db");
 
 export default function Main({ navigation, route }) {
-  const { user_id, username, userPassword, email } = route.params;
+  // const { user_id, username,userPassword, email } = route.params;
   const [gamemodeModalVisible, setGamemodeModalVisible] = useState(false);
   const [difficultyModalVisible, setDifficultyModalVisible] = useState(false);
   const [dropdownGamemodeChosen, setDropdownGamemodeChosen] =
@@ -53,14 +53,12 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>
-          {route.params.username}
-        </Text>
+        {/* <Text style={styles.title}>{route.params.username}</Text> */}
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate("Play", {
-              username: route.params.username,
+              // username: route.params.username,
               questionId: startQuestionId,
               gamemode: dropdownGamemodeChosen,
             })
@@ -93,7 +91,13 @@ export default function Main({ navigation, route }) {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Profile", {user_id: user_id, username: route.params.username, userPassword: userPassword})}
+          onPress={() =>
+            navigation.navigate("Profile", {
+              // user_id: user_id,
+              // username: route.params.username,
+              // userPassword: userPassword,
+            })
+          }
         >
           <View style={styles.iconView}>
             <Ionicons name="person" size={20} color="#F8DE7E" />

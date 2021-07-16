@@ -13,8 +13,11 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Play({ navigation, route }) {
+  console.log("db", JSON.stringify(db));
   const { questionId, gamemode } = route.params;
   // const { user_id } = route.params;
   let user_id = 1;
@@ -30,11 +33,13 @@ export default function Play({ navigation, route }) {
   const [currentLeavingGroup, setCurrentLeavingGroup] = useState("");
   const [currentProduct, setCurrentProduct] = useState("");
   const [currentProduct2, setCurrentProduct2] = useState("");
+  const [currentProduct3, setCurrentProduct3] = useState("");
   const [currentReactionType, setCurrentReactionType] = useState("");
   const [currentHint, setCurrentHint] = useState("");
   const [currentHintIcon, setCurrentHintIcon] = useState("help-circle-outline");
   const [currentExtra, setCurrentExtra] = useState("");
   const [currentOptionType, setCurrentOptionType] = useState("");
+  const [currentArrow, setCurrentArrow] = useState("");
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -59,7 +64,7 @@ export default function Play({ navigation, route }) {
       var nextQues = parseInt(currentQuestionId) + 1;
       setCurrentQuestionId(nextQues);
       var isNextLevel = nextQues / answeredCorrect;
-      console.log(isNextLevel);
+      // console.log(isNextLevel);
       if (nextQues > maxQues) {
         insertAttempt();
       } else if (isNextLevel == 1) {
@@ -76,11 +81,7 @@ export default function Play({ navigation, route }) {
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
-<<<<<<< HEAD
-    var api = "http://10.174.122.249/Chemiz/insertAttempt.php";
-=======
-    var api = "http://10.174.115.137/Chemiz/insertAttempt.php";
->>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
+    var api = "http://192.168.18.7/Chemiz/insertAttempt.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -116,13 +117,8 @@ export default function Play({ navigation, route }) {
   }
 
   useEffect(() => {
-<<<<<<< HEAD
     //Go terminal type in ipconfig to find own ipv4 address
-    var api = "http://10.174.122.249/Chemiz/getQuestion.php";
-=======
-    //Go terminal type in ipconfig to find own ipv4 address (yq-192.168.18.7)
-    var api = "http://10.174.115.137/Chemiz/getQuestion.php";
->>>>>>> 16abc3794df2ad999e587914c1d9aca449cfbc5d
+    var api = "http://192.168.18.7/Chemiz/getQuestion.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -148,10 +144,12 @@ export default function Play({ navigation, route }) {
         setCurrentLeavingGroup(response.leaving_group);
         setCurrentProduct(response.product);
         setCurrentProduct2(response.product2);
+        setCurrentProduct3(response.product3);
         setCurrentReactionType(response.reaction_type);
         setCurrentHint(response.hint);
         setCurrentExtra(response.extra);
         setCurrentOptionType(response.optionType);
+        setCurrentArrow(response.arrow);
       })
       .catch((error) => {
         console.error(error);
@@ -231,7 +229,7 @@ export default function Play({ navigation, route }) {
           </TouchableOpacity>
         </View>
         <View style={styles.bottomRow}>
-          <Image source={require("../assets/arrow.png")} style={styles.arrow} />
+          <Image source={All[`${currentArrow}`]} style={styles.arrow} />
           <TouchableOpacity
             onPress={async () => {
               await setSelection("product");
@@ -385,12 +383,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   card: {
-    height: 130,
-    width: 100,
+    height: 135,
+    width: 105,
     margin: 5,
   },
   arrow: {
-    height: 70,
+    height: 65,
     width: 90,
   },
   topRow: {
