@@ -14,10 +14,9 @@ import { Ionicons } from "@expo/vector-icons";
 import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 import * as SQLite from "expo-sqlite";
-const db = SQLite.openDatabase("chemizdb.db");
+// const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Play({ navigation, route }) {
-  console.log("db", JSON.stringify(db));
   const { questionId, gamemode } = route.params;
   // const { user_id } = route.params;
   let user_id = 1;
@@ -48,6 +47,7 @@ export default function Play({ navigation, route }) {
   const [optionModalVisible, setOptionModalVisible] = useState(false);
 
   const [selection, setSelection] = useState("");
+  const [imageName, setImageName] = useState("");
 
   //Default timer is 60 seconds
   const [totalDuration, setTotalDuration] = useState(60);
@@ -203,6 +203,7 @@ export default function Play({ navigation, route }) {
           <TouchableOpacity
             onPress={async () => {
               await setSelection("startingMaterial");
+              setImageName(currentStartingMaterial);
               setOptionModalVisible(true);
             }}
           >
@@ -214,6 +215,7 @@ export default function Play({ navigation, route }) {
           <TouchableOpacity
             onPress={async () => {
               await setSelection("nucleophile");
+              setImageName(currentNucleophile);
               setOptionModalVisible(true);
             }}
           >
@@ -222,6 +224,7 @@ export default function Play({ navigation, route }) {
           <TouchableOpacity
             onPress={async () => {
               await setSelection("solvent");
+              setImageName(currentSolvent);
               setOptionModalVisible(true);
             }}
           >
@@ -233,6 +236,7 @@ export default function Play({ navigation, route }) {
           <TouchableOpacity
             onPress={async () => {
               await setSelection("product");
+              setImageName(currentProduct);
               setOptionModalVisible(true);
             }}
           >
@@ -241,6 +245,7 @@ export default function Play({ navigation, route }) {
           <TouchableOpacity
             onPress={async () => {
               await setSelection("reactionType");
+              setImageName(currentReactionType);
               setOptionModalVisible(true);
             }}
           >
@@ -327,6 +332,7 @@ export default function Play({ navigation, route }) {
             />
             <Selection
               selected={selection}
+              imageName={imageName}
               option={currentOptionType}
               questionId={currentQuestionId}
               setIsNextQuestion={setIsNextQuestion}

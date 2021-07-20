@@ -19,7 +19,7 @@ function Selection(props) {
       />
     );
   } else {
-    return <Zoom />;
+    return <Zoom imageName={props.imageName} />;
   }
 }
 

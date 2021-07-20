@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Register({ navigation }) {
   const [username, setUsername] = useState("");
@@ -33,7 +35,7 @@ export default function Register({ navigation }) {
       role: role,
       class: userClass,
     };
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
     fetch(api, {
       method: "POST",
       headers: headers,
@@ -53,7 +55,28 @@ export default function Register({ navigation }) {
         }
       })
       .catch((error) => {
-        console.error(error);
+        db.transaction(function (tx) {
+          tx.executeSql(
+            "INSERT INTO user (username, email, password, role, class) VALUES (?,?,?,?,?)",
+            [username, email, confirmPassword, role, userClass],
+            (tx, results) => {
+              console.log("Rows affected:", results.rowsAffected);
+              if (results.rowsAffected > 0) {
+                Alert.alert(
+                  "Success",
+                  "You are registered successfully",
+                  [
+                    {
+                      text: "Ok",
+                      onPress: () => navigation.navigate("Login"),
+                    },
+                  ],
+                  { cancelable: false }
+                );
+              } else Alert.alert("Registration Failed");
+            }
+          );
+        });
       });
   };
 

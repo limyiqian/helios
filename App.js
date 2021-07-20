@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Main from "./screen/Main.js";
@@ -18,10 +18,31 @@ import Profile from "./screen/Profile.js";
 import ReviewAns from "./screen/ReviewAns.js";
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
+import AllQuestions from "./screen/AllQuestions.js";
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  var all = AllQuestions.questions;
+  // console.log("json" + JSON.stringify(all.questions));
+
+  const [questionId, setQuestionId] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [startingMaterial, setStartingMaterial] = useState("");
+  const [nucleophile, setNucleophile] = useState("");
+  const [solvent, setSolvent] = useState("");
+  const [carbocation, setCarbocation] = useState("");
+  const [leavingGroup, setLeavingGroup] = useState("");
+  const [product, setProduct] = useState("");
+  const [product2, setProduct2] = useState("");
+  const [product3, setProduct3] = useState("");
+  const [reactionType, setReactionType] = useState("");
+  const [hint, setHint] = useState("");
+  const [extra, setExtra] = useState("");
+  const [optionType, setOptionType] = useState("");
+  const [arrow, setArrow] = useState("");
+
   useEffect(() => {
     db.transaction(function (txn) {
       txn.executeSql(
@@ -54,8 +75,62 @@ export default function App() {
           }
         }
       );
+
+      addQuestions();
     });
   }, []);
+
+  function addQuestions() {
+    for (let i = 0; i < all.length; i++) {
+      console.log("Question" + all[i].question_id);
+      setQuestionId(all[i].question_id);
+      setPrompt(all[i].prompt);
+      setDifficulty(all[i].difficulty);
+      setStartingMaterial(all[i].starting_material);
+      setNucleophile(all[i].nucleophile);
+      setSolvent(all[i].solvent);
+      setCarbocation(all[i].carbocation);
+      setLeavingGroup(all[i].leaving_group);
+      setProduct(all[i].product);
+      setProduct2(all[i].product2);
+      setProduct3(all[i].product3);
+      setReactionType(all[i].reaction_type);
+      setHint(all[i].hint);
+      setExtra(all[i].extra);
+      setOptionType(all[i].optionType);
+      setArrow(all[i].arrow);
+
+      db.transaction((tx) => {
+        tx.executeSql(
+          "INSERT INTO question (question_id, prompt, difficulty, starting_material, nucleophile, solvent, carbocation, leaving_group, product, product2, product3, reaction_type, hint, extra, optionType, arrow) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+          [
+            questionId,
+            prompt,
+            difficulty,
+            startingMaterial,
+            nucleophile,
+            solvent,
+            carbocation,
+            leavingGroup,
+            product,
+            product2,
+            product3,
+            reactionType,
+            hint,
+            extra,
+            optionType,
+            arrow,
+          ],
+          (tx, results) => {
+            if (results.rowsAffected > 0) {
+              console.log("Add successful");
+            } else console.log("Add failed");
+          }
+        );
+      });
+    }
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">

@@ -11,6 +11,8 @@ import {
   Alert,
   Keyboard,
 } from "react-native";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
 
 export default class Login extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -79,7 +81,34 @@ export default class Login extends Component {
           }
         })
         .catch((error) => {
-          console.error(error);
+          db.transaction((tx) => {
+            tx.executeSql(
+              "SELECT * FROM user where username = ? and password = ?",
+              [username, userPassword],
+              (tx, results) => {
+                var len = results.rows.length;
+                if (len > 0) {
+                  console.log(results);
+                  let role = results.rows.item(0).role;
+                  if (role == "teacher") {
+                    this.props.navigation.navigate("StudentScore", {
+                      username: username,
+                      user_id: results.rows.item(0).user_id,
+                      role: results.rows.item(0).role,
+                      class: results.rows.item(0).class,
+                    });
+                  } else if (role == "student") {
+                    this.props.navigation.navigate("Main", {
+                      username: username,
+                      user_id: results.rows.item(0).user_id,
+                    });
+                  }
+                } else {
+                  Alert.alert("No user found");
+                }
+              }
+            );
+          });
         });
     }
 

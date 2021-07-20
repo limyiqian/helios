@@ -1064,3 +1064,5 @@ var qns = [
     arrow: "arrowTri",
   },
 ];
+
+exports.questions = qns;
