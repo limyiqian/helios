@@ -8,7 +8,7 @@ export default function ViewAllQuestions({ navigation, route }) {
 
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql("SELECT * FROM question", [], (tx, results) => {
+      tx.executeSql("SELECT * FROM question_choices", [], (tx, results) => {
         console.log(results);
         var temp = [];
         for (let i = 0; i < results.rows.length; ++i)
@@ -39,6 +39,18 @@ export default function ViewAllQuestions({ navigation, route }) {
         <Text>Question id: {item.question_id}</Text>
         <Text>Prompt: {item.prompt}</Text>
         <Text>Starting material: {item.starting_material}</Text>
+        <Text>Nucleophile: {item.nucleophile}</Text>
+        <Text>Solvent: {item.solvent}</Text>
+        <Text>Carbocation: {item.carbocation}</Text>
+        <Text>Leaving group: {item.leaving_group}</Text>
+        <Text>Product: {item.product}</Text>
+        <Text>Product2: {item.product2}</Text>
+        <Text>Product3: {item.product3}</Text>
+        <Text>Reaction type: {item.reaction_type}</Text>
+        <Text>Hint: {item.hint}</Text>
+        <Text>Extra: {item.extra}</Text>
+        <Text>Option type: {item.option_type}</Text>
+        <Text>Arrow: {item.arrow}</Text>
       </View>
     );
   };

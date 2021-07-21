@@ -19,29 +19,13 @@ import ReviewAns from "./screen/ReviewAns.js";
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 import AllQuestions from "./screen/AllQuestions.js";
+import AllQnsChoices from "./screen/AllQnsChoices.js";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   var all = AllQuestions.questions;
-  // console.log("json" + JSON.stringify(all.questions));
-
-  const [questionId, setQuestionId] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [prompt, setPrompt] = useState("");
-  const [startingMaterial, setStartingMaterial] = useState("");
-  const [nucleophile, setNucleophile] = useState("");
-  const [solvent, setSolvent] = useState("");
-  const [carbocation, setCarbocation] = useState("");
-  const [leavingGroup, setLeavingGroup] = useState("");
-  const [product, setProduct] = useState("");
-  const [product2, setProduct2] = useState("");
-  const [product3, setProduct3] = useState("");
-  const [reactionType, setReactionType] = useState("");
-  const [hint, setHint] = useState("");
-  const [extra, setExtra] = useState("");
-  const [optionType, setOptionType] = useState("");
-  const [arrow, setArrow] = useState("");
+  var allChoices = AllQnsChoices.questions;
 
   useEffect(() => {
     db.transaction(function (txn) {
@@ -60,6 +44,7 @@ export default function App() {
         }
       );
     });
+
     db.transaction(function (txn) {
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='question'",
@@ -67,73 +52,159 @@ export default function App() {
         function (tx, res) {
           console.log("Question table:", res.rows.length);
           if (res.rows.length == 0) {
-            txn.executeSql("DROP TABLE IF EXISTS question", []);
+            // txn.executeSql("DROP TABLE IF EXISTS question", []);
+            txn.executeSql("DROP TABLE IF EXISTS question", [], async () => {
+              txn.executeSql(
+                "CREATE TABLE IF NOT EXISTS question(question_id INTEGER PRIMARY KEY AUTOINCREMENT, prompt VARCHAR(255), difficulty VARCHAR(255), starting_material VARCHAR(255), nucleophile VARCHAR(255), solvent VARCHAR(255), carbocation VARCHAR(255), leaving_group VARCHAR(255), product VARCHAR(255), product2 VARCHAR(255), product3 VARCHAR(255), reaction_type VARCHAR(255), hint VARCHAR(255), extra VARCHAR(255), optionType VARCHAR(255), arrow VARCHAR(255))",
+                [],
+                async () => {
+                  var questionId = "";
+                  var prompt = "";
+                  var difficulty = "";
+                  var startingMaterial = "";
+                  var nucleophile = "";
+                  var solvent = "";
+                  var carbocation = "";
+                  var leavingGroup = "";
+                  var product = "";
+                  var product2 = "";
+                  var product3 = "";
+                  var reactionType = "";
+                  var hint = "";
+                  var extra = "";
+                  var optionType = "";
+                  var arrow = "";
+
+                  for (let i = 0; i < all.length; i++) {
+                    console.log(all);
+                    questionId = all[i].question_id;
+                    prompt = all[i].prompt;
+                    difficulty = all[i].difficulty;
+                    startingMaterial = all[i].starting_material;
+                    nucleophile = all[i].nucleophile;
+                    solvent = all[i].solvent;
+                    carbocation = all[i].carbocation;
+                    leavingGroup = all[i].leaving_group;
+                    product = all[i].product;
+                    product2 = all[i].product2;
+                    product3 = all[i].product3;
+                    reactionType = all[i].reaction_type;
+                    hint = all[i].hint;
+                    extra = all[i].extra;
+                    optionType = all[i].option_type;
+                    arrow = all[i].arrow;
+                    console.log(reactionType);
+
+                    var sql =
+                      "INSERT INTO question (question_id, prompt, difficulty, starting_material, nucleophile, solvent, carbocation, leaving_group, product, product2, product3, reaction_type, hint, extra, optionType, arrow) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    var params = [
+                      questionId,
+                      prompt,
+                      difficulty,
+                      startingMaterial,
+                      nucleophile,
+                      solvent,
+                      carbocation,
+                      leavingGroup,
+                      product,
+                      product2,
+                      product3,
+                      reactionType,
+                      hint,
+                      extra,
+                      optionType,
+                      arrow,
+                    ];
+
+                    executeSql(sql, params);
+                  }
+                }
+              );
+            });
+          }
+        }
+      );
+    });
+
+    db.transaction(function (txn) {
+      txn.executeSql(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='question_choices'",
+        [],
+        function (tx, res) {
+          console.log("Question choices table:", res.rows.length);
+          if (res.rows.length == 0) {
             txn.executeSql(
-              "CREATE TABLE IF NOT EXISTS question(question_id INTEGER PRIMARY KEY AUTOINCREMENT, prompt VARCHAR(255), difficulty VARCHAR(255), starting_material VARCHAR(255), nucleophile VARCHAR(255), solvent VARCHAR(255), carbocation VARCHAR(255), leaving_group VARCHAR(255), product VARCHAR(255), product2 VARCHAR(255), product3 VARCHAR(255), reaction_type VARCHAR(255), hint VARCHAR(255), extra VARCHAR(255), optionType VARCHAR(255), arrow VARCHAR(255))",
+              "DROP TABLE IF EXISTS question_choices",
+              [],
+              async () => {
+                txn.executeSql(
+                  "CREATE TABLE IF NOT EXISTS question_choices(choice_id INTEGER PRIMARY KEY AUTOINCREMENT, choice VARCHAR(255), is_correct_choice VARCHAR(255), name VARCHAR(255), question_id INT(255))",
+                  [],
+                  async () => {
+                    var choiceId = "";
+                    var choice = "";
+                    var isCorrectChoice = "";
+                    var name = "";
+                    var questionIdC = "";
+
+                    for (let i = 0; i < allChoices.length; i++) {
+                      choiceId = allChoices[i].choice_id;
+                      choice = allChoices[i].choice;
+                      isCorrectChoice = allChoices[i].is_correct_choice;
+                      name = allChoices[i].name;
+                      questionIdC = allChoices[i].question_id;
+
+                      var sql =
+                        "INSERT INTO question_choices (choice_id, choice, is_correct_choice, name, question_id ) VALUES (?,?,?,?,?)";
+                      var params = [
+                        choiceId,
+                        choice,
+                        isCorrectChoice,
+                        name,
+                        questionIdC,
+                      ];
+
+                      executeSql(sql, params);
+                    }
+                  }
+                );
+              }
+            );
+          }
+        }
+      );
+    });
+
+    db.transaction(function (txn) {
+      txn.executeSql(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='attempt'",
+        [],
+        function (tx, res) {
+          console.log("Attempt table:", res.rows.length);
+          if (res.rows.length == 0) {
+            txn.executeSql("DROP TABLE IF EXISTS attempt", []);
+            txn.executeSql(
+              "CREATE TABLE IF NOT EXISTS attempt(attempt_id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INT(255), score VARCHAR(255), correct VARCHAR(255), wrong VARCHAR(255))",
               []
             );
           }
         }
       );
-
-      addQuestions();
     });
   }, []);
 
-  function addQuestions() {
-    for (let i = 0; i < all.length; i++) {
-      console.log("Question" + all[i].question_id);
-      setQuestionId(all[i].question_id);
-      setPrompt(all[i].prompt);
-      setDifficulty(all[i].difficulty);
-      setStartingMaterial(all[i].starting_material);
-      setNucleophile(all[i].nucleophile);
-      setSolvent(all[i].solvent);
-      setCarbocation(all[i].carbocation);
-      setLeavingGroup(all[i].leaving_group);
-      setProduct(all[i].product);
-      setProduct2(all[i].product2);
-      setProduct3(all[i].product3);
-      setReactionType(all[i].reaction_type);
-      setHint(all[i].hint);
-      setExtra(all[i].extra);
-      setOptionType(all[i].optionType);
-      setArrow(all[i].arrow);
-
+  executeSql = async (sql, params = []) => {
+    return new Promise((resolve, reject) =>
       db.transaction((tx) => {
-        tx.executeSql(
-          "INSERT INTO question (question_id, prompt, difficulty, starting_material, nucleophile, solvent, carbocation, leaving_group, product, product2, product3, reaction_type, hint, extra, optionType, arrow) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-          [
-            questionId,
-            prompt,
-            difficulty,
-            startingMaterial,
-            nucleophile,
-            solvent,
-            carbocation,
-            leavingGroup,
-            product,
-            product2,
-            product3,
-            reactionType,
-            hint,
-            extra,
-            optionType,
-            arrow,
-          ],
-          (tx, results) => {
-            if (results.rowsAffected > 0) {
-              console.log("Add successful");
-            } else console.log("Add failed");
-          }
-        );
-      });
-    }
-  }
+        console.log("executeSql " + params[0]);
+        tx.executeSql(sql, params, reject);
+      })
+    );
+  };
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
           name="Login"
           component={Login}

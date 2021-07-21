@@ -14,7 +14,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material has less static hinderance.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -32,7 +32,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -50,7 +50,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material has less static hinderance.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -68,7 +68,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material has less steric hinderance.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -86,7 +86,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -104,7 +104,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -122,7 +122,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material with high steric hinderance inhibits nucleophile attack.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -140,7 +140,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material with high steric hinderance inhibits nucleophile attack.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -158,7 +158,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -176,7 +176,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material with high steric hinderance inhibits nucleophile attack.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -194,7 +194,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material has less steric hinderance.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -212,7 +212,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -230,7 +230,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Starting material has less steric hinderance.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -248,7 +248,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -266,7 +266,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -284,7 +284,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -302,7 +302,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Undergoes either SN1 or SN2 depending on the Nucleophile and Solvent.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -320,7 +320,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "Heat favours elimination reaction.",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -338,7 +338,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -356,7 +356,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "startingMaterial,solvent,reactionType",
+    option_type: "startingMaterial,solvent,reactionType",
     arrow: "arrow",
   },
   {
@@ -374,7 +374,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -392,7 +392,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -410,7 +410,7 @@ var qns = [
     reaction_type: "intermediateRT5",
     hint: "",
     extra: "",
-    optionType: "leavingGroup,product",
+    option_type: "leavingGroup,product",
     arrow: "arrow",
   },
   {
@@ -428,7 +428,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -446,7 +446,7 @@ var qns = [
     reaction_type: "intermediateRT6",
     hint: "",
     extra: "",
-    optionType: "leavingGroup",
+    option_type: "leavingGroup",
     arrow: "arrow",
   },
   {
@@ -464,7 +464,7 @@ var qns = [
     reaction_type: "intermediateRT8",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrow",
   },
   {
@@ -482,7 +482,7 @@ var qns = [
     reaction_type: "intermediateRT9",
     hint: "",
     extra: "",
-    optionType: "product",
+    option_type: "product",
     arrow: "arrow",
   },
   {
@@ -500,7 +500,7 @@ var qns = [
     reaction_type: "intermediateRT10",
     hint: "",
     extra: "",
-    optionType: "product",
+    option_type: "product",
     arrow: "arrow",
   },
   {
@@ -518,7 +518,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -536,7 +536,7 @@ var qns = [
     reaction_type: "intermediateRT12",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrow",
   },
   {
@@ -554,7 +554,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "solvent,reactionType",
+    option_type: "solvent,reactionType",
     arrow: "arrow",
   },
   {
@@ -573,7 +573,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "startingMaterial,reactionType",
+    option_type: "startingMaterial,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -591,7 +591,7 @@ var qns = [
     reaction_type: "intermediateRT15",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrow",
   },
   {
@@ -609,7 +609,7 @@ var qns = [
     reaction_type: "intermediateRT16",
     hint: "",
     extra: "",
-    optionType: "solvent",
+    option_type: "solvent",
     arrow: "arrow",
   },
   {
@@ -628,7 +628,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "startingMaterial,reactionType",
+    option_type: "startingMaterial,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -646,7 +646,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -664,7 +664,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -682,7 +682,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "solvent,reactionType",
+    option_type: "solvent,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -700,7 +700,7 @@ var qns = [
     reaction_type: "intermediateRT21",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrowTri",
   },
   {
@@ -718,7 +718,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -736,7 +736,7 @@ var qns = [
     reaction_type: "",
     hint: "",
     extra: "advancedE1",
-    optionType: "carbocation",
+    option_type: "carbocation",
     arrow: "arrow",
   },
   {
@@ -754,7 +754,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "advancedE2",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -772,7 +772,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "advancedE3",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrowTri",
   },
   {
@@ -790,7 +790,7 @@ var qns = [
     reaction_type: "advancedRT4",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrow",
   },
   {
@@ -808,7 +808,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -826,7 +826,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -844,7 +844,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -862,7 +862,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "reactionType",
+    option_type: "reactionType",
     arrow: "arrow",
   },
   {
@@ -880,7 +880,7 @@ var qns = [
     reaction_type: "",
     hint: "",
     extra: "advancedE9",
-    optionType: "carbocation",
+    option_type: "carbocation",
     arrow: "arrow",
   },
   {
@@ -898,7 +898,7 @@ var qns = [
     reaction_type: "advancedRT10",
     hint: "",
     extra: "advancedE10",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrow",
   },
   {
@@ -916,7 +916,7 @@ var qns = [
     reaction_type: "advancedRT11",
     hint: "",
     extra: "",
-    optionType: "startingMaterial",
+    option_type: "startingMaterial",
     arrow: "arrowTri",
   },
   {
@@ -934,7 +934,7 @@ var qns = [
     reaction_type: "advancedRT12",
     hint: "",
     extra: "",
-    optionType: "product",
+    option_type: "product",
     arrow: "arrow",
   },
   {
@@ -952,7 +952,7 @@ var qns = [
     reaction_type: "advancedRT13",
     hint: "",
     extra: "",
-    optionType: "product",
+    option_type: "product",
     arrow: "arrow",
   },
   {
@@ -970,7 +970,7 @@ var qns = [
     reaction_type: "advancedRT14",
     hint: "",
     extra: "",
-    optionType: "solvent",
+    option_type: "solvent",
     arrow: "arrow",
   },
   {
@@ -988,7 +988,7 @@ var qns = [
     reaction_type: "advancedRT15",
     hint: "",
     extra: "",
-    optionType: "carbocation,product",
+    option_type: "carbocation,product",
     arrow: "arrow",
   },
   {
@@ -1006,7 +1006,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrowTri",
   },
   {
@@ -1024,7 +1024,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "product,reactionType",
+    option_type: "product,reactionType",
     arrow: "arrow",
   },
   {
@@ -1042,7 +1042,7 @@ var qns = [
     reaction_type: "advancedRT18",
     hint: "",
     extra: "",
-    optionType: "solvent,product",
+    option_type: "solvent,product",
     arrow: "arrowTri",
   },
   {
@@ -1060,7 +1060,7 @@ var qns = [
     reaction_type: "reactionTypeOption",
     hint: "",
     extra: "",
-    optionType: "reactionType,product",
+    option_type: "reactionType,product",
     arrow: "arrowTri",
   },
 ];

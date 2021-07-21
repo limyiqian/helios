@@ -66,7 +66,7 @@ export default function StudentScore({ navigation, route }) {
         setStudentArray(array);
       })
       .catch((error) => {
-        console.error(error);
+        alert("Not connected to server, cannot get data.");
       });
   }, []);
 

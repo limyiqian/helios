@@ -686,3 +686,5 @@ var qnsChoices = [
     question_id: "21",
   },
 ];
+
+exports.questions = qnsChoices;

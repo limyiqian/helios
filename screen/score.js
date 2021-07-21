@@ -47,9 +47,7 @@ export default function Score({ navigation, route }) {
         setScore(response.score);
         // setTotalNumQns(response.totalNumQns);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (

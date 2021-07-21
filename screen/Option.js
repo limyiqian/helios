@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import * as All from "./Images.js";
 
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
+
 function Option(props) {
   // console.log(props);
   let images = [];
@@ -56,7 +59,35 @@ function Option(props) {
         setOutImages(images);
       })
       .catch((error) => {
-        console.error(error);
+        db.transaction((tx) => {
+          tx.executeSql(
+            "SELECT * FROM question_choices WHERE question_id=?",
+            [props.questionId],
+            (tx, results) => {
+              var len = results.rows.length;
+              let dataImage = [];
+              for (var i = 0; i < len; i++) {
+                var item = results.rows.item(i);
+                dataImage.push(item);
+              }
+              for (let i = 0; i < dataImage.length; i++) {
+                images.push(
+                  <View key={i}>
+                    <TouchableOpacity
+                      onPress={() => userSelectOption(dataImage[i])}
+                    >
+                      <Image
+                        style={styles.card}
+                        source={All[`${dataImage[i].choice}`]}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                );
+              }
+              setOutImages(images);
+            }
+          );
+        });
       });
   };
 

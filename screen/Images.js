@@ -4,6 +4,7 @@ export const basicSM1 = require("../assets/basic/basicQ1/start.png");
 export const basicN1 = require("../assets/basic/basicQ1/weak.png");
 export const basicS1 = require("../assets/basic/basicQ1/solvent.png");
 export const basicP1 = require("../assets/basic/basicQ1/product.png");
+
 //Question 1 choices
 export const basicQ1RT1 = require("../assets/basic/basicQ1/reactionOption/reaction1.png");
 export const basicQ1RT2 = require("../assets/basic/basicQ1/reactionOption/reaction2.png");

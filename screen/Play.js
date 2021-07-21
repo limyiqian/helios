@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as All from "./Images.js";
 import CountDown from "react-native-countdown-component";
 import * as SQLite from "expo-sqlite";
-// const db = SQLite.openDatabase("chemizdb.db");
+const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Play({ navigation, route }) {
   const { questionId, gamemode } = route.params;
@@ -22,7 +22,7 @@ export default function Play({ navigation, route }) {
   let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(questionId);
+  const [currentQuestionId, setCurrentQuestionId] = useState(2);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -92,7 +92,6 @@ export default function Play({ navigation, route }) {
       score: totalScore,
       user_id: user_id,
     };
-    console.log(JSON.stringify(data));
     fetch(api, {
       method: "POST",
       headers: headers,
@@ -152,7 +151,38 @@ export default function Play({ navigation, route }) {
         setCurrentArrow(response.arrow);
       })
       .catch((error) => {
-        console.error(error);
+        db.transaction((tx) => {
+          tx.executeSql(
+            "SELECT * FROM question where question_id=?",
+            [currentQuestionId],
+            (tx, results) => {
+              var len = results.rows.length;
+              if (len > 0) {
+                console.log(results);
+                setCurrentQuestionId(results.rows.item(0).question_id);
+                setCurrentDifficulty(results.rows.item(0).difficulty);
+                setCurrentPrompt(results.rows.item(0).prompt);
+                setCurrentStartingMaterial(
+                  results.rows.item(0).starting_material
+                );
+                setCurrentNucleophile(results.rows.item(0).nucleophile);
+                setCurrentSolvent(results.rows.item(0).solvent);
+                setCurrentCarbocation(results.rows.item(0).carbocation);
+                setCurrentLeavingGroup(results.rows.item(0).leaving_group);
+                setCurrentProduct(results.rows.item(0).product);
+                setCurrentProduct2(results.rows.item(0).product2);
+                setCurrentProduct3(results.rows.item(0).product3);
+                setCurrentReactionType(results.rows.item(0).reaction_type);
+                setCurrentHint(results.rows.item(0).hint);
+                setCurrentExtra(results.rows.item(0).extra);
+                setCurrentOptionType(results.rows.item(0).optionType);
+                setCurrentArrow(results.rows.item(0).arrow);
+              } else {
+                Alert.alert("No data found");
+              }
+            }
+          );
+        });
       });
   }, [currentQuestionNo]);
 
