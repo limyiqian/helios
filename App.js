@@ -52,7 +52,6 @@ export default function App() {
         function (tx, res) {
           console.log("Question table:", res.rows.length);
           if (res.rows.length == 0) {
-            // txn.executeSql("DROP TABLE IF EXISTS question", []);
             txn.executeSql("DROP TABLE IF EXISTS question", [], async () => {
               txn.executeSql(
                 "CREATE TABLE IF NOT EXISTS question(question_id INTEGER PRIMARY KEY AUTOINCREMENT, prompt VARCHAR(255), difficulty VARCHAR(255), starting_material VARCHAR(255), nucleophile VARCHAR(255), solvent VARCHAR(255), carbocation VARCHAR(255), leaving_group VARCHAR(255), product VARCHAR(255), product2 VARCHAR(255), product3 VARCHAR(255), reaction_type VARCHAR(255), hint VARCHAR(255), extra VARCHAR(255), optionType VARCHAR(255), arrow VARCHAR(255))",
