@@ -9,6 +9,7 @@ import {
   Alert,
 } from "react-native";
 import * as All from "./Images.js";
+import { Audio } from 'expo-av';
 
 function Option(props) {
   // console.log(props);
@@ -16,7 +17,35 @@ function Option(props) {
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
   const [selectedOption, setSelectionOption] = useState("");
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+
+  const [correctSound, setCorrectSound] = useState(new Audio.Sound);
+  const [wrongSound, setWrongSound] = useState(new Audio.Sound);
+
+  useEffect(() => {
+    async function loadCorrectSounds() {
+      await correctSound.loadAsync(require('../assets/sounds/correct.mp3'))
+    }
+    loadCorrectSounds();
+  }, [])
+
+  const playCorrectSound = () => {
+    correctSound.playAsync();
+    console.log("Play correct Sound")
+  }
+
+  useEffect(() => {
+    async function loadWrongSounds() {
+      await wrongSound.loadAsync(require('../assets/sounds/wrong.mp3'))
+    }
+    loadWrongSounds();
+  }, [])
+
+  const playWrongSound = () => {
+    wrongSound.playAsync();
+    console.log("Play wrong sound")
+  }
+
+  var api = "http://192.168.1.69/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -68,6 +97,7 @@ function Option(props) {
 
   function checkAnswer() {
     if (selectedOption.is_correct_choice == "True") {
+      playCorrectSound();
       Alert.alert(
         "Correct",
         "+100 points",
@@ -85,6 +115,7 @@ function Option(props) {
         { cancelable: false }
       );
     } else if (selectedOption.is_correct_choice == "False") {
+      playWrongSound();
       Alert.alert(
         "Wrong",
         "-100 points",
