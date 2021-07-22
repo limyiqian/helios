@@ -22,7 +22,7 @@ export default function Play({ navigation, route }) {
   let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(2);
+  const [currentQuestionId, setCurrentQuestionId] = useState(19);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -194,95 +194,138 @@ export default function Play({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.questionView}>
-        <View style={styles.correctWrongView}>
-          <Text style={styles.correct}>{correctTotal}</Text>
-          <Text style={styles.wrong}>{wrongTotal}</Text>
-        </View>
-        <CountDown
-          until={totalDuration}
-          timeToShow={["S"]}
-          style={styles.countdownView}
-          digitTxtStyle={styles.countdownTime}
-          digitStyle={styles.countdown}
-          timeLabelStyle={styles.countdownTimeLabel}
-          timeLabels={{ s: "Second" }}
-          onFinish={timerOnFinish}
-          size={18}
-        />
-        <View style={styles.iconView}>
-          <View>
-            <Text style={styles.difficultyText}>{currentDifficulty}</Text>
-            <Text style={styles.questionText}>
-              Question {currentQuestionNo}
-            </Text>
+      <ScrollView style={styles.scrollview}>
+        <View style={styles.questionView}>
+          <View style={styles.correctWrongView}>
+            <Text style={styles.correct}>{correctTotal}</Text>
+            <Text style={styles.wrong}>{wrongTotal}</Text>
           </View>
-          <Ionicons
-            name={currentHintIcon}
-            size={30}
-            color="#F8DE7E"
-            onPress={() => {
-              setHintModalVisible(true);
-            }}
+          <CountDown
+            until={totalDuration}
+            timeToShow={["S"]}
+            style={styles.countdownView}
+            digitTxtStyle={styles.countdownTime}
+            digitStyle={styles.countdown}
+            timeLabelStyle={styles.countdownTimeLabel}
+            timeLabels={{ s: "Second" }}
+            onFinish={timerOnFinish}
+            size={18}
           />
-        </View>
-        <Text style={styles.questionText}>{currentPrompt}</Text>
-      </View>
-      <View style={styles.cardsView}>
-        <View style={styles.topRow}>
-          <TouchableOpacity
-            onPress={async () => {
-              await setSelection("startingMaterial");
-              setImageName(currentStartingMaterial);
-              setOptionModalVisible(true);
-            }}
-          >
-            <Image
-              style={styles.card}
-              source={All[`${currentStartingMaterial}`]}
+          <View style={styles.iconView}>
+            <View>
+              <Text style={styles.difficultyText}>{currentDifficulty}</Text>
+              <Text style={styles.questionText}>
+                Question {currentQuestionNo}
+              </Text>
+            </View>
+            <Ionicons
+              name={currentHintIcon}
+              size={30}
+              color="#F8DE7E"
+              onPress={() => {
+                setHintModalVisible(true);
+              }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={async () => {
-              await setSelection("nucleophile");
-              setImageName(currentNucleophile);
-              setOptionModalVisible(true);
-            }}
-          >
-            <Image style={styles.card} source={All[`${currentNucleophile}`]} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={async () => {
-              await setSelection("solvent");
-              setImageName(currentSolvent);
-              setOptionModalVisible(true);
-            }}
-          >
-            <Image style={styles.card} source={All[`${currentSolvent}`]} />
-          </TouchableOpacity>
+          </View>
+          <Text style={styles.questionText}>{currentPrompt}</Text>
         </View>
-        <View style={styles.bottomRow}>
-          <Image source={All[`${currentArrow}`]} style={styles.arrow} />
-          <TouchableOpacity
-            onPress={async () => {
-              await setSelection("product");
-              setImageName(currentProduct);
-              setOptionModalVisible(true);
-            }}
-          >
-            <Image style={styles.card} source={All[`${currentProduct}`]} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={async () => {
-              await setSelection("reactionType");
-              setImageName(currentReactionType);
-              setOptionModalVisible(true);
-            }}
-          >
-            <Image style={styles.card} source={All[`${currentReactionType}`]} />
-          </TouchableOpacity>
+
+        <View style={styles.cardsView}>
+          <View style={styles.topRow}>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("startingMaterial");
+                setImageName(currentStartingMaterial);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image
+                style={styles.card}
+                source={All[`${currentStartingMaterial}`]}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("nucleophile");
+                setImageName(currentNucleophile);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image
+                style={styles.card}
+                source={All[`${currentNucleophile}`]}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("solvent");
+                setImageName(currentSolvent);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image style={styles.card} source={All[`${currentSolvent}`]} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.secondRow}>
+            <Image source={All[`${currentArrow}`]} style={styles.arrow} />
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("product");
+                setImageName(currentProduct);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image style={styles.card} source={All[`${currentProduct}`]} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("reactionType");
+                setImageName(currentReactionType);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image
+                style={styles.card}
+                source={All[`${currentReactionType}`]}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.bottomRow}>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("carbocation");
+                setImageName(currentCarbocation);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image
+                style={styles.card}
+                source={All[`${currentCarbocation}`]}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("product2");
+                setImageName(currentProduct2);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image style={styles.card} source={All[`${currentProduct2}`]} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("product3");
+                setImageName(currentProduct3);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image style={styles.card} source={All[`${currentProduct3}`]} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
+
       <Modal
         animationType="slide"
         transparent={true}
@@ -385,15 +428,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  scrollview: {
+    borderColor: "#FFFFFF",
+    borderWidth: 1,
+    marginTop: 10,
+  },
   questionView: {
     backgroundColor: "#FFFFFF",
     height: 150,
     width: 300,
     borderRadius: 10,
-    position: "absolute",
-    top: 70,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    alignSelf: "center",
   },
   correct: {
     color: "#9DC183",
@@ -431,13 +479,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 10,
   },
-  bottomRow: {
+  secondRow: {
     flexDirection: "row",
     alignItems: "center",
   },
+  bottomRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    // borderColor: "#FFFFFF",
+    // borderWidth: 1,
+  },
   cardsView: {
-    position: "absolute",
-    bottom: 80,
+    marginTop: 20,
   },
   submitButton: {
     backgroundColor: "#FFFFFF",

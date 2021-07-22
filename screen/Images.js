@@ -81,8 +81,8 @@ export const basicQ7RT4 = require("../assets/basic/basicQ7/reactionOption/reacti
 export const basicSM8 = require("../assets/basic/basicQ8/start.png");
 export const basicN8 = require("../assets/basic/basicQ8/weak.png");
 export const basicS8 = require("../assets/basic/basicQ8/solvent.png");
-export const basicP8 = require("../assets/basic/basicQ8/carbocation.png");
-export const basicPP8 = require("../assets/basic/basicQ8/product.png");
+export const basicC8 = require("../assets/basic/basicQ8/carbocation.png");
+export const basicP8 = require("../assets/basic/basicQ8/product.png");
 //Question 8 choices
 export const basicQ8RT1 = require("../assets/basic/basicQ8/reactionOption/reaction1.png");
 export const basicQ8RT2 = require("../assets/basic/basicQ8/reactionOption/reaction2.png");
@@ -217,6 +217,17 @@ export const basicQ18RT4 = require("../assets/basic/basicQ18/reactionOption/reac
 export const intermediateSM1 = require("../assets/intermediate/intermediateQ1/start.png");
 export const intermediateN1 = require("../assets/intermediate/intermediateQ1/nucleophile.png");
 export const intermediateS1 = require("../assets/intermediate/intermediateQ1/solvent.png");
+
+//Question 1 choices
+export const intermediateQ1RT1 = require("../assets/intermediate/intermediateQ1/reactionOption/reaction1.png");
+export const intermediateQ1RT2 = require("../assets/intermediate/intermediateQ1/reactionOption/reaction2.png");
+export const intermediateQ1RT3 = require("../assets/intermediate/intermediateQ1/reactionOption/reaction3.png");
+export const intermediateQ1RT4 = require("../assets/intermediate/intermediateQ1/reactionOption/reaction4.png");
+
+export const intermediateQ1P1 = require("../assets/intermediate/intermediateQ1/productOption/product1.png");
+export const intermediateQ1P2 = require("../assets/intermediate/intermediateQ1/productOption/product2.png");
+export const intermediateQ1P3 = require("../assets/intermediate/intermediateQ1/productOption/product3.png");
+export const intermediateQ1P4 = require("../assets/intermediate/intermediateQ1/productOption/product4.png");
 
 //Question 2
 export const intermediateN2 = require("../assets/intermediate/intermediateQ2/nucleophile.png");

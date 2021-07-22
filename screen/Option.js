@@ -9,52 +9,53 @@ import {
   Alert,
 } from "react-native";
 import * as All from "./Images.js";
-import { Audio } from 'expo-av';
+import { Audio } from "expo-av";
 
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 function Option(props) {
-  // console.log(props);
+  console.log(props);
   let images = [];
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
   const [selectedOption, setSelectionOption] = useState("");
 
-  const [correctSound, setCorrectSound] = useState(new Audio.Sound);
-  const [wrongSound, setWrongSound] = useState(new Audio.Sound);
+  const [correctSound, setCorrectSound] = useState(new Audio.Sound());
+  const [wrongSound, setWrongSound] = useState(new Audio.Sound());
 
-  useEffect(() => {
-    async function loadCorrectSounds() {
-      await correctSound.loadAsync(require('../assets/sounds/correct.mp3'))
-    }
-    loadCorrectSounds();
-  }, [])
+  // useEffect(() => {
+  //   async function loadCorrectSounds() {
+  //     await correctSound.loadAsync(require('../assets/sounds/correct.mp3'))
+  //   }
+  //   loadCorrectSounds();
+  // }, [])
 
-  const playCorrectSound = () => {
-    correctSound.playAsync();
-    console.log("Play correct Sound")
-  }
+  // const playCorrectSound = () => {
+  //   correctSound.playAsync();
+  //   console.log("Play correct Sound")
+  // }
 
-  useEffect(() => {
-    async function loadWrongSounds() {
-      await wrongSound.loadAsync(require('../assets/sounds/wrong.mp3'))
-    }
-    loadWrongSounds();
-  }, [])
+  // useEffect(() => {
+  //   async function loadWrongSounds() {
+  //     await wrongSound.loadAsync(require('../assets/sounds/wrong.mp3'))
+  //   }
+  //   loadWrongSounds();
+  // }, [])
 
-  const playWrongSound = () => {
-    wrongSound.playAsync();
-    console.log("Play wrong sound")
-  }
+  // const playWrongSound = () => {
+  //   wrongSound.playAsync();
+  //   console.log("Play wrong sound");
+  // };
 
-  var api = "http://192.168.1.69/Chemiz/getQuestionChoices.php";
+  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
   };
   var data = {
-    questionNo: props.questionId,
+    questionId: props.questionId,
+    choiceType: props.selected,
   };
 
   useEffect(() => {
@@ -90,9 +91,10 @@ function Option(props) {
       .catch((error) => {
         db.transaction((tx) => {
           tx.executeSql(
-            "SELECT * FROM question_choices WHERE question_id=?",
-            [props.questionId],
+            "SELECT * FROM question_choices WHERE question_id=? AND choice_type=?",
+            [props.questionId, props.selected],
             (tx, results) => {
+              // console.log(results);
               var len = results.rows.length;
               let dataImage = [];
               for (var i = 0; i < len; i++) {
@@ -175,12 +177,14 @@ function Option(props) {
 
   return (
     <View>
-      {outImages}
-      <Text>Selected option:</Text>
-      <Text>{selectedName}</Text>
-      <TouchableOpacity style={styles.submitButton} onPress={checkAnswer}>
-        <Text style={styles.submitText}>Submit</Text>
-      </TouchableOpacity>
+      <ScrollView>
+        {outImages}
+        <Text>Selected option:</Text>
+        <Text>{selectedName}</Text>
+        <TouchableOpacity style={styles.submitButton} onPress={checkAnswer}>
+          <Text style={styles.submitText}>Submit</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 }

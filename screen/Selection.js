@@ -7,10 +7,11 @@ function Selection(props) {
   let option = props.option;
   // console.log(props);
 
-  if (selected == option) {
+  if (option.includes(selected)) {
     return (
       <Option
         questionId={props.questionId}
+        selected={selected}
         setIsNextQuestion={props.setIsNextQuestion}
         correctTotal={props.correctTotal}
         setCorrectTotal={props.setCorrectTotal}

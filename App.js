@@ -75,7 +75,6 @@ export default function App() {
                   var arrow = "";
 
                   for (let i = 0; i < all.length; i++) {
-                    console.log(all);
                     questionId = all[i].question_id;
                     prompt = all[i].prompt;
                     difficulty = all[i].difficulty;
@@ -92,7 +91,6 @@ export default function App() {
                     extra = all[i].extra;
                     optionType = all[i].option_type;
                     arrow = all[i].arrow;
-                    console.log(reactionType);
 
                     var sql =
                       "INSERT INTO question (question_id, prompt, difficulty, starting_material, nucleophile, solvent, carbocation, leaving_group, product, product2, product3, reaction_type, hint, extra, optionType, arrow) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -137,7 +135,7 @@ export default function App() {
               [],
               async () => {
                 txn.executeSql(
-                  "CREATE TABLE IF NOT EXISTS question_choices(choice_id INTEGER PRIMARY KEY AUTOINCREMENT, choice VARCHAR(255), is_correct_choice VARCHAR(255), name VARCHAR(255), question_id INT(255))",
+                  "CREATE TABLE IF NOT EXISTS question_choices(choice_id INTEGER PRIMARY KEY AUTOINCREMENT, choice VARCHAR(255), is_correct_choice VARCHAR(255), name VARCHAR(255), question_id INT(255), choice_type VARCHAR(255))",
                   [],
                   async () => {
                     var choiceId = "";
@@ -145,6 +143,7 @@ export default function App() {
                     var isCorrectChoice = "";
                     var name = "";
                     var questionIdC = "";
+                    var choiceType = "";
 
                     for (let i = 0; i < allChoices.length; i++) {
                       choiceId = allChoices[i].choice_id;
@@ -152,15 +151,17 @@ export default function App() {
                       isCorrectChoice = allChoices[i].is_correct_choice;
                       name = allChoices[i].name;
                       questionIdC = allChoices[i].question_id;
+                      choiceType = allChoices[i].choice_type;
 
                       var sql =
-                        "INSERT INTO question_choices (choice_id, choice, is_correct_choice, name, question_id ) VALUES (?,?,?,?,?)";
+                        "INSERT INTO question_choices (choice_id, choice, is_correct_choice, name, question_id, choice_type ) VALUES (?,?,?,?,?,?)";
                       var params = [
                         choiceId,
                         choice,
                         isCorrectChoice,
                         name,
                         questionIdC,
+                        choiceType,
                       ];
 
                       executeSql(sql, params);
