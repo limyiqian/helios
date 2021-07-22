@@ -118,18 +118,9 @@ export default function Play({ navigation, route }) {
             (tx, results) => {
               console.log("Rows affected:", results.rowsAffected);
               if (results.rowsAffected > 0) {
-                Alert.alert(
-                  "Success",
-                  "Successfully Inserted",
-                  [
-                    {
-                      text: "Ok",
-                    },
-                  ],
-                  { cancelable: false }
-                );
+                console.log("Inserted Successfully");
                 setOptionModalVisible(false);
-              } else Alert.alert("Insertion Failed");
+              } else console.log("Insertion Failed");
             }
           );
         });
