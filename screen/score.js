@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Score({ navigation, route }) {
   // const { correctTotal, wrongTotal } = route.params;
@@ -47,7 +49,26 @@ export default function Score({ navigation, route }) {
         setScore(response.score);
         // setTotalNumQns(response.totalNumQns);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        db.transaction((tx) => {
+          tx.executeSql(
+            "SELECT * FROM attempt where user_id = ? ORDER BY attempt_id DESC",
+            [user_id],
+            (tx, results) => {
+              var len = results.rows.length;
+              if (len > 0) {
+                console.log(results);
+                let attempt_id = results.rows.item(0).attempt_id;
+                setCorrectTotal(results.rows.item(0).correct)
+                setWrongTotal(results.rows.item(0).wrong)
+                setScore(results.rows.item(0).score)
+              } else {
+                Alert.alert("No score found");
+              }
+            }
+          );
+        });
+      });
   }, []);
 
   return (
