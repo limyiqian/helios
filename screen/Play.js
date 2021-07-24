@@ -112,7 +112,19 @@ export default function Play({ navigation, route }) {
         }
       })
       .catch((error) => {
-        console.error(error);
+        db.transaction(function (tx) {
+          tx.executeSql(
+            "INSERT INTO attempts (user_id, score, correct, wrong) VALUES (?,?,?,?)",
+            [user_id, totalScore, correctTotal, wrongTotal],
+            (tx, results) => {
+              console.log("Rows affected:", results.rowsAffected);
+              if (results.rowsAffected > 0) {
+                console.log("Inserted Successfully");
+                setOptionModalVisible(false);
+              } else console.log("Insertion Failed");
+            }
+          );
+        });
       });
   }
 
