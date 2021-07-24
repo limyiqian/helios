@@ -15,7 +15,7 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 function Option(props) {
-  console.log(props);
+  // console.log(props);
   let images = [];
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
@@ -24,29 +24,29 @@ function Option(props) {
   const [correctSound, setCorrectSound] = useState(new Audio.Sound());
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
 
-  // useEffect(() => {
-  //   async function loadCorrectSounds() {
-  //     await correctSound.loadAsync(require('../assets/sounds/correct.mp3'))
-  //   }
-  //   loadCorrectSounds();
-  // }, [])
+  useEffect(() => {
+    async function loadCorrectSounds() {
+      await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
+    }
+    loadCorrectSounds();
+  }, []);
 
-  // const playCorrectSound = () => {
-  //   correctSound.playAsync();
-  //   console.log("Play correct Sound")
-  // }
+  const playCorrectSound = () => {
+    correctSound.playAsync();
+    console.log("Play correct Sound");
+  };
 
-  // useEffect(() => {
-  //   async function loadWrongSounds() {
-  //     await wrongSound.loadAsync(require('../assets/sounds/wrong.mp3'))
-  //   }
-  //   loadWrongSounds();
-  // }, [])
+  useEffect(() => {
+    async function loadWrongSounds() {
+      await wrongSound.loadAsync(require("../assets/sounds/wrong.mp3"));
+    }
+    loadWrongSounds();
+  }, []);
 
-  // const playWrongSound = () => {
-  //   wrongSound.playAsync();
-  //   console.log("Play wrong sound");
-  // };
+  const playWrongSound = () => {
+    wrongSound.playAsync();
+    console.log("Play wrong sound");
+  };
 
   var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
   var headers = {
@@ -125,12 +125,12 @@ function Option(props) {
   function userSelectOption(optionObj) {
     setSelectionOption(optionObj);
     setSelectedName(optionObj.name);
-    console.log(optionObj);
+    // console.log(optionObj);
   }
 
   function checkAnswer() {
     if (selectedOption.is_correct_choice == "True") {
-      playCorrectSound();
+      // playCorrectSound();
       Alert.alert(
         "Correct",
         "+100 points",
@@ -148,7 +148,7 @@ function Option(props) {
         { cancelable: false }
       );
     } else if (selectedOption.is_correct_choice == "False") {
-      playWrongSound();
+      // playWrongSound();
       Alert.alert(
         "Wrong",
         "-100 points",
@@ -172,7 +172,13 @@ function Option(props) {
     } else if (isCorrect == "wrong") {
       props.setWrongTotal(props.wrongTotal + 1);
     }
-    props.setIsNextQuestion(true);
+
+    if (props.numOfOptionsAnswered > 1) {
+      props.setNumOfOptionsAnswered(props.numOfOptionsAnswered - 1);
+      props.setOptionModalVisible(false);
+    } else if (props.numOfOptionsAnswered == 1) {
+      props.setIsNextQuestion(true);
+    }
   }
 
   return (

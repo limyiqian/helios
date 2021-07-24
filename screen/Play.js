@@ -22,7 +22,7 @@ export default function Play({ navigation, route }) {
   let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(19);
+  const [currentQuestionId, setCurrentQuestionId] = useState(questionId);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -39,6 +39,7 @@ export default function Play({ navigation, route }) {
   const [currentExtra, setCurrentExtra] = useState("");
   const [currentOptionType, setCurrentOptionType] = useState("");
   const [currentArrow, setCurrentArrow] = useState("");
+  const [numOfOptionsAnswered, setNumOfOptionsAnswered] = useState("");
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -55,7 +56,7 @@ export default function Play({ navigation, route }) {
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
   //Maximum number of questions (20 max)
-  const [maxQues, setMaxQues] = useState(6);
+  const [maxQues, setMaxQues] = useState(30);
   //Number of question correct to go next stage (how many correct + 1)
   const [answeredCorrect, setAnsweredCorrect] = useState(6);
 
@@ -149,6 +150,9 @@ export default function Play({ navigation, route }) {
         setCurrentExtra(response.extra);
         setCurrentOptionType(response.optionType);
         setCurrentArrow(response.arrow);
+        let optionArr = response.optionType.split(",");
+        let numberOfOptions = optionArr.length;
+        setNumOfOptionsAnswered(numberOfOptions);
       })
       .catch((error) => {
         db.transaction((tx) => {
@@ -188,8 +192,7 @@ export default function Play({ navigation, route }) {
 
   //Do something if time is over
   function timerOnFinish() {
-    // console.log("Timer on finish");
-    alert("Times up!");
+    insertAttempt();
   }
 
   return (
@@ -323,6 +326,30 @@ export default function Play({ navigation, route }) {
               <Image style={styles.card} source={All[`${currentProduct3}`]} />
             </TouchableOpacity>
           </View>
+
+          <View style={styles.bottomRow}>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("leavingGroup");
+                setImageName(currentLeavingGroup);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image
+                style={styles.card}
+                source={All[`${currentLeavingGroup}`]}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                await setSelection("extra");
+                setImageName(currentExtra);
+                setOptionModalVisible(true);
+              }}
+            >
+              <Image style={styles.card} source={All[`${currentExtra}`]} />
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
 
@@ -413,6 +440,9 @@ export default function Play({ navigation, route }) {
               setCorrectTotal={setCorrectTotal}
               wrongTotal={wrongTotal}
               setWrongTotal={setWrongTotal}
+              setOptionModalVisible={setOptionModalVisible}
+              numOfOptionsAnswered={numOfOptionsAnswered}
+              setNumOfOptionsAnswered={setNumOfOptionsAnswered}
             />
           </View>
         </View>
@@ -429,8 +459,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   scrollview: {
-    borderColor: "#FFFFFF",
-    borderWidth: 1,
     marginTop: 10,
   },
   questionView: {
@@ -486,8 +514,6 @@ const styles = StyleSheet.create({
   bottomRow: {
     flexDirection: "row",
     alignItems: "center",
-    // borderColor: "#FFFFFF",
-    // borderWidth: 1,
   },
   cardsView: {
     marginTop: 20,
