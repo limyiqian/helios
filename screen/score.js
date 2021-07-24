@@ -59,9 +59,9 @@ export default function Score({ navigation, route }) {
               if (len > 0) {
                 console.log(results);
                 let attempt_id = results.rows.item(0).attempt_id;
-                setCorrectTotal(results.rows.item(0).correct)
-                setWrongTotal(results.rows.item(0).wrong)
-                setScore(results.rows.item(0).score)
+                setCorrectTotal(results.rows.item(0).correct);
+                setWrongTotal(results.rows.item(0).wrong);
+                setScore(results.rows.item(0).score);
               } else {
                 Alert.alert("No score found");
               }
