@@ -17,7 +17,7 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Play({ navigation, route }) {
-  const { questionId, gamemode } = route.params;
+  const { questionId, gamemode, hint, duration } = route.params;
   // const { user_id } = route.params;
   let user_id = 1;
 
@@ -35,11 +35,11 @@ export default function Play({ navigation, route }) {
   const [currentProduct3, setCurrentProduct3] = useState("");
   const [currentReactionType, setCurrentReactionType] = useState("");
   const [currentHint, setCurrentHint] = useState("");
-  const [currentHintIcon, setCurrentHintIcon] = useState("help-circle-outline");
+  const [hintVisibility, setHintVisibility] = useState(hint);
   const [currentExtra, setCurrentExtra] = useState("");
   const [currentOptionType, setCurrentOptionType] = useState("");
   const [currentArrow, setCurrentArrow] = useState("");
-  const [numOfOptionsAnswered, setNumOfOptionsAnswered] = useState("");
+  const [numOfOptionsToBeAnswered, setNumOfOptionsToBeAnswered] = useState("");
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -50,35 +50,56 @@ export default function Play({ navigation, route }) {
   const [selection, setSelection] = useState("");
   const [imageName, setImageName] = useState("");
 
-  //Default timer is 60 seconds
-  const [totalDuration, setTotalDuration] = useState(60);
+  const [totalDuration, setTotalDuration] = useState(duration);
+  const [countDownId, setCountDownId] = useState("1");
+
+  const [quesNoArray, setQuesNoArray] = useState([]);
 
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
-  //Maximum number of questions (20 max)
   const [maxQues, setMaxQues] = useState(30);
   //Number of question correct to go next stage (how many correct + 1)
-  const [answeredCorrect, setAnsweredCorrect] = useState(6);
+  const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(6);
 
   useEffect(() => {
     if (isNextQuestion) {
-      var nextQues = parseInt(currentQuestionId) + 1;
-      setCurrentQuestionId(nextQues);
-      var isNextLevel = nextQues / answeredCorrect;
+      var randomId = Math.random().toString();
+      setCountDownId(randomId);
+      if (gamemode == "Random") {
+        quesNoArray.push(currentQuestionNo);
+        var nextQues = getRandomNumber(quesNoArray);
+        setCurrentQuestionId(nextQues);
+        console.log("Random:" + nextQues);
+      } else {
+        var nextQues = parseInt(currentQuestionId) + 1;
+        setCurrentQuestionId(nextQues);
+      }
+      var nextLvl = correctTotal / answerCorrectToNextLvl;
       // console.log(isNextLevel);
-      if (nextQues > maxQues) {
+      if (currentQuestionNo > maxQues) {
         insertAttempt();
-      } else if (isNextLevel == 1) {
-        setCurrentQuestionId(10);
-      } else if (isNextLevel == 2) {
-        setCurrentQuestionId(24);
+      } else if (nextLvl == 1) {
+        setCurrentQuestionId(19);
+      } else if (nextLvl == 2) {
+        setCurrentQuestionId(41);
       }
       setHintModalVisible(false);
       setOptionModalVisible(false);
-      setCurrentQuestionNo(nextQues);
+      setCurrentQuestionNo(currentQuestionNo + 1);
       setIsNextQuestion(false);
     }
   });
+
+  function getRandomNumber(array) {
+    let randomNumber = Math.floor(Math.random() * 59) + 1;
+    for (let i = 0; i < array.length; i++) {
+      if (randomNumber == array[i]) {
+        getRandomNumber(array);
+      } else {
+        return randomNumber;
+      }
+    }
+  }
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
@@ -164,7 +185,7 @@ export default function Play({ navigation, route }) {
         setCurrentArrow(response.arrow);
         let optionArr = response.optionType.split(",");
         let numberOfOptions = optionArr.length;
-        setNumOfOptionsAnswered(numberOfOptions);
+        setNumOfOptionsToBeAnswered(numberOfOptions);
       })
       .catch((error) => {
         db.transaction((tx) => {
@@ -202,9 +223,8 @@ export default function Play({ navigation, route }) {
       });
   }, [currentQuestionNo]);
 
-  //Do something if time is over
   function timerOnFinish() {
-    insertAttempt();
+    setIsNextQuestion(true);
   }
 
   return (
@@ -216,6 +236,7 @@ export default function Play({ navigation, route }) {
             <Text style={styles.wrong}>{wrongTotal}</Text>
           </View>
           <CountDown
+            id={countDownId}
             until={totalDuration}
             timeToShow={["S"]}
             style={styles.countdownView}
@@ -233,14 +254,18 @@ export default function Play({ navigation, route }) {
                 Question {currentQuestionNo}
               </Text>
             </View>
-            <Ionicons
-              name={currentHintIcon}
-              size={30}
-              color="#F8DE7E"
-              onPress={() => {
-                setHintModalVisible(true);
-              }}
-            />
+            <View>
+              {hintVisibility ? (
+                <Ionicons
+                  name="help-circle-outline"
+                  size={30}
+                  color="#F8DE7E"
+                  onPress={() => {
+                    setHintModalVisible(true);
+                  }}
+                />
+              ) : null}
+            </View>
           </View>
           <Text style={styles.questionText}>{currentPrompt}</Text>
         </View>
@@ -445,7 +470,7 @@ export default function Play({ navigation, route }) {
             <Selection
               selected={selection}
               imageName={imageName}
-              option={currentOptionType}
+              optionType={currentOptionType}
               questionId={currentQuestionId}
               setIsNextQuestion={setIsNextQuestion}
               correctTotal={correctTotal}
@@ -453,8 +478,9 @@ export default function Play({ navigation, route }) {
               wrongTotal={wrongTotal}
               setWrongTotal={setWrongTotal}
               setOptionModalVisible={setOptionModalVisible}
-              numOfOptionsAnswered={numOfOptionsAnswered}
-              setNumOfOptionsAnswered={setNumOfOptionsAnswered}
+              numOfOptionsToBeAnswered={numOfOptionsToBeAnswered}
+              setNumOfOptionsToBeAnswered={setNumOfOptionsToBeAnswered}
+              setCountDownId={setCountDownId}
             />
           </View>
         </View>

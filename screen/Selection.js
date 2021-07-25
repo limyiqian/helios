@@ -4,10 +4,10 @@ import Option from "./Option";
 
 function Selection(props) {
   let selected = props.selected;
-  let option = props.option;
+  let optionType = props.optionType;
   console.log(props);
 
-  if (option.includes(selected)) {
+  if (optionType.includes(selected)) {
     return (
       <Option
         questionId={props.questionId}
@@ -18,8 +18,9 @@ function Selection(props) {
         wrongTotal={props.wrongTotal}
         setWrongTotal={props.setWrongTotal}
         setOptionModalVisible={props.setOptionModalVisible}
-        numOfOptionsAnswered={props.numOfOptionsAnswered}
-        setNumOfOptionsAnswered={props.setNumOfOptionsAnswered}
+        numOfOptionsToBeAnswered={props.numOfOptionsToBeAnswered}
+        setNumOfOptionsToBeAnswered={props.setNumOfOptionsToBeAnswered}
+        setCountDownId={props.setCountDownId}
       />
     );
   } else {

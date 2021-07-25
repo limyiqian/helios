@@ -557,13 +557,11 @@ export const advancedQ1C2 = require("../assets/advanced/advancedQ1/carbocationOp
 export const advancedQ1C3 = require("../assets/advanced/advancedQ1/carbocationOption/carbocation3.png");
 export const advancedQ1C4 = require("../assets/advanced/advancedQ1/carbocationOption/carbocation4.png");
 
-
 //Question 2
 export const advancedSM2 = require("../assets/advanced/advancedQ2/start.png");
-export const advancedI2 = require("../assets/advanced/advancedQ2/inactive1.png");
-export const advancedII2 = require("../assets/advanced/advancedQ2/inactive2.png");
+export const advancedP2 = require("../assets/advanced/advancedQ2/inactive1.png");
+export const advancedPP2 = require("../assets/advanced/advancedQ2/inactive2.png");
 export const advancedE2 = require("../assets/advanced/advancedQ2/atracurium.png");
-
 
 //Question 2 choices
 export const advancedQ2RT1 = require("../assets/advanced/advancedQ2/reactionOption/reaction1.png");
@@ -599,7 +597,6 @@ export const advancedQ4SM1 = require("../assets/advanced/advancedQ4/startOption/
 export const advancedQ4SM2 = require("../assets/advanced/advancedQ4/startOption/start2.png");
 export const advancedQ4SM3 = require("../assets/advanced/advancedQ4/startOption/start3.png");
 export const advancedQ4SM4 = require("../assets/advanced/advancedQ4/startOption/start4.png");
-
 
 //Question 5
 export const advancedN5 = require("../assets/advanced/advancedQ5/nucleophile.png");
@@ -823,7 +820,6 @@ export const advancedQ19RT2 = require("../assets/advanced/advancedQ19/reactionOp
 export const advancedQ19RT3 = require("../assets/advanced/advancedQ19/reactionOption/reaction3.png");
 export const advancedQ19RT4 = require("../assets/advanced/advancedQ19/reactionOption/reaction4.png");
 
-//?
 export const reactionTypeOption = require("../assets/reactionTypeOption.png");
 export const leavingGroupOption = require("../assets/leavingGroupOption.png");
 export const carbocationOption = require("../assets/carbocationOption.png");

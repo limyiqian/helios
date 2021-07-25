@@ -29,19 +29,30 @@ export default function Main({ navigation, route }) {
   const [dropdownDifficultyChosen, setDifficultyDropdownChosen] =
     useState("Basic");
   const [startQuestionId, setStartQuestionId] = useState(1);
+  const [hintVisibility, setHintVisibility] = useState(true);
+  const [duration, setDuration] = useState(0);
 
   //In question database (can be changed accordingly)
   let basicId = 1;
-  let intermediateId = 10;
-  let advancedId = 24;
+  let intermediateId = 19;
+  let advancedId = 41;
 
   useEffect(() => {
     if (dropdownDifficultyChosen == "Basic") {
       setStartQuestionId(basicId);
+      setHintVisibility(true);
     } else if (dropdownDifficultyChosen == "Intermediate") {
       setStartQuestionId(intermediateId);
+      setHintVisibility(false);
     } else if (dropdownDifficultyChosen == "Advanced") {
       setStartQuestionId(advancedId);
+      setHintVisibility(false);
+    }
+
+    if (dropdownGamemodeChosen == "Speed") {
+      setDuration(30);
+    } else {
+      setDuration(60);
     }
   });
 
@@ -61,6 +72,8 @@ export default function Main({ navigation, route }) {
               // username: route.params.username,
               questionId: startQuestionId,
               gamemode: dropdownGamemodeChosen,
+              hint: hintVisibility,
+              duration: duration,
             })
           }
         >
