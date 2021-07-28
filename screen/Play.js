@@ -195,7 +195,7 @@ export default function Play({ navigation, route }) {
             (tx, results) => {
               var len = results.rows.length;
               if (len > 0) {
-                console.log(results);
+                // console.log(results);
                 setCurrentQuestionId(results.rows.item(0).question_id);
                 setCurrentDifficulty(results.rows.item(0).difficulty);
                 setCurrentPrompt(results.rows.item(0).prompt);
