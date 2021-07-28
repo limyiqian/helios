@@ -64,7 +64,7 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        <Text style={styles.title}>name</Text>
+        <Text style={styles.title}>{route.params.username}</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
@@ -106,9 +106,9 @@ export default function Main({ navigation, route }) {
           style={styles.button}
           onPress={() =>
             navigation.navigate("Profile", {
-              // user_id: user_id,
-              // username: route.params.username,
-              // userPassword: userPassword,
+              user_id: route.params.user_id,
+              username: route.params.username,
+              userPassword: route.params.userPassword,
             })
           }
         >

@@ -21,7 +21,7 @@ export default function Attempts(props) {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    var api = "http://10.174.122.249/Chemiz/getAttempts.php";
+    var api = "http://192.168.0.116/Chemiz/getAttempts.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",

@@ -19,7 +19,7 @@ import ReviewAns from "./screen/ReviewAns.js";
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 import AllQuestions from "./screen/AllQuestions.js";
-import AllQnsChoices from "./screen/AllQnsChoices.js";
+import AllQnsChoices from "./screen/AllqnsChoices.js";
 import ViewAllAttempts from "./screen/ViewAllAttempts.js";
 
 const Stack = createStackNavigator();
@@ -205,7 +205,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}

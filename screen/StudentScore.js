@@ -43,7 +43,7 @@ export default function StudentScore({ navigation, route }) {
   let [deleteQuesId, setDeleteQuesId] = useState("");
 
   useEffect(() => {
-    var api = "http://192.168.18.7/Chemiz/getStudent.php";
+    var api = "http://192.168.0.116/Chemiz/getStudent.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
