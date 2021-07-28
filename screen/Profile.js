@@ -28,8 +28,7 @@ export default function Profile({ navigation, route }) {
   // const [score, setScore] = useState(0);
 
   useEffect(() => {
-    var api = "http://10.174.122.249/Chemiz/getUser.php";
-    var api = "http://192.168.1.71/Chemiz/getUser.php";
+    var api = "http://192.168.0.116/Chemiz/getUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -56,8 +55,7 @@ export default function Profile({ navigation, route }) {
   }, []);
 
   function updateUserDetail() {
-    var api = "http://10.174.122.249/Chemiz/updateUserDetails.php";
-    var api = "http://192.168.1.71/Chemiz/updateUserDetails.php";
+    var api = "http://192.168.0.116/Chemiz/updateUserDetails.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -91,7 +89,7 @@ export default function Profile({ navigation, route }) {
         source={require("../assets/chemiz.png")}
         style={styles.image}
       ></Image>
-      <Text style={styles.username}>{name}</Text>
+      <Text style={styles.username}>{username}</Text>
       <TouchableOpacity
         onPress={() => setEditProfileVisible(true)}
         style={styles.editButton}
