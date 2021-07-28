@@ -126,6 +126,7 @@ export default function Play({ navigation, route }) {
           navigation.navigate("Score", {
             user_id: user_id,
             gamemode: gamemode,
+            currentQuestionNo: currentQuestionNo,
           });
           setOptionModalVisible(false);
         } else {

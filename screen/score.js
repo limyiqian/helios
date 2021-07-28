@@ -16,7 +16,7 @@ const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Score({ navigation, route }) {
   // const { correctTotal, wrongTotal } = route.params;
-  const { gamemode, user_id } = route.params;
+  const { gamemode, user_id, currentQuestionNo } = route.params;
   // const {user_id} = route.params;
   // const [user_id, setUser_id] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -129,7 +129,7 @@ export default function Score({ navigation, route }) {
               />{" "}
               Total Question
             </Text>
-            <Text style={styles.qnsNum}>20</Text>
+            <Text style={styles.qnsNum}>{currentQuestionNo}</Text>
           </View>
         </View>
       </View>
