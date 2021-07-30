@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as SQLite from "expo-sqlite";
@@ -28,7 +29,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http://192.168.0.116/Chemiz/getScore.php";
+    var api = "http://192.168.1.69/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -142,7 +143,7 @@ export default function Score({ navigation, route }) {
               size={25}
               color="#000000"
               style={{ left: 12, top: 13 }}
-              onPress={() => navigation.navigate("Play")}
+              onPress={() => navigation.navigate("Main")}
             />
           </View>
           <Text style={styles.btnPlayTxt}>Play again</Text>
@@ -161,15 +162,15 @@ export default function Score({ navigation, route }) {
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.btnHomeCircle}>
-            <Ionicons
-              name="home-outline"
+            <AntDesign
+              name="logout"
               size={25}
               color="#000000"
               style={{ left: 13, top: 12 }}
-              onPress={() => navigation.navigate("Main")}
+              onPress={() => navigation.navigate("Login")}
             />
           </View>
-          <Text style={styles.btnTxt}>Home</Text>
+          <Text style={styles.btnTxt}>Logout</Text>
         </TouchableOpacity>
       </View>
     </View>
