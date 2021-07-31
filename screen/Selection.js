@@ -5,7 +5,7 @@ import Option from "./Option";
 function Selection(props) {
   let selected = props.selected;
   let optionType = props.optionType;
-  // console.log(props);
+  console.log(props);
 
   if (optionType.includes(selected)) {
     return (

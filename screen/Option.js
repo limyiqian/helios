@@ -167,6 +167,7 @@ function Option(props) {
   }
 
   function nextQuestion(isCorrect) {
+    console.log("1:" + props.numOfOptionsToBeAnswered);
     if (isCorrect == "correct") {
       props.setCorrectTotal(props.correctTotal + 1);
     } else if (isCorrect == "wrong") {
@@ -174,7 +175,9 @@ function Option(props) {
     }
 
     if (props.numOfOptionsToBeAnswered > 1) {
-      props.setNumOfOptionsToBeAnswered(props.numOfOptionsToBeAnswered - 1);
+      props.setNumOfOptionsToBeAnswered(
+        parseInt(props.numOfOptionsToBeAnswered) - 1
+      );
       props.setOptionModalVisible(false);
     } else if (props.numOfOptionsToBeAnswered == 1) {
       props.setIsNextQuestion(true);

@@ -39,7 +39,7 @@ export default function Play({ navigation, route }) {
   const [currentExtra, setCurrentExtra] = useState("");
   const [currentOptionType, setCurrentOptionType] = useState("");
   const [currentArrow, setCurrentArrow] = useState("");
-  const [numOfOptionsToBeAnswered, setNumOfOptionsToBeAnswered] = useState("");
+  const [numOfOptionsToBeAnswered, setNumOfOptionsToBeAnswered] = useState(0);
 
   const [correctTotal, setCorrectTotal] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -57,9 +57,8 @@ export default function Play({ navigation, route }) {
 
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
-  const [maxQues, setMaxQues] = useState(30);
-  //Number of question correct to go next stage (how many correct + 1)
-  const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(6);
+  const [maxQues, setMaxQues] = useState(20);
+  const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(5);
 
   useEffect(() => {
     if (isNextQuestion) {
@@ -75,7 +74,6 @@ export default function Play({ navigation, route }) {
         setCurrentQuestionId(nextQues);
       }
       var nextLvl = correctTotal / answerCorrectToNextLvl;
-      // console.log(isNextLevel);
       if (currentQuestionNo > maxQues) {
         insertAttempt();
       } else if (nextLvl == 1) {

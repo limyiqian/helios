@@ -34,7 +34,7 @@ export default function App() {
         "SELECT name FROM sqlite_master WHERE type='table' AND name='user'",
         [],
         function (tx, res) {
-          console.log("User table:", res.rows.length);
+          // console.log("User table:", res.rows.length);
           if (res.rows.length == 0) {
             txn.executeSql("DROP TABLE IF EXISTS user", []);
             txn.executeSql(
@@ -51,7 +51,7 @@ export default function App() {
         "SELECT name FROM sqlite_master WHERE type='table' AND name='question'",
         [],
         function (tx, res) {
-          console.log("Question table:", res.rows.length);
+          // console.log("Question table:", res.rows.length);
           if (res.rows.length == 0) {
             txn.executeSql("DROP TABLE IF EXISTS question", [], async () => {
               txn.executeSql(
@@ -129,7 +129,7 @@ export default function App() {
         "SELECT name FROM sqlite_master WHERE type='table' AND name='question_choices'",
         [],
         function (tx, res) {
-          console.log("Question choices table:", res.rows.length);
+          // console.log("Question choices table:", res.rows.length);
           if (res.rows.length == 0) {
             txn.executeSql(
               "DROP TABLE IF EXISTS question_choices",
@@ -181,7 +181,7 @@ export default function App() {
         "SELECT name FROM sqlite_master WHERE type='table' AND name='attempt'",
         [],
         function (tx, res) {
-          console.log("Attempt table:", res.rows.length);
+          // console.log("Attempt table:", res.rows.length);
           if (res.rows.length == 0) {
             txn.executeSql("DROP TABLE IF EXISTS attempt", []);
             txn.executeSql(
@@ -205,7 +205,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
           name="Login"
           component={Login}

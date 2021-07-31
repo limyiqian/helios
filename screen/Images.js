@@ -251,7 +251,7 @@ export const intermediateQ2RT4 = require("../assets/intermediate/intermediateQ2/
 //Question 3
 export const intermediateSM3 = require("../assets/intermediate/intermediateQ3/start.png");
 export const intermediateN3 = require("../assets/intermediate/intermediateQ3/nucleophile.png");
-export const intermediateP3 = require("../assets/intermediate/intermediateQ2/product1.png");
+export const intermediatePP3 = require("../assets/intermediate/intermediateQ2/product1.png");
 export const intermediateS3 = require("../assets/intermediate/intermediateQ3/solvent.png");
 
 //Question 3 choices
@@ -481,8 +481,8 @@ export const intermediateQ18P4 = require("../assets/intermediate/intermediateQ18
 //Question 19
 export const intermediateS19 = require("../assets/intermediate/intermediateQ19/solvent.png");
 export const intermediateN19 = require("../assets/intermediate/intermediateQ19/nucleophile.png");
-export const intermediateP19 = require("../assets/intermediate/intermediateQ19/product1.png");
-export const intermediatePP19 = require("../assets/intermediate/intermediateQ19/product2.png");
+export const intermediatePP19 = require("../assets/intermediate/intermediateQ19/product1.png");
+export const intermediatePPP19 = require("../assets/intermediate/intermediateQ19/product2.png");
 export const intermediateSM19 = require("../assets/intermediate/intermediateQ19/start.png");
 
 //Question 19 choices
@@ -529,8 +529,8 @@ export const intermediateQ21SM4 = require("../assets/intermediate/intermediateQ2
 export const intermediateSM22 = require("../assets/intermediate/intermediateQ22/start.png");
 export const intermediateS22 = require("../assets/intermediate/intermediateQ22/solvent.png");
 export const intermediateN22 = require("../assets/intermediate/intermediateQ22/nucleophile.png");
-export const intermediateP22 = require("../assets/intermediate/intermediateQ22/product1.png");
-export const intermediatePP22 = require("../assets/intermediate/intermediateQ22/product2.png");
+export const intermediatePP22 = require("../assets/intermediate/intermediateQ22/product1.png");
+export const intermediatePPP22 = require("../assets/intermediate/intermediateQ22/product2.png");
 
 //Question 22 choices
 export const intermediateQ22RT1 = require("../assets/intermediate/intermediateQ22/reactionOption/reaction1.png");

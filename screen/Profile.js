@@ -28,7 +28,7 @@ export default function Profile({ navigation, route }) {
   // const [score, setScore] = useState(0);
 
   useEffect(() => {
-    var api = "http://192.168.0.116/Chemiz/getUser.php";
+    var api = "http://192.168.18.7/Chemiz/getUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export default function Profile({ navigation, route }) {
   }, []);
 
   function updateUserDetail() {
-    var api = "http://192.168.0.116/Chemiz/updateUserDetails.php";
+    var api = "http://192.168.18.7/Chemiz/updateUserDetails.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -128,13 +128,16 @@ export default function Profile({ navigation, route }) {
               >
                 <Text>{username}</Text>
               </TextInput>
-              <TextInput style={styles.textInput}
-              onChangeText={(password) => setPassword(password)}>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={(password) => setPassword(password)}
+              >
                 <Text>{userPassword}</Text>
-
               </TextInput>
-              <TextInput style={styles.textInput}
-              onChangeText={(email) => setEmail(email)}>
+              <TextInput
+                style={styles.textInput}
+                onChangeText={(email) => setEmail(email)}
+              >
                 <Text>{email}</Text>
               </TextInput>
               <TouchableOpacity

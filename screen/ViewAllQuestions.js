@@ -18,23 +18,22 @@ export default function ViewAllQuestions({ navigation, route }) {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("test" + response.toString());
-
         var temp = [];
-        for (let i = 0; i < response.rows.length; ++i)
-          temp.push(response.rows.item(i));
-        setFlatListItems(temp);
+        for (let i = 0; i < response.length; i++) {
+          temp.push(response[i]);
+          setFlatListItems(temp);
+        }
       })
       .catch((error) => {
-        // db.transaction((tx) => {
-        //   tx.executeSql("SELECT * FROM question_choices", [], (tx, results) => {
-        //     console.log(results);
-        //     var temp = [];
-        //     for (let i = 0; i < results.rows.length; ++i)
-        //       temp.push(results.rows.item(i));
-        //     setFlatListItems(temp);
-        //   });
-        // });
+        db.transaction((tx) => {
+          tx.executeSql("SELECT * FROM question", [], (tx, results) => {
+            console.log(results);
+            var temp = [];
+            for (let i = 0; i < results.rows.length; ++i)
+              temp.push(results.rows.item(i));
+            setFlatListItems(temp);
+          });
+        });
       });
   }, []);
 
@@ -44,7 +43,8 @@ export default function ViewAllQuestions({ navigation, route }) {
         style={{
           height: 0.2,
           width: "100%",
-          backgroundColor: "black",
+          borderColor: "#000000",
+          borderWidth: 1,
         }}
       />
     );
@@ -71,6 +71,7 @@ export default function ViewAllQuestions({ navigation, route }) {
         <Text>Extra: {item.extra}</Text>
         <Text>Option type: {item.option_type}</Text>
         <Text>Arrow: {item.arrow}</Text>
+        <Text>Did You Know?: {item.didYouKnow}</Text>
       </View>
     );
   };
