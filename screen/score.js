@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import * as SQLite from "expo-sqlite";
@@ -29,7 +29,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http://192.168.1.69/Chemiz/getScore.php";
+    var api = "http://192.168.18.7/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",

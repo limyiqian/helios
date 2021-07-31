@@ -19,7 +19,7 @@ import ReviewAns from "./screen/ReviewAns.js";
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 import AllQuestions from "./screen/AllQuestions.js";
-import AllQnsChoices from "./screen/AllqnsChoices.js";
+import AllQnsChoices from "./screen/AllQnsChoices.js";
 import ViewAllAttempts from "./screen/ViewAllAttempts.js";
 
 const Stack = createStackNavigator();

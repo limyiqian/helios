@@ -7,15 +7,35 @@ export default function ViewAllQuestions({ navigation, route }) {
   let [flatListItems, setFlatListItems] = useState([]);
 
   useEffect(() => {
-    db.transaction((tx) => {
-      tx.executeSql("SELECT * FROM question_choices", [], (tx, results) => {
-        console.log(results);
+    var api = "http://192.168.18.7/Chemiz/getAllQuestions.php";
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("test" + response.toString());
+
         var temp = [];
-        for (let i = 0; i < results.rows.length; ++i)
-          temp.push(results.rows.item(i));
+        for (let i = 0; i < response.rows.length; ++i)
+          temp.push(response.rows.item(i));
         setFlatListItems(temp);
+      })
+      .catch((error) => {
+        // db.transaction((tx) => {
+        //   tx.executeSql("SELECT * FROM question_choices", [], (tx, results) => {
+        //     console.log(results);
+        //     var temp = [];
+        //     for (let i = 0; i < results.rows.length; ++i)
+        //       temp.push(results.rows.item(i));
+        //     setFlatListItems(temp);
+        //   });
+        // });
       });
-    });
   }, []);
 
   let listViewItemSeparator = () => {

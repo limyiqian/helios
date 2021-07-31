@@ -21,7 +21,7 @@ export default function Attempts(props) {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    var api = "http://192.168.0.116/Chemiz/getAttempts.php";
+    var api = "http://192.168.18.7/Chemiz/getAttempts.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function Attempts(props) {
     })
       .then((response) => response.json())
       .then((response) => {
-        setAvgScore(response.score/attempt_id);
+        setAvgScore(response.score / attempt_id);
         setCorrectTotal(response.correct);
         setWrongTotal(response.wrong);
         setScore(response.score);
@@ -47,10 +47,10 @@ export default function Attempts(props) {
   }, []);
 
   return (
-  <View>
+    <View>
       <Text>Average Score: {avgScore}</Text>
       <Text></Text>
-  </View>
+    </View>
   );
 }
 

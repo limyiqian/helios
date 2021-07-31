@@ -21,6 +21,7 @@ function Selection(props) {
         numOfOptionsToBeAnswered={props.numOfOptionsToBeAnswered}
         setNumOfOptionsToBeAnswered={props.setNumOfOptionsToBeAnswered}
         setCountDownId={props.setCountDownId}
+        currentQuestionNo={props.currentQuestionNo}
       />
     );
   } else {
