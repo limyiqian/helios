@@ -24,6 +24,8 @@ function Option(props) {
   const [correctSound, setCorrectSound] = useState(new Audio.Sound());
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
 
+  console.log(props.currentQuestionNo);
+  console.log("choice_id: "+selectedOption.choice_id);
   // useEffect(() => {
   //   async function loadCorrectSounds() {
   //     await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
@@ -48,7 +50,7 @@ function Option(props) {
   //   console.log("Play wrong sound");
   // };
 
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+  var api = "http://192.168.1.77/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -128,7 +130,40 @@ function Option(props) {
     // console.log(optionObj);
   }
 
+  function insertReviewAns() {
+    var api = "http://192.168.1.77/Chemiz/insertReviewAns.php"
+    var headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+    var data = {
+      user_id: props.user_id,
+      option_id: selectedOption.choice_id,
+      question_id: props.questionId,
+      question_no: props.currentQuestionNo,
+    };
+    console.log(JSON.stringify(data));
+    fetch(api, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.result == true) {
+          console.log("Successfully inserted!")
+        } else {
+          console.log("Error in inserting attempt");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   function checkAnswer() {
+    insertReviewAns();
     if (selectedOption.is_correct_choice == "True") {
       // playCorrectSound();
       Alert.alert(
