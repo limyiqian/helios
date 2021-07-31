@@ -13,7 +13,7 @@ export default function ReviewAns() {
   // const [wrong, setWrong] = useState(0);
 
   function checkUserAttempt() {
-    var api = "http://192.168.1.77/Chemiz/checkUserAttempted.php"
+    var api = "http://192.168.18.7/Chemiz/checkUserAttempted.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export default function ReviewAns() {
       .then((response) => {
         console.log(response);
         if (response.result == true) {
-          console.log("Deleted!")
+          console.log("Deleted!");
         } else {
           console.log("Error in inserting attempt");
         }
@@ -41,16 +41,13 @@ export default function ReviewAns() {
       });
   }
 
-
   return (
-    <View style={styles.firstContainer}> 
+    <View style={styles.firstContainer}>
       <Text style={styles.reviewAns}>Review Answer</Text>
       <View style={styles.card}>
         <Text style={styles.qnsTitle}> Question 1</Text>
-      </View> 
-
+      </View>
     </View>
-    
   );
 }
 

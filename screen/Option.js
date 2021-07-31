@@ -25,7 +25,7 @@ function Option(props) {
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
 
   console.log(props.currentQuestionNo);
-  console.log("choice_id: "+selectedOption.choice_id);
+  console.log("choice_id: " + selectedOption.choice_id);
   // useEffect(() => {
   //   async function loadCorrectSounds() {
   //     await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
@@ -50,7 +50,7 @@ function Option(props) {
   //   console.log("Play wrong sound");
   // };
 
-  var api = "http://192.168.1.77/Chemiz/getQuestionChoices.php";
+  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -127,17 +127,17 @@ function Option(props) {
   function userSelectOption(optionObj) {
     setSelectionOption(optionObj);
     setSelectedName(optionObj.name);
-    // console.log(optionObj);
   }
 
   function insertReviewAns() {
-    var api = "http://192.168.1.77/Chemiz/insertReviewAns.php"
+    var api = "http://192.168.18.7/Chemiz/insertReviewAns.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
     };
     var data = {
-      user_id: props.user_id,
+      // user_id: props.user_id,
+      user_id: 1,
       option_id: selectedOption.choice_id,
       question_id: props.questionId,
       question_no: props.currentQuestionNo,
@@ -149,14 +149,6 @@ function Option(props) {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        if (response.result == true) {
-          console.log("Successfully inserted!")
-        } else {
-          console.log("Error in inserting attempt");
-        }
-      })
       .catch((error) => {
         console.error(error);
       });
@@ -202,7 +194,6 @@ function Option(props) {
   }
 
   function nextQuestion(isCorrect) {
-    console.log("1:" + props.numOfOptionsToBeAnswered);
     if (isCorrect == "correct") {
       props.setCorrectTotal(props.correctTotal + 1);
     } else if (isCorrect == "wrong") {

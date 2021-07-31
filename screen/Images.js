@@ -574,6 +574,7 @@ export const advancedS3 = require("../assets/advanced/advancedQ3/solvent.png");
 export const advancedC3 = require("../assets/advanced/advancedQ3/carbocation.png");
 export const advancedN3 = require("../assets/advanced/advancedQ3/nucleophile.png");
 export const advancedP3 = require("../assets/advanced/advancedQ3/product.png");
+// export const advancedDYK3 = require("../assets/advanced/advancedQ3/dyk.png");
 
 //Question 3 choices
 export const advancedQ3C1 = require("../assets/advanced/advancedQ3/carbocationOption/carbocation1.png");
@@ -591,6 +592,7 @@ export const advancedN4 = require("../assets/advanced/advancedQ4/nucleophile.png
 export const advancedS4 = require("../assets/advanced/advancedQ4/solvent.png");
 export const advancedP4 = require("../assets/advanced/advancedQ4/product.png");
 export const advancedRT4 = require("../assets/advanced/advancedQ4/reactionType.png");
+// export const advancedDYK4 = require("../assets/advanced/advancedQ4/dyk.png");
 
 //Question 4 choices
 export const advancedQ4SM1 = require("../assets/advanced/advancedQ4/startOption/start1.png");
@@ -602,6 +604,7 @@ export const advancedQ4SM4 = require("../assets/advanced/advancedQ4/startOption/
 export const advancedN5 = require("../assets/advanced/advancedQ5/nucleophile.png");
 export const advancedS5 = require("../assets/advanced/advancedQ5/solvent.png");
 export const advancedSM5 = require("../assets/advanced/advancedQ5/start.png");
+// export const advancedDYK5 = require("../assets/advanced/advancedQ5/dyk.png");
 
 //Question 5 choices
 export const advancedQ5P1 = require("../assets/advanced/advancedQ5/productOption/product1.png");
@@ -676,6 +679,7 @@ export const advancedN10 = require("../assets/advanced/advancedQ10/nucleophile.p
 export const advancedP10 = require("../assets/advanced/advancedQ10/product.png");
 export const advancedRT10 = require("../assets/advanced/advancedQ10/reactionType.png");
 export const advancedE10 = require("../assets/advanced/advancedQ10/anastrozole.jpg");
+// export const advancedDYK10 = require("../assets/advanced/advancedQ10/dyk.png");
 
 //Question 10 choices
 export const advancedQ10SM1 = require("../assets/advanced/advancedQ10/startOption/start1.png");
