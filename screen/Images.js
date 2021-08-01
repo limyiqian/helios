@@ -299,8 +299,8 @@ export const intermediateQ5P4 = require("../assets/intermediate/intermediateQ5/p
 export const intermediateSM6 = require("../assets/intermediate/intermediateQ6/start.png");
 export const intermediateN6 = require("../assets/intermediate/intermediateQ6/nucleophile.png");
 export const intermediateS6 = require("../assets/intermediate/intermediateQ6/solvent.png");
-export const intermediateP6 = require("../assets/intermediate/intermediateQ6/product1.png");
-export const intermediatePP6 = require("../assets/intermediate/intermediateQ6/product2.png");
+export const intermediatePP6 = require("../assets/intermediate/intermediateQ6/product1.png");
+export const intermediatePPP6 = require("../assets/intermediate/intermediateQ6/product2.png");
 
 //Question 6 choices
 export const intermediateQ6P1 = require("../assets/intermediate/intermediateQ6/productOption/product1.png");
