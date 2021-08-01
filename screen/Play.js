@@ -22,7 +22,7 @@ export default function Play({ navigation, route }) {
   let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(24);
+  const [currentQuestionId, setCurrentQuestionId] = useState(questionId);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
@@ -101,7 +101,7 @@ export default function Play({ navigation, route }) {
 
   function insertAttempt() {
     var totalScore = correctTotal * 100 - wrongTotal * 100;
-    var api = "http://192.168.18.7/Chemiz/insertAttempt.php";
+    var api = "http://172.20.10.2/Chemiz/insertAttempt.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export default function Play({ navigation, route }) {
 
   useEffect(() => {
     //Go terminal type in ipconfig to find own ipv4 address
-    var api = "http://192.168.18.7/Chemiz/getQuestion.php";
+    var api = "http://172.20.10.2/Chemiz/getQuestion.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -527,7 +527,7 @@ const styles = StyleSheet.create({
   questionText: {
     fontWeight: "bold",
     fontSize: 17,
-    color: "#F8DE7E",
+    color: "#ffbc61",
   },
   difficultyText: {
     fontSize: 17,
@@ -629,10 +629,10 @@ const styles = StyleSheet.create({
     top: -50,
   },
   countdownTime: {
-    color: "#F8DE7E",
+    color: "#ffc576",
   },
   countdownTimeLabel: {
-    color: "#F8DE7E",
+    color: "#ffc576",
     fontWeight: "bold",
     fontSize: 18,
   },

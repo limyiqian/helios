@@ -16,8 +16,12 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Score({ navigation, route }) {
+  // var user_id = 1;
+  // var currentQuestionNo = 20;
+
   // const { correctTotal, wrongTotal } = route.params;
   const { gamemode, user_id, currentQuestionNo } = route.params;
+  // const { currentQuestionNo } = route.params;
   // const {user_id} = route.params;
   // const [user_id, setUser_id] = useState(0);
   const [wrongTotal, setWrongTotal] = useState(0);
@@ -29,7 +33,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http://192.168.18.7/Chemiz/getScore.php";
+    var api = "http://172.20.10.2/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -77,7 +81,8 @@ export default function Score({ navigation, route }) {
       <View style={styles.outter}>
         <View style={styles.inner}>
           <Text style={styles.scoreTxt}>Score</Text>
-          <Text style={styles.scoreTxt}>{score} pts</Text>
+          <Text style={styles.scorePtsTxt}>{score} pts</Text>
+          {/* <Text style={styles.scorePtsTxt}>1300 pts</Text> */}
         </View>
       </View>
       <View style={styles.cardsView}>
@@ -87,8 +92,7 @@ export default function Score({ navigation, route }) {
               <FontAwesome
                 name="circle"
                 size={10}
-                // color: "#00FF00",
-                color="#00FF00"
+                color="#97be7c"
               />{" "}
               {correctTotal}
             </Text>
@@ -100,7 +104,7 @@ export default function Score({ navigation, route }) {
                 name="circle"
                 size={10}
                 // color: "#00FF00",
-                color="#FFA500"
+                color="#ff675e"
               />{" "}
               {wrongTotal}
             </Text>
@@ -110,15 +114,16 @@ export default function Score({ navigation, route }) {
         <View style={styles.bottomCardView}>
           <View style={styles.gamemodeView}>
             <Text style={styles.gameModeTxt}>
-              <FontAwesome
+            <FontAwesome
                 name="circle"
                 size={10}
                 // color: "#00FF00",
-                color="#87CEEB"
+                color="#80cee1"
               />{" "}
               Gamemode
             </Text>
             <Text style={styles.gameMode}>{gamemode}</Text>
+            {/* <Text style={styles.gameMode}>gamemode</Text> */}
           </View>
           <View style={styles.qnsView}>
             <Text style={styles.qnsTxt}>
@@ -126,7 +131,7 @@ export default function Score({ navigation, route }) {
                 name="circle"
                 size={10}
                 // color: "#00FF00",
-                color="#F4C2C2"
+                color="#ffd0db"
               />{" "}
               Total Question
             </Text>
@@ -134,6 +139,7 @@ export default function Score({ navigation, route }) {
           </View>
         </View>
       </View>
+      {/* ///////////////////////////////////////// */}
       <View style={styles.btnView}>
         {/* button View */}
         <TouchableOpacity>
@@ -215,7 +221,7 @@ const styles = StyleSheet.create({
     position: "relative",
     width: 50,
     height: 50,
-    right: 8,
+    right: 15,
     borderRadius: 150 / 2,
     backgroundColor: "#FFFFFF",
   },
@@ -244,12 +250,20 @@ const styles = StyleSheet.create({
     color: "#ffc16b",
     fontSize: 18,
   },
+  scorePtsTxt: {
+    top: 25,
+    // left: 15,
+    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#ffc16b",
+    fontSize: 18,
+  },
   cardsView: {
     position: "absolute",
     borderRadius: 20,
     width: 300,
     height: 120,
-    top: 280,
+    top: 240,
     // bottom: 80,
     backgroundColor: "#FFFFFF",
   },
@@ -257,7 +271,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   correctNumTxt: {
-    color: "#00FF00",
+    color: "#97be7c",
     alignSelf: "center",
     left: 15,
     fontSize: 18,
@@ -267,7 +281,7 @@ const styles = StyleSheet.create({
   correctTxt: {
     textAlignVertical: "center",
     textAlign: "center",
-    left: 40,
+    left: 37,
     top: 5,
   },
   wrongTxt: {
@@ -277,7 +291,7 @@ const styles = StyleSheet.create({
     top: 5,
   },
   wrongNumTxt: {
-    color: "#FFA500",
+    color: "#ff675e",
     left: 104,
     fontSize: 18,
     fontWeight: "bold",
@@ -287,10 +301,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   gameModeTxt: {
-    color: "#87CEEB",
+    color: "#80cee1",
     fontWeight: "bold",
     fontSize: 18,
-    left: 25,
+    left: 21,
     top: 20,
   },
   gameMode: {
@@ -298,7 +312,7 @@ const styles = StyleSheet.create({
     top: 15,
   },
   qnsTxt: {
-    color: "#F4C2C2",
+    color: "#ffd0db",
     fontWeight: "bold",
     fontSize: 18,
     left: 43,
@@ -322,10 +336,10 @@ const styles = StyleSheet.create({
   },
   btnView: {
     flexDirection: "row",
-    top: 100,
+    top: 110,
   },
   btnPlayTxt: {
-    right: 10,
+    right: 20,
   },
   btnReviewTxt: {
     left: 1,
