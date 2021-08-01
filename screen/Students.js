@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
-export default function StudentScore({ navigation, route }) {
+export default function Students({ navigation, route }) {
   // console.log(route);
   const currentClass = route.params.class;
 
@@ -39,6 +39,7 @@ export default function StudentScore({ navigation, route }) {
   let [addExtraPicture, setAddExtraPictures] = useState("");
   let [addOptionType, setAddOptionType] = useState("");
   let [addArrow, setAddArrow] = useState("");
+  let [addDidYouKnow, setAddDidYouKnow] = useState("");
 
   let [deleteQuesId, setDeleteQuesId] = useState("");
 
@@ -58,7 +59,6 @@ export default function StudentScore({ navigation, route }) {
     })
       .then((response) => response.json())
       .then((response) => {
-        // console.log(response);
         var array = [];
         for (let i = 0; i < response.length; i++) {
           array.push(response[i]);
@@ -83,9 +83,17 @@ export default function StudentScore({ navigation, route }) {
 
   let eachRow = (item) => {
     return (
-      <View style={styles.eachRowBg}>
-        <Text style={styles.text}>{item.username}</Text>
-        <TouchableOpacity />
+      <View>
+        <TouchableOpacity
+          style={styles.eachRowBg}
+          onPress={() => {
+            navigation.navigate("Profile", {
+              user_id: item.user_id,
+            });
+          }}
+        >
+          <Text style={styles.text}>{item.username}</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -183,7 +191,7 @@ export default function StudentScore({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Student scores</Text>
+      <Text style={styles.title}>Students</Text>
       <View style={styles.topbuttonsView}>
         <TouchableOpacity
           onPress={viewAllQuestions}
@@ -209,7 +217,7 @@ export default function StudentScore({ navigation, route }) {
         style={styles.flatlist}
         data={studentArray}
         ItemSeparatorComponent={rowSeparator}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(index) => index.toString()}
         renderItem={({ item }) => eachRow(item)}
       />
 
@@ -317,7 +325,7 @@ export default function StudentScore({ navigation, route }) {
                 onChangeText={(hint) => setAddHint(hint)}
               />
               <TextInput
-                placeholder="Extra picture"
+                placeholder="Extra"
                 placeholderTextColor="#FFFFFF"
                 style={styles.textInput}
                 onChangeText={(extraPic) => setAddExtraPictures(extraPic)}
@@ -333,6 +341,13 @@ export default function StudentScore({ navigation, route }) {
                 placeholderTextColor="#FFFFFF"
                 style={styles.textInput}
                 onChangeText={(arrow) => setAddArrow(arrow)}
+              />
+
+              <TextInput
+                placeholder="Did you know"
+                placeholderTextColor="#FFFFFF"
+                style={styles.textInput}
+                onChangeText={(dyk) => setAddDidYouKnow(dyk)}
               />
               <TouchableOpacity style={styles.addButton} onPress={onPressAdd}>
                 <Text style={styles.addText}>Add</Text>
@@ -397,14 +412,17 @@ const styles = StyleSheet.create({
   },
   eachRowBg: {
     backgroundColor: "#B894CF",
-    borderRadius: 8,
+    borderRadius: 15,
     height: 35,
+    marginBottom: 5,
+    justifyContent: "center",
   },
   text: {
     fontSize: 18,
+    marginLeft: 10,
   },
   flatlist: {
-    margin: 10,
+    margin: 15,
   },
   topRowButton: {
     backgroundColor: "#FFFFFF",

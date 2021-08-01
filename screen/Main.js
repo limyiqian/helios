@@ -1,8 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -11,11 +8,9 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Alert,
   Modal,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { useEffect } from "react/cjs/react.development";
 import * as SQLite from "expo-sqlite";
 
 var db = SQLite.openDatabase("question.db");
@@ -176,14 +171,12 @@ export default function Main({ navigation, route }) {
                 >
                   <Picker.Item label="Normal" value="Normal" />
                   <Picker.Item label="Random" value="Random" />
-                  <Picker.Item label="Team" value="Team" />
                   <Picker.Item label="Speed" value="Speed" />
                 </Picker>
                 <TouchableOpacity
                   style={styles.selectButton}
                   onPress={() => {
                     setGamemodeModalVisible(false);
-                    console.log(dropdownGamemodeChosen);
                   }}
                 >
                   <Text style={styles.changeButtonText}>Select</Text>
@@ -227,7 +220,6 @@ export default function Main({ navigation, route }) {
                   style={styles.selectButton}
                   onPress={() => {
                     setDifficultyModalVisible(false);
-                    console.log(dropdownDifficultyChosen);
                   }}
                 >
                   <Text style={styles.changeButtonText}>Select</Text>

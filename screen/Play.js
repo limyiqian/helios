@@ -22,7 +22,7 @@ export default function Play({ navigation, route }) {
   let user_id = 1;
 
   const [currentQuestionNo, setCurrentQuestionNo] = useState(1);
-  const [currentQuestionId, setCurrentQuestionId] = useState(24);
+  const [currentQuestionId, setCurrentQuestionId] = useState(25);
   const [currentDifficulty, setCurrentDifficulty] = useState("");
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [currentStartingMaterial, setCurrentStartingMaterial] = useState("");
