@@ -23,7 +23,7 @@ export default function Register({ navigation }) {
   const [userClass, setUserClass] = useState("");
 
   insertUser = () => {
-    var api = "http://192.168.18.7/Chemiz/insertUser.php";
+    var api = "http://192.168.1.69/Chemiz/insertUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -99,11 +99,13 @@ export default function Register({ navigation }) {
           style={styles.textInput}
         />
         <TextInput
+          secureTextEntry={true}
           placeholder="Password"
           onChangeText={(password) => setPassword(password)}
           style={styles.textInput}
         />
         <TextInput
+          secureTextEntry={true}
           placeholder="Confirm password"
           onChangeText={(confirmPassword) =>
             setConfirmPassword(confirmPassword)
