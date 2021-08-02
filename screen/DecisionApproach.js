@@ -22,8 +22,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#F8DE7E",
   },
   image: {
-    maxHeight: 350,
-    maxWidth: 425,
+    // marginTop: 100,
+    // marginLeft: -1,
+    maxHeight: 391,
+    maxWidth: 390,
     alignItems: 'center',
   }
 });
