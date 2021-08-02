@@ -48,7 +48,7 @@ function Option(props) {
   //   console.log("Play wrong sound");
   // };
 
-  var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
+  var api = "http://192.168.0.116/Chemiz/getQuestionChoices.php";
   var headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -128,7 +128,7 @@ function Option(props) {
   }
 
   function insertReviewAns() {
-    var api = "http://192.168.18.7/Chemiz/insertReviewAns.php";
+    var api = "http://192.168.0.116/Chemiz/insertReviewAns.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",

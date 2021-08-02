@@ -33,7 +33,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http://172.20.10.2/Chemiz/getScore.php";
+    var api = "http://192.168.0.116/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
