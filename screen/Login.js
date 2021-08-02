@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
   AppRegistry,
@@ -57,10 +56,9 @@ export default class Login extends Component {
       })
         .then((response) => response.json())
         .then((response) => {
-          // console.log(JSON.stringify(response));
           if (response.success != false) {
             if (response.role == "teacher") {
-              this.props.navigation.navigate("StudentScore", {
+              this.props.navigation.navigate("Students", {
                 username: username,
                 user_id: response.user_id,
                 role: response.role,
@@ -91,7 +89,7 @@ export default class Login extends Component {
                   console.log(results);
                   let role = results.rows.item(0).role;
                   if (role == "teacher") {
-                    this.props.navigation.navigate("StudentScore", {
+                    this.props.navigation.navigate("Students", {
                       username: username,
                       user_id: results.rows.item(0).user_id,
                       role: results.rows.item(0).role,

@@ -27,32 +27,32 @@ export default function Profile({ navigation, route }) {
   // const [correctTotal, setCorrectTotal] = useState(0);
   // const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    var api = "http://192.168.18.7/Chemiz/getUser.php";
-    var headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-    var data = {
-      username: username,
-      password: userPassword,
-    };
-    fetch(api, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setUsername(response.username);
-        setPassword(response.password);
-        setEmail(response.email);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   var api = "http://192.168.18.7/Chemiz/getUser.php";
+  //   var headers = {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //   };
+  //   var data = {
+  //     username: username,
+  //     password: userPassword,
+  //   };
+  //   fetch(api, {
+  //     method: "POST",
+  //     headers: headers,
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.log(response);
+  //       setUsername(response.username);
+  //       setPassword(response.password);
+  //       setEmail(response.email);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   function updateUserDetail() {
     var api = "http://192.168.18.7/Chemiz/updateUserDetails.php";

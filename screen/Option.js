@@ -24,8 +24,6 @@ function Option(props) {
   const [correctSound, setCorrectSound] = useState(new Audio.Sound());
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
 
-  console.log(props.currentQuestionNo);
-  console.log("choice_id: " + selectedOption.choice_id);
   // useEffect(() => {
   //   async function loadCorrectSounds() {
   //     await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
@@ -194,6 +192,7 @@ function Option(props) {
   }
 
   function nextQuestion(isCorrect) {
+    console.log("numOfOptionsToBeAnswered:" + props.numOfOptionsToBeAnswered);
     if (isCorrect == "correct") {
       props.setCorrectTotal(props.correctTotal + 1);
     } else if (isCorrect == "wrong") {

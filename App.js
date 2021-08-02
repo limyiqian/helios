@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Main from "./screen/Main.js";
 import Register from "./screen/Register.js";
-import StudentScore from "./screen/StudentScore.js";
+import Students from "./screen/Students.js";
 import ViewAllQuestions from "./screen/ViewAllQuestions.js";
 import Play from "./screen/Play.js";
 import UserGuide from "./screen/UserGuide.js";
@@ -205,7 +205,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -222,8 +222,8 @@ export default function App() {
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="StudentScore"
-          component={StudentScore}
+          name="Students"
+          component={Students}
           options={{ headerShown: true }}
         />
         <Stack.Screen
