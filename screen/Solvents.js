@@ -15,8 +15,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#F8DE7E",
   },
   image: {
-    maxWidth: 400,
-    maxHeight: 320,
+    marginBottom: 100,
+    marginTop: 5,
+    maxWidth: 390,
+    maxHeight: 310,
     alignSelf: "center",
   },
 });
