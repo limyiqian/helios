@@ -23,6 +23,7 @@ function Option(props) {
 
   const [correctSound, setCorrectSound] = useState(new Audio.Sound());
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
+  const [latestAttemptId, setLatestAttemptId] = useState(0);
 
   // useEffect(() => {
   //   async function loadCorrectSounds() {
@@ -128,25 +129,43 @@ function Option(props) {
   }
 
   function insertReviewAns() {
-    var api = "http://192.168.18.7/Chemiz/insertReviewAns.php";
+    var api = "http://192.168.18.7/Chemiz/getLatestAttempt.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
     };
-    var data = {
-      // user_id: props.user_id,
-      user_id: 1,
-      option_id: selectedOption.choice_id,
-      question_id: props.questionId,
-      question_no: props.currentQuestionNo,
-    };
-    console.log(JSON.stringify(data));
     fetch(api, {
       method: "POST",
       headers: headers,
-      body: JSON.stringify(data),
     })
       .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        var nextAttemptId = parseInt(response.attempt_id) + 1;
+        var api = "http://192.168.18.7/Chemiz/insertReviewAns.php";
+        var headers = {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        };
+        var data = {
+          // user_id: props.user_id,
+          user_id: 1,
+          option_id: selectedOption.choice_id,
+          question_id: props.questionId,
+          question_no: props.currentQuestionNo,
+          attempt_id: nextAttemptId,
+        };
+        console.log(JSON.stringify(data));
+        fetch(api, {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .catch((error) => {
+            console.error(error);
+          });
+      })
       .catch((error) => {
         console.error(error);
       });

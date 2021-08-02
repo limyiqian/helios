@@ -33,7 +33,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http://172.20.10.2/Chemiz/getScore.php";
+    var api = "http:// 192.168.18.7/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -89,11 +89,7 @@ export default function Score({ navigation, route }) {
         <View style={styles.topCardView}>
           <View style={styles.correctCardView}>
             <Text style={styles.correctNumTxt}>
-              <FontAwesome
-                name="circle"
-                size={10}
-                color="#97be7c"
-              />{" "}
+              <FontAwesome name="circle" size={10} color="#97be7c" />{" "}
               {correctTotal}
             </Text>
             <Text style={styles.correctTxt}>Correct</Text>
@@ -114,7 +110,7 @@ export default function Score({ navigation, route }) {
         <View style={styles.bottomCardView}>
           <View style={styles.gamemodeView}>
             <Text style={styles.gameModeTxt}>
-            <FontAwesome
+              <FontAwesome
                 name="circle"
                 size={10}
                 // color: "#00FF00",
@@ -253,7 +249,7 @@ const styles = StyleSheet.create({
   scorePtsTxt: {
     top: 25,
     // left: 15,
-    textAlign: 'center',
+    textAlign: "center",
     fontWeight: "bold",
     color: "#ffc16b",
     fontSize: 18,
