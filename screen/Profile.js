@@ -31,7 +31,7 @@ export default function Profile({ navigation, route }) {
   const [attempts, setAttempts] = useState([]);
   const [attempt_id, setAttemptId] = useState(0);
 
-  var totalScore = 0;
+  var numOfScores = 0;
 
   let allAttempts = [];
 
@@ -136,9 +136,9 @@ export default function Profile({ navigation, route }) {
           correct.push(response[i].correct);
           wrong.push(response[i].wrong);
           score.push(response[i].score);
-          totalScore += response[i].score;
+          numOfScores = response.length;
         }
-        setAvgScore(totalScore / attempt_id);
+        setAvgScore(eval(score.join('+')) / numOfScores);
 
         for (let i = 0; i < correct.length; i++) {
           allAttempts.push(
@@ -217,7 +217,7 @@ export default function Profile({ navigation, route }) {
         </View>
       </View>
       <Text style={styles.text}>All Attempts</Text>
-      <ScrollView>{attempts}</ScrollView>
+      <View>{attempts}</View>
 
       <Modal
         animationType="slide"
