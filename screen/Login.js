@@ -43,7 +43,7 @@ export default class Login extends Component {
     } else if (userPassword == "") {
       this.setState({ password: "Please enter password" });
     } else {
-      fetch("http://192.168.1.69/Chemiz/findUser.php", {
+      fetch("http://192.168.0.116/Chemiz/findUser.php", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -23,7 +23,7 @@ export default function Register({ navigation }) {
   const [userClass, setUserClass] = useState("");
 
   insertUser = () => {
-    var api = "http://192.168.1.69/Chemiz/insertUser.php";
+    var api = "http://192.168.0.116/Chemiz/insertUser.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",

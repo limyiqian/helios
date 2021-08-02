@@ -131,14 +131,12 @@ export default function Profile({ navigation, route }) {
       .then((response) => {
         let correct = [];
         let wrong = [];
-        let score = [];    
+        let score = [];
         for (var i = 0; i < response.length; i++) {
           correct.push(response[i].correct);
           wrong.push(response[i].wrong);
           score.push(response[i].score);
           totalScore += response[i].score;
-          console.log("test: " + correct);
-          console.log("score " + totalScore);
         }
         setAvgScore(totalScore / attempt_id);
 
@@ -151,25 +149,21 @@ export default function Profile({ navigation, route }) {
                     Score:{"\n"}
                     {score[i]}
                   </Text>
-                  <View style={styles.correctCardView}>
-                    <Text style={styles.correctNumTxt}>
-                      <FontAwesome name="circle" size={10} color="#97be7c" />{" "}
-                      {correct[i]}
-                    </Text>
-                    <Text style={styles.correctTxt}>Correct</Text>
-                  </View>
-                  <View style={styles.wrongCardView}>
-                    <Text style={styles.wrongNumTxt}>
-                      <FontAwesome
-                        name="circle"
-                        size={10}
-                        color="#ff675e"
-                      />{" "}
-                      {wrong[i]}
-                    </Text>
-                    <Text style={styles.wrongTxt}>Wrong</Text>
-                  </View>
                 </View>
+              </View>
+              <View style={styles.correctCardView}>
+                <Text style={styles.correctNumTxt}>
+                  <FontAwesome name="circle" size={10} color="#97be7c" />{" "}
+                  {correct[i]}
+                </Text>
+                <Text style={styles.correctTxt}>Correct</Text>
+              </View>
+              <View style={styles.wrongCardView}>
+                <Text style={styles.wrongNumTxt}>
+                  <FontAwesome name="circle" size={10} color="#ff675e" />{" "}
+                  {wrong[i]}
+                </Text>
+                <Text style={styles.wrongTxt}>Wrong</Text>
               </View>
             </View>
           );
@@ -217,12 +211,7 @@ export default function Profile({ navigation, route }) {
 
         <View style={styles.wrongCardView}>
           <Text style={styles.wrongNumTxt}>
-            <FontAwesome
-              name="circle"
-              size={10}
-              color="#ff675e"
-            />{" "}
-            {wrongTotal}
+            <FontAwesome name="circle" size={10} color="#ff675e" /> {wrongTotal}
           </Text>
           <Text style={styles.wrongTxt}>Wrong</Text>
         </View>
