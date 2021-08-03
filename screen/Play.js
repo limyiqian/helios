@@ -57,7 +57,7 @@ export default function Play({ navigation, route }) {
 
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
-  const [maxQues, setMaxQues] = useState(2);
+  const [maxQues, setMaxQues] = useState(19);
   const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(5);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function Play({ navigation, route }) {
         setCurrentQuestionId(nextQues);
         console.log("Random:" + nextQues);
       } else {
-        var nextQues = parseInt(currentQuestionId) + 1;
+        var nextQues = parseInt(currentQuestionNo) + 1;
         setCurrentQuestionId(nextQues);
       }
       var nextLvl = correctTotal / answerCorrectToNextLvl;

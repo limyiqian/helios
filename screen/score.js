@@ -33,7 +33,7 @@ export default function Score({ navigation, route }) {
   // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
-    var api = "http:// 192.168.18.7/Chemiz/getScore.php";
+    var api = "http://192.168.18.7/Chemiz/getScore.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -82,7 +82,6 @@ export default function Score({ navigation, route }) {
         <View style={styles.inner}>
           <Text style={styles.scoreTxt}>Score</Text>
           <Text style={styles.scorePtsTxt}>{score} pts</Text>
-          {/* <Text style={styles.scorePtsTxt}>1300 pts</Text> */}
         </View>
       </View>
       <View style={styles.cardsView}>
@@ -135,7 +134,6 @@ export default function Score({ navigation, route }) {
           </View>
         </View>
       </View>
-      {/* ///////////////////////////////////////// */}
       <View style={styles.btnView}>
         {/* button View */}
         <TouchableOpacity>
@@ -176,9 +174,6 @@ export default function Score({ navigation, route }) {
         </TouchableOpacity>
       </View>
     </View>
-    // <View>
-    // //   <Text>score</Text>
-    // // </View>
   );
 }
 

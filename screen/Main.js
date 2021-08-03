@@ -60,7 +60,7 @@ export default function Main({ navigation, route }) {
       ></Image>
       <View style={styles.card}>
         {/* <Text style={styles.title}>{route.params.username}</Text> */}
-        <Text style={styles.title}>{route.params.username}</Text>
+        <Text style={styles.title}>test</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
