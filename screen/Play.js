@@ -57,7 +57,7 @@ export default function Play({ navigation, route }) {
 
   const [isNextQuestion, setIsNextQuestion] = useState(false);
 
-  const [maxQues, setMaxQues] = useState(19);
+  const [maxQues, setMaxQues] = useState(20);
   const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(5);
 
   useEffect(() => {
@@ -70,11 +70,12 @@ export default function Play({ navigation, route }) {
         setCurrentQuestionId(nextQues);
         console.log("Random:" + nextQues);
       } else {
-        var nextQues = parseInt(currentQuestionNo) + 1;
-        setCurrentQuestionId(nextQues);
+        var nextQuesId = parseInt(currentQuestionId) + 1;
+        setCurrentQuestionId(nextQuesId);
       }
       var nextLvl = correctTotal / answerCorrectToNextLvl;
-      if (currentQuestionNo > maxQues) {
+      var nextQuesNo = currentQuestionNo + 1;
+      if (nextQuesNo > maxQues) {
         insertAttempt();
       } else if (nextLvl == 1) {
         setCurrentQuestionId(19);
@@ -83,7 +84,7 @@ export default function Play({ navigation, route }) {
       }
       setHintModalVisible(false);
       setOptionModalVisible(false);
-      setCurrentQuestionNo(currentQuestionNo + 1);
+      setCurrentQuestionNo(nextQuesNo);
       setIsNextQuestion(false);
     }
   });
