@@ -60,6 +60,8 @@ export default function Play({ navigation, route }) {
   const [maxQues, setMaxQues] = useState(20);
   const [answerCorrectToNextLvl, setAnswerCorrectToNextLvl] = useState(5);
 
+  const [isAdvanced, setIsAdvanced] = useState(false);
+
   useEffect(() => {
     if (isNextQuestion) {
       var randomId = Math.random().toString();
@@ -79,8 +81,9 @@ export default function Play({ navigation, route }) {
         insertAttempt();
       } else if (nextLvl == 1) {
         setCurrentQuestionId(19);
-      } else if (nextLvl == 2) {
+      } else if (nextLvl >= 2 && isAdvanced == false) {
         setCurrentQuestionId(41);
+        setIsAdvanced(true);
       }
       setHintModalVisible(false);
       setOptionModalVisible(false);

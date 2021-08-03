@@ -12,7 +12,6 @@ import {
   Alert,
 } from "react-native";
 import { useState, useEffect } from "react";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function Profile({ navigation, route }) {
@@ -138,7 +137,7 @@ export default function Profile({ navigation, route }) {
           score.push(response[i].score);
           numOfScores = response.length;
         }
-        setAvgScore(eval(score.join('+')) / numOfScores);
+        setAvgScore(eval(score.join("+")) / numOfScores);
 
         for (let i = 0; i < correct.length; i++) {
           allAttempts.push(
