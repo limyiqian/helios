@@ -52,6 +52,7 @@ export default function Play({ navigation, route }) {
 
   const [totalDuration, setTotalDuration] = useState(duration);
   const [countDownId, setCountDownId] = useState("1");
+  const [run, setRun] = useState(true);
 
   const [quesNoArray, setQuesNoArray] = useState([]);
 
@@ -79,6 +80,7 @@ export default function Play({ navigation, route }) {
       var nextQuesNo = currentQuestionNo + 1;
       if (nextQuesNo > maxQues) {
         insertAttempt();
+        setRun(false);
       } else if (nextLvl == 1) {
         setCurrentQuestionId(19);
       } else if (nextLvl >= 2 && isAdvanced == false) {
@@ -248,6 +250,7 @@ export default function Play({ navigation, route }) {
             timeLabelStyle={styles.countdownTimeLabel}
             timeLabels={{ s: "Second" }}
             onFinish={timerOnFinish}
+            running={run}
             size={18}
           />
           <View style={styles.iconView}>
