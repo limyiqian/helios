@@ -27,10 +27,6 @@ export default function Score({ navigation, route }) {
   const [wrongTotal, setWrongTotal] = useState(0);
   const [correctTotal, setCorrectTotal] = useState(0);
   const [score, setScore] = useState(0);
-  // const [totalNumQns, setTotalNumQns] = useState(0);
-
-  // var attempt_id = 3;
-  // attempt_id = attempt_id + attempt_id;
 
   useEffect(() => {
     var api = "http://192.168.18.7/Chemiz/getScore.php";
@@ -118,7 +114,6 @@ export default function Score({ navigation, route }) {
               Gamemode
             </Text>
             <Text style={styles.gameMode}>{gamemode}</Text>
-            {/* <Text style={styles.gameMode}>gamemode</Text> */}
           </View>
           <View style={styles.qnsView}>
             <Text style={styles.qnsTxt}>

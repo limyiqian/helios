@@ -59,7 +59,6 @@ export default function Register({ navigation }) {
       role: role,
       class: values.classVal,
     };
-    // console.log(JSON.stringify(data));
     fetch(api, {
       method: "POST",
       headers: headers,

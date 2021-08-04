@@ -59,13 +59,12 @@ export default function Main({ navigation, route }) {
         style={styles.image}
       ></Image>
       <View style={styles.card}>
-        {/* <Text style={styles.title}>{route.params.username}</Text> */}
-        <Text style={styles.title}>test</Text>
+        <Text style={styles.title}>{route.params.username}</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate("Play", {
-              // username: route.params.username,
+              username: route.params.username,
               questionId: startQuestionId,
               gamemode: dropdownGamemodeChosen,
               hint: hintVisibility,
@@ -103,8 +102,8 @@ export default function Main({ navigation, route }) {
           onPress={() =>
             navigation.navigate("Profile", {
               user_id: route.params.user_id,
-              // username: route.params.username,
-              // userPassword: route.params.userPassword,
+              username: route.params.username,
+              userPassword: route.params.userPassword,
             })
           }
         >
@@ -237,8 +236,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F8DE7E",
     flex: 1,
-    // justifyContent: "space-between",
-    // flexDirection: "row"
   },
   image: {
     width: 100,
@@ -251,12 +248,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     height: "100%",
-    // marginBottom: 'auto',
-    // flex: 1,
-    // justifyContent: "flex-end",
-    // alignItems: "flex-end",
     alignContent: "space-between",
-    // marginBottom: 36,
   },
   title: {
     marginTop: 30,
@@ -342,9 +334,4 @@ const styles = StyleSheet.create({
   pickerItem: {
     height: 44,
   },
-  // user: {
-  //   borderColor: '#000000',
-  //   borderWidth: 2,
-  //   margin: 30,
-  // }
 });

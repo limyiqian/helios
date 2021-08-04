@@ -739,7 +739,7 @@ export const advancedQ14S4 = require("../assets/advanced/advancedQ14/solventOpti
 //Question 15
 export const advancedS15 = require("../assets/advanced/advancedQ15/solvent.png");
 export const advancedN15 = require("../assets/advanced/advancedQ15/nucleophile.png");
-export const advancedP15 = require("../assets/advanced/advancedQ15/product1.png");
+export const advancedPP15 = require("../assets/advanced/advancedQ15/product1.png");
 export const advancedRT15 = require("../assets/advanced/advancedQ15/reactionType.png");
 export const advancedSM15 = require("../assets/advanced/advancedQ15/start.png");
 
@@ -757,7 +757,7 @@ export const advancedQ15MP4 = require("../assets/advanced/advancedQ15/productOpt
 //Question 16
 export const advancedS16 = require("../assets/advanced/advancedQ16/solvent.png");
 export const advancedN16 = require("../assets/advanced/advancedQ16/nucleophile.png");
-export const advancedP16 = require("../assets/advanced/advancedQ16/product1.png");
+export const advancedPP16 = require("../assets/advanced/advancedQ16/product1.png");
 export const advancedPPP16 = require("../assets/advanced/advancedQ16/product3.png");
 export const advancedSM16 = require("../assets/advanced/advancedQ16/start.png");
 
@@ -775,8 +775,8 @@ export const advancedQ16RT4 = require("../assets/advanced/advancedQ16/reactionOp
 //Question 17
 export const advancedS17 = require("../assets/advanced/advancedQ17/solvent.png");
 export const advancedN17 = require("../assets/advanced/advancedQ17/nucleophile.png");
-export const advancedP17 = require("../assets/advanced/advancedQ17/product1.png");
-export const advancedPP17 = require("../assets/advanced/advancedQ17/product2.png");
+export const advancedPP17 = require("../assets/advanced/advancedQ17/product1.png");
+export const advancedPPP17 = require("../assets/advanced/advancedQ17/product2.png");
 export const advancedSM17 = require("../assets/advanced/advancedQ17/start.png");
 
 //Question 17 choices
@@ -809,7 +809,7 @@ export const advancedQ18S2 = require("../assets/advanced/advancedQ18/solventOpti
 //Question 19
 export const advancedS19 = require("../assets/advanced/advancedQ19/solvent.png");
 export const advancedN19 = require("../assets/advanced/advancedQ19/nucleophile.png");
-export const advancedP19 = require("../assets/advanced/advancedQ19/product1.png");
+export const advancedPP19 = require("../assets/advanced/advancedQ19/product1.png");
 export const advancedPPP19 = require("../assets/advanced/advancedQ19/product3.png");
 export const advancedSM19 = require("../assets/advanced/advancedQ19/start.png");
 

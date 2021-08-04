@@ -205,87 +205,23 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Main"
-          component={Main}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Students"
-          component={Students}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="ViewAllQuestions"
-          component={ViewAllQuestions}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="ViewAllAttempts"
-          component={ViewAllAttempts}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Play"
-          component={Play}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Score"
-          component={Score}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="ReviewAns"
-          component={ReviewAns}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="UserGuide"
-          component={UserGuide}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="UserGuide2"
-          component={UserGuide2}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="UserGuide3"
-          component={UserGuide3}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Bases"
-          component={Bases}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Solvents"
-          component={Solvents}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="DecisionApproach"
-          component={DecisionApproach}
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{ headerShown: true }}
-        />
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Students" component={Students} />
+        <Stack.Screen name="ViewAllQuestions" component={ViewAllQuestions} />
+        <Stack.Screen name="ViewAllAttempts" component={ViewAllAttempts} />
+        <Stack.Screen name="Play" component={Play} />
+        <Stack.Screen name="Score" component={Score} />
+        <Stack.Screen name="ReviewAns" component={ReviewAns} />
+        <Stack.Screen name="UserGuide" component={UserGuide} />
+        <Stack.Screen name="UserGuide2" component={UserGuide2} />
+        <Stack.Screen name="UserGuide3" component={UserGuide3} />
+        <Stack.Screen name="Bases" component={Bases} />
+        <Stack.Screen name="Solvents" component={Solvents} />
+        <Stack.Screen name="DecisionApproach" component={DecisionApproach} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );

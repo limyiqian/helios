@@ -15,7 +15,6 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 export default function Students({ navigation, route }) {
-  // console.log(route);
   const currentClass = route.params.class;
 
   const [studentArray, setStudentArray] = useState([]);

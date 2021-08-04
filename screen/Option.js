@@ -15,7 +15,6 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 function Option(props) {
-  // console.log(props);
   let images = [];
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
@@ -25,29 +24,29 @@ function Option(props) {
   const [wrongSound, setWrongSound] = useState(new Audio.Sound());
   const [latestAttemptId, setLatestAttemptId] = useState(0);
 
-  // useEffect(() => {
-  //   async function loadCorrectSounds() {
-  //     await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
-  //   }
-  //   loadCorrectSounds();
-  // }, []);
+  useEffect(() => {
+    async function loadCorrectSounds() {
+      await correctSound.loadAsync(require("../assets/sounds/correct.mp3"));
+    }
+    loadCorrectSounds();
+  }, []);
 
-  // const playCorrectSound = () => {
-  //   correctSound.playAsync();
-  //   console.log("Play correct Sound");
-  // };
+  const playCorrectSound = () => {
+    correctSound.playAsync();
+    console.log("Play correct Sound");
+  };
 
-  // useEffect(() => {
-  //   async function loadWrongSounds() {
-  //     await wrongSound.loadAsync(require("../assets/sounds/wrong.mp3"));
-  //   }
-  //   loadWrongSounds();
-  // }, []);
+  useEffect(() => {
+    async function loadWrongSounds() {
+      await wrongSound.loadAsync(require("../assets/sounds/wrong.mp3"));
+    }
+    loadWrongSounds();
+  }, []);
 
-  // const playWrongSound = () => {
-  //   wrongSound.playAsync();
-  //   console.log("Play wrong sound");
-  // };
+  const playWrongSound = () => {
+    wrongSound.playAsync();
+    console.log("Play wrong sound");
+  };
 
   var api = "http://192.168.18.7/Chemiz/getQuestionChoices.php";
   var headers = {
@@ -95,7 +94,6 @@ function Option(props) {
             "SELECT * FROM question_choices WHERE question_id=? AND choice_type=?",
             [props.questionId, props.selected],
             (tx, results) => {
-              // console.log(results);
               var len = results.rows.length;
               let dataImage = [];
               for (var i = 0; i < len; i++) {
@@ -148,8 +146,7 @@ function Option(props) {
           "Content-Type": "application/json",
         };
         var data = {
-          // user_id: props.user_id,
-          user_id: 1,
+          user_id: props.user_id,
           option_id: selectedOption.choice_id,
           question_id: props.questionId,
           question_no: props.currentQuestionNo,
@@ -174,7 +171,7 @@ function Option(props) {
   function checkAnswer() {
     insertReviewAns();
     if (selectedOption.is_correct_choice == "True") {
-      // playCorrectSound();
+      playCorrectSound();
       Alert.alert(
         "Correct",
         "+100 points",
@@ -192,7 +189,7 @@ function Option(props) {
         { cancelable: false }
       );
     } else if (selectedOption.is_correct_choice == "False") {
-      // playWrongSound();
+      playWrongSound();
       Alert.alert(
         "Wrong",
         "-100 points",
