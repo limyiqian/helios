@@ -484,6 +484,7 @@ export default function Play({ navigation, route }) {
               setNumOfOptionsToBeAnswered={setNumOfOptionsToBeAnswered}
               setCountDownId={setCountDownId}
               currentQuestionNo={currentQuestionNo}
+              userId={user_id}
             />
           </View>
         </View>

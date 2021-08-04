@@ -6,6 +6,7 @@ function Selection(props) {
   let selected = props.selected;
   let optionType = props.optionType;
 
+  console.log(props.userId);
   if (optionType.includes(selected)) {
     return (
       <Option
@@ -21,6 +22,7 @@ function Selection(props) {
         setNumOfOptionsToBeAnswered={props.setNumOfOptionsToBeAnswered}
         setCountDownId={props.setCountDownId}
         currentQuestionNo={props.currentQuestionNo}
+        userId={props.userId}
       />
     );
   } else {

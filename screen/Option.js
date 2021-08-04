@@ -15,6 +15,7 @@ import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("chemizdb.db");
 
 function Option(props) {
+  console.log(props);
   let images = [];
   const [outImages, setOutImages] = useState([]);
   const [selectedName, setSelectedName] = useState("");
@@ -146,7 +147,7 @@ function Option(props) {
           "Content-Type": "application/json",
         };
         var data = {
-          user_id: props.user_id,
+          user_id: props.userId,
           option_id: selectedOption.choice_id,
           question_id: props.questionId,
           question_no: props.currentQuestionNo,

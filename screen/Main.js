@@ -69,6 +69,7 @@ export default function Main({ navigation, route }) {
               gamemode: dropdownGamemodeChosen,
               hint: hintVisibility,
               duration: duration,
+              user_id: route.params.user_id,
             })
           }
         >
