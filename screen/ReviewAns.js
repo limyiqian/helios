@@ -6,22 +6,38 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { render } from "react-dom";
+import * as SQLite from "expo-sqlite";
+const db = SQLite.openDatabase("chemizdb.db");
 
-export default function ReviewAns() {
-  // const [wrong, setWrong] = useState(0);
+export default function ReviewAns({ route }) {
 
-  function checkUserAttempt() {
-    var api = "http://192.168.18.7/Chemiz/checkUserAttempted.php";
+  const [reviewAnswerArray, setReviewAnswerArray] = useState([]);
+
+  const [optionID, setOptionID] = useState("");
+  const [questionID, setQuestionID] = useState("");
+  const [questionNo, setQuestionNo] = useState("");
+  const [userID, setUserID] = useState("");
+  const [id, setID] = useState("");
+  const [attemptId, setAttemptID] = useState("");
+  // const { user_id } = route;
+
+  const {user_id} = 1;
+  const {attempt_id} = 52;
+
+  useEffect(() => {
+    var api = "http://192.168.10.144/Chemiz/reviewAns.php";
     var headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
     };
     var data = {
-      option_id: option_id,
+      userId: user_id,
+      attemptId: attempt_id,
     };
-    console.log(JSON.stringify(data));
     fetch(api, {
       method: "POST",
       headers: headers,
@@ -30,23 +46,36 @@ export default function ReviewAns() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        if (response.result == true) {
-          console.log("Deleted!");
-        } else {
-          console.log("Error in inserting attempt");
+        var array = [];
+        for (let i = 0; i < response.length; i++) {
+          array.push(response[i]);
         }
+        setReviewAnswerArray(array);
       })
       .catch((error) => {
         console.error(error);
       });
-  }
+  }, []);
+
+  
+
+  const renderView = ({ item, index }) => {
+    return (
+      <View style={styles.card}>
+        <Text style={styles.qnsTitle}> Question {setQuestionNo} </Text>
+        <Text> {setOptionID} </Text>
+        <Text> {setQuestionID} </Text>
+        <Text> {setUserID} </Text>
+        <Text> {setID} </Text>
+        <Text> {setAttemptID} </Text>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.firstContainer}>
       <Text style={styles.reviewAns}>Review Answer</Text>
-      <View style={styles.card}>
-        <Text style={styles.qnsTitle}> Question 1</Text>
-      </View>
+      <FlatList data={reviewAnswerArray} renderItem={renderView} />
     </View>
   );
 }
